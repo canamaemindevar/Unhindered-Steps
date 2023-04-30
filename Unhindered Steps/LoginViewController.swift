@@ -8,11 +8,14 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    private lazy var viewModel = LoginViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
     
 

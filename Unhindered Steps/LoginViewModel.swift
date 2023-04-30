@@ -9,10 +9,14 @@ import Foundation
 
 protocol LoginViewModelInterface {
     var view: LoginViewController? {get set}
+    func viewDidLoad()
 }
 
 class LoginViewModel: LoginViewModelInterface {
+    
    weak var view: LoginViewController?
     
-    
+    func viewDidLoad() {
+        
+    }
 }

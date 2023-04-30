@@ -9,10 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    private lazy var viewModel = ProfileViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
     
 

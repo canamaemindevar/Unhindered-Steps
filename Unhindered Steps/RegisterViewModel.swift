@@ -9,11 +9,16 @@ import Foundation
 
 protocol RegisterViewModelInterface{
     var view: RegisterViewController? {get set}
+    func viewDidLoad()
 }
 
 class RegisterViewModel: RegisterViewModelInterface {
+   
     
     weak var view: RegisterViewController?
     
+    func viewDidLoad() {
+        print("welcome")
+    }
     
 }

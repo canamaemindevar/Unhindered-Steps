@@ -9,11 +9,15 @@ import Foundation
 
 protocol ProfileViewModelInterface {
     var view: ProfileViewController? {get set}
+    func viewDidLoad()
 }
 
 class ProfileViewModel: ProfileViewModelInterface {
+    
    weak var view: ProfileViewController?
     
-    
+    func viewDidLoad() {
+        
+    }
 }
 

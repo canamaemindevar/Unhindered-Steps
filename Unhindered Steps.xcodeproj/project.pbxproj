@@ -21,6 +21,7 @@
 		A9B4577F29FEA9700069432E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4577E29FEA9700069432E /* LoginViewModel.swift */; };
 		A9B4578129FEA9B60069432E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578029FEA9B60069432E /* RegisterViewController.swift */; };
 		A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578229FEA9D60069432E /* RegisterViewModel.swift */; };
+		A9B4578729FEBB5F0069432E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578629FEBB5F0069432E /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A9B4577E29FEA9700069432E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A9B4578029FEA9B60069432E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A9B4578229FEA9D60069432E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		A9B4578629FEBB5F0069432E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +74,10 @@
 		A9B4575729FEA8070069432E /* Unhindered Steps */ = {
 			isa = PBXGroup;
 			children = (
+				A9B4578829FEBB8B0069432E /* Managers */,
 				A9B4578529FEA9F20069432E /* Extensions+Helpers */,
 				A9B4576C29FEA88C0069432E /* Base */,
 				A9B4578429FEA9E40069432E /* Onboarding */,
-				A9B4576E29FEA8A90069432E /* Network */,
 				A9B4576D29FEA89F0069432E /* Feature */,
 			);
 			path = "Unhindered Steps";
@@ -163,6 +165,15 @@
 			name = "Extensions+Helpers";
 			sourceTree = "<group>";
 		};
+		A9B4578829FEBB8B0069432E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4578629FEBB5F0069432E /* LocationManager.swift */,
+				A9B4576E29FEA8A90069432E /* Network */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,6 +253,7 @@
 				A9B4575929FEA8070069432E /* AppDelegate.swift in Sources */,
 				A9B4577729FEA9110069432E /* MapViewController.swift in Sources */,
 				A9B4575B29FEA8070069432E /* SceneDelegate.swift in Sources */,
+				A9B4578729FEBB5F0069432E /* LocationManager.swift in Sources */,
 				A9B4577B29FEA94A0069432E /* ProfileViewModel.swift in Sources */,
 				A9B4577D29FEA95B0069432E /* MapViewModel.swift in Sources */,
 				A9B4577F29FEA9700069432E /* LoginViewModel.swift in Sources */,
