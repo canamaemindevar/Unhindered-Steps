@@ -36,3 +36,38 @@ class MapViewController: UIViewController {
         ])
     }
 }
+
+extension MapViewController {
+    
+    func startQuery() {
+        LocationManager.shared.getUserLocation {[weak self] location in
+
+            DispatchQueue.main.async {
+
+                self?.viewModel.location = location.coordinate
+                self?.mapView.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                self?.viewModel.updateSearchResults(query: .pharmacy, completion: { response in
+                    self?.updateUi(response: response)
+                })
+            }
+        }
+    
+    }
+    
+    
+    
+    func updateUi(response: MKLocalSearch.Response) {
+       
+        DispatchQueue.main.async {
+            
+            self.mapView.removeAnnotations(self.viewModel.items)
+            self.viewModel.items = []
+            response.mapItems.forEach { item in
+                
+                self.viewModel.items.append(item.placemark)
+            }
+            self.mapView.addAnnotations(self.viewModel.items)
+
+        }
+    }
+}

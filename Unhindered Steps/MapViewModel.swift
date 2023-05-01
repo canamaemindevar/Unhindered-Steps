@@ -23,6 +23,8 @@ class MapViewModel:MapViewModelInterface {
     
     func viewDidLoad() {
         view?.setupMapConts()
+        view?.mapView.showsUserLocation = true
+        view?.startQuery()
     }
 
     
