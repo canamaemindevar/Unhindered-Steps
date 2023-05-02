@@ -43,7 +43,7 @@ class MapViewModel:MapViewModelInterface {
             guard let response = response else {
                 return
             }
-            print(response)
+          //  print(response)
             
             completion(response)
 

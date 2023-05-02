@@ -10,8 +10,32 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     private lazy var viewModel = ProfileViewModel()
-    
+    let user = MockUser(name: "Ali Can", mail: "alican@gmail.com", helperName: "Veli Can", helperPhone: "911")
     //MARK: - Components
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .monospacedDigitSystemFont(ofSize: 30, weight: .heavy)
+        return label
+    }()
+    private let mailLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .italicSystemFont(ofSize: 20)
+        return label
+    }()
+    private let profileStackview: UIStackView = {
+        let sView = UIStackView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.layer.cornerRadius = 5
+        sView.axis = .vertical
+        sView.distribution = .fillProportionally
+        sView.alignment = .center
+        return sView
+    }()
     
     private let dummyView: UIView = {
         let sView = UIView()
@@ -28,7 +52,7 @@ class ProfileViewController: UIViewController {
         sView.backgroundColor = .yellow
         return sView
     }()
-    let mainCollectionView: UICollectionView = {
+    private let mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let size = UIScreen.main.bounds.width
@@ -41,6 +65,27 @@ class ProfileViewController: UIViewController {
         return collection
     }()
     
+    private let updateMyInfoBtn: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Kişisel Bilgilerimi Güncelle", for: .normal)
+        button.setImage(.init(systemName: "person"), for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.setTitleColor(.black, for: .normal)
+        
+        return button
+    }()
+    
+    private let updateHelperInfoBtn: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Yardımcı Bilgilerimi Güncelle", for: .normal)
+        button.setImage(.init(systemName: "person.2"), for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.setTitleColor(.black, for: .normal)
+        
+        return button
+    }()
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -52,13 +97,32 @@ class ProfileViewController: UIViewController {
     
 
     func prepare() {
+        nameLabel.text = user.name
+        mailLabel.text = user.mail
         view.backgroundColor = .white
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
+        
         view.addSubview(dummyView)
         view.addSubview(dummyView2)
         view.addSubview(mainCollectionView)
+        view.addSubview(updateMyInfoBtn)
+        view.addSubview(updateHelperInfoBtn)
+        view.addSubview(profileStackview)
+        
+        profileStackview.addArrangedSubview(nameLabel)
+        profileStackview.addArrangedSubview(mailLabel)
+        
         let headerViewHeight = view.frame.height / 3.4
+        let headerView2Height =  headerViewHeight / 2.5
+        
+        NSLayoutConstraint.activate([
+            profileStackview.centerYAnchor.constraint(equalTo: dummyView.centerYAnchor),
+            profileStackview.centerXAnchor.constraint(equalTo: dummyView.centerXAnchor),
+            profileStackview.widthAnchor.constraint(equalToConstant: view.frame.width),
+            profileStackview.heightAnchor.constraint(equalToConstant: headerViewHeight)
+        ])
+     
         
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -70,7 +134,7 @@ class ProfileViewController: UIViewController {
             dummyView2.leadingAnchor.constraint(equalTo: dummyView.leadingAnchor),
             dummyView2.topAnchor.constraint(equalTo: dummyView.bottomAnchor),
             dummyView2.trailingAnchor.constraint(equalTo: dummyView.trailingAnchor),
-            dummyView2.heightAnchor.constraint(equalToConstant: headerViewHeight / 2.5)
+            dummyView2.heightAnchor.constraint(equalToConstant: headerView2Height)
         ])
         NSLayoutConstraint.activate([
             mainCollectionView.leadingAnchor.constraint(equalTo: dummyView.leadingAnchor),
@@ -79,7 +143,18 @@ class ProfileViewController: UIViewController {
             mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        
+        NSLayoutConstraint.activate([
+            updateMyInfoBtn.leadingAnchor.constraint(equalTo: dummyView2.leadingAnchor, constant: 5),
+            updateMyInfoBtn.topAnchor.constraint(equalTo: dummyView2.topAnchor, constant: 0),
+            updateMyInfoBtn.bottomAnchor.constraint(equalTo: dummyView2.bottomAnchor, constant: 0),
+            updateMyInfoBtn.widthAnchor.constraint(equalToConstant: view.frame.width / 2.5)
+        ])
+        NSLayoutConstraint.activate([
+            updateHelperInfoBtn.trailingAnchor.constraint(equalTo: dummyView2.trailingAnchor, constant: 5),
+            updateHelperInfoBtn.topAnchor.constraint(equalTo: dummyView2.topAnchor, constant: 0),
+            updateHelperInfoBtn.bottomAnchor.constraint(equalTo: dummyView2.bottomAnchor, constant: 0),
+            updateHelperInfoBtn.widthAnchor.constraint(equalToConstant: view.frame.width / 2.5)
+        ])
         
     }
 
@@ -126,10 +201,10 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 
 struct MockUser {
-    var name = "Ali Can"
-    var mail = "alican@gmail.com"
-    var helperName = "Veli Can"
-    var helperPhone = "911"
+    var name: String
+    var mail: String
+    var helperName: String
+    var helperPhone : String
 }
 
 
