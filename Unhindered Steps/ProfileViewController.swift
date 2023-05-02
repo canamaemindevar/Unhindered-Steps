@@ -186,12 +186,24 @@ extension ProfileViewController: UICollectionViewDelegate {
         case 0:
             // TODO: Arama geçmişi
             print("Arama Geçmişi")
+            //TODO: in closure
+            let vc = DetailViewController(array: [])
+            vc.title = "Arama Geçmişi"
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             //TODO: Favoriler
             print("Favoriler")
+            //TODO: in closure
+            let vc = DetailViewController(array: [])
+            vc.title = "Favoriler"
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             //MARK: Sık Kullanılanlar
             print("Sık kullanılanlar")
+            //TODO: in closure
+            let vc = DetailViewController(array: [])
+            vc.title = "Sık kullanılanlar"
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
