@@ -22,6 +22,9 @@
 		A9B4578129FEA9B60069432E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578029FEA9B60069432E /* RegisterViewController.swift */; };
 		A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578229FEA9D60069432E /* RegisterViewModel.swift */; };
 		A9B4578729FEBB5F0069432E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578629FEBB5F0069432E /* LocationManager.swift */; };
+		A9B4578A2A0146940069432E /* UserHabitsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B457892A0146940069432E /* UserHabitsCollectionViewCell.swift */; };
+		A9B4578C2A0151BB0069432E /* ProfileDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */; };
+		A9B4578F2A0154BC0069432E /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578E2A0154BC0069432E /* MainTabbar.swift */; };
 		CE3DC03BC4DC9174E57A7F80 /* Pods_Unhindered_Steps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351A0FD859BAA52282EEB63A /* Pods_Unhindered_Steps.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		A9B4578029FEA9B60069432E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A9B4578229FEA9D60069432E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		A9B4578629FEBB5F0069432E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A9B457892A0146940069432E /* UserHabitsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHabitsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataStruct.swift; sourceTree = "<group>"; };
+		A9B4578E2A0154BC0069432E /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		DCF3C275A5220225F465007C /* Pods-Unhindered Steps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unhindered Steps.debug.xcconfig"; path = "Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +130,7 @@
 		A9B4576F29FEA8C40069432E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -142,9 +149,9 @@
 		A9B4577129FEA8D10069432E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A9B4578E2A0154BC0069432E /* MainTabbar.swift */,
+				A9B4578D2A0151EC0069432E /* Login&Register */,
 				A9B4577529FEA8FA0069432E /* SubViews */,
-				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
-				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
 				A9B4577629FEA9110069432E /* MapViewController.swift */,
 				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
 			);
@@ -154,6 +161,7 @@
 		A9B4577529FEA8FA0069432E /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				A9B457892A0146940069432E /* UserHabitsCollectionViewCell.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -179,6 +187,15 @@
 				A9B4576E29FEA8A90069432E /* Network */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		A9B4578D2A0151EC0069432E /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
+				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
+			);
+			name = "Login&Register";
 			sourceTree = "<group>";
 		};
 		A9C81A27563B204C0E204D8D /* Frameworks */ = {
@@ -315,11 +332,14 @@
 			files = (
 				A9B4577929FEA9230069432E /* ProfileViewController.swift in Sources */,
 				A9B4578129FEA9B60069432E /* RegisterViewController.swift in Sources */,
+				A9B4578C2A0151BB0069432E /* ProfileDataStruct.swift in Sources */,
 				A9B4577329FEA8ED0069432E /* LoginViewController.swift in Sources */,
 				A9B4575D29FEA8070069432E /* ViewController.swift in Sources */,
 				A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */,
 				A9B4575929FEA8070069432E /* AppDelegate.swift in Sources */,
+				A9B4578A2A0146940069432E /* UserHabitsCollectionViewCell.swift in Sources */,
 				A9B4577729FEA9110069432E /* MapViewController.swift in Sources */,
+				A9B4578F2A0154BC0069432E /* MainTabbar.swift in Sources */,
 				A9B4575B29FEA8070069432E /* SceneDelegate.swift in Sources */,
 				A9B4578729FEBB5F0069432E /* LocationManager.swift in Sources */,
 				A9B4577B29FEA94A0069432E /* ProfileViewModel.swift in Sources */,

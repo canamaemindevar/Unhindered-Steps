@@ -14,8 +14,8 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "startQuery()"
             landmarkType = "7">
             <Locations>
@@ -92,8 +92,8 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "updateUi(response:)"
             landmarkType = "7">
             <Locations>
@@ -200,8 +200,8 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "startQuery()"
             landmarkType = "7">
             <Locations>

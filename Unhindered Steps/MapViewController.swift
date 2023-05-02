@@ -52,6 +52,16 @@ class MapViewController: UIViewController {
           button.layer.cornerRadius = 5
           return button
       }()
+    
+    private let toiletButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Tuvalet", for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .secondarySystemBackground
+        button.layer.cornerRadius = 5
+        return button
+    }()
       
       /// Mock
       private let medicalButton: UIButton = {
@@ -85,6 +95,7 @@ class MapViewController: UIViewController {
 
 
     func setupMapConts() {
+        view.backgroundColor = .systemBackground
         view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -100,6 +111,7 @@ class MapViewController: UIViewController {
         stackview.addArrangedSubview(pharmecyButton)
         stackview.addArrangedSubview(hosptialButton)
         stackview.addArrangedSubview(medicalButton)
+        stackview.addArrangedSubview(toiletButton)
         
         // Note: dummy
         stackview.addArrangedSubview(bbutton)
@@ -116,7 +128,7 @@ class MapViewController: UIViewController {
         hosptialButton.addTarget(self, action: #selector(searchHospital), for: .touchUpInside)
         pharmecyButton.addTarget(self, action: #selector(searchPharmacy), for: .touchUpInside)
         medicalButton.addTarget(self, action: #selector(searchMedical), for: .touchUpInside)
-        
+        toiletButton.addTarget(self, action: #selector(searchToilet), for: .touchUpInside)
     }
 }
 
@@ -155,6 +167,14 @@ extension MapViewController {
     }
     @objc func searchMedical() {
         viewModel.updateSearchResults(query: .medikal) {[weak self]  response in
+            guard let self = self else {
+                return
+            }
+            self.updateUi(response: response)
+        }
+    }
+    @objc func searchToilet() {
+        viewModel.updateSearchResults(query: .tuvalet) {[weak self]  response in
             guard let self = self else {
                 return
             }

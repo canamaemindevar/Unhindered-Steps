@@ -56,5 +56,6 @@ class MapViewModel:MapViewModelInterface {
 enum PlaceEnums: String {
     case pharmacy = "Eczane"
     case hospital = "Hastane"
-    case medikal = "medikal"
+    case medikal = "Medikal"
+    case tuvalet = "Engelli Tuvaleti"
 }
