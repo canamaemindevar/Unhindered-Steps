@@ -17,6 +17,6 @@ class LoginViewModel: LoginViewModelInterface {
    weak var view: LoginViewController?
     
     func viewDidLoad() {
-        
+        view?.setupConst()
     }
 }

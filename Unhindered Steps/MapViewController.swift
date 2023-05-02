@@ -14,6 +14,65 @@ class MapViewController: UIViewController {
     private lazy var viewModel = MapViewModel()
     let mapView = MKMapView()
     
+    //MARK: - Components
+      private let scrollView: UIScrollView = {
+          let sView = UIScrollView()
+          sView.translatesAutoresizingMaskIntoConstraints = false
+          sView.backgroundColor = .clear
+          sView.layer.cornerRadius = 5
+          sView.alwaysBounceHorizontal = true
+          return sView
+      }()
+      
+      private let stackview: UIStackView = {
+          let sView = UIStackView()
+          sView.translatesAutoresizingMaskIntoConstraints = false
+          sView.layer.cornerRadius = 5
+          sView.axis = .horizontal
+          sView.distribution = .fillEqually
+          sView.spacing = 10
+          return sView
+      }()
+      
+      private let pharmecyButton: UIButton = {
+          let button = UIButton()
+          button.setTitle("Eczane", for: .normal)
+          button.setTitleColor(.secondaryLabel, for: .normal)
+          button.translatesAutoresizingMaskIntoConstraints = false
+          button.backgroundColor = .secondarySystemBackground
+          button.layer.cornerRadius = 5
+          return button
+      }()
+      private let hosptialButton: UIButton = {
+          let button = UIButton()
+          button.setTitle("Hospital", for: .normal)
+          button.setTitleColor(.secondaryLabel, for: .normal)
+          button.translatesAutoresizingMaskIntoConstraints = false
+          button.backgroundColor = .secondarySystemBackground
+          button.layer.cornerRadius = 5
+          return button
+      }()
+      
+      /// Mock
+      private let medicalButton: UIButton = {
+          let button = UIButton()
+          button.setTitle("Medical", for: .normal)
+          button.setTitleColor(.secondaryLabel, for: .normal)
+          button.translatesAutoresizingMaskIntoConstraints = false
+          button.backgroundColor = .secondarySystemBackground
+          button.layer.cornerRadius = 5
+          return button
+      }()
+      private let bbutton: UIButton = {
+          let button = UIButton()
+          button.setTitle("Hospital", for: .normal)
+          button.setTitleColor(.secondaryLabel, for: .normal)
+          button.translatesAutoresizingMaskIntoConstraints = false
+          button.backgroundColor = .secondarySystemBackground
+          button.layer.cornerRadius = 5
+          return button
+      }()
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +93,30 @@ class MapViewController: UIViewController {
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mapView.bottomAnchor)
         ])
+        
+        view.addSubview(scrollView)
+        
+        scrollView.addSubview(stackview)
+        stackview.addArrangedSubview(pharmecyButton)
+        stackview.addArrangedSubview(hosptialButton)
+        stackview.addArrangedSubview(medicalButton)
+        
+        // Note: dummy
+        stackview.addArrangedSubview(bbutton)
+        
+        
+        NSLayoutConstraint.activate([
+         scrollView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
+         scrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+         scrollView.heightAnchor.constraint(equalToConstant: (view.frame.height / 10)),
+         view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 3)
+                                            
+        ])
+        
+        hosptialButton.addTarget(self, action: #selector(searchHospital), for: .touchUpInside)
+        pharmecyButton.addTarget(self, action: #selector(searchPharmacy), for: .touchUpInside)
+        medicalButton.addTarget(self, action: #selector(searchMedical), for: .touchUpInside)
+        
     }
 }
 
@@ -54,7 +137,30 @@ extension MapViewController {
     
     }
     
-    
+    @objc func searchHospital() {
+        viewModel.updateSearchResults(query: .hospital) {[weak self]  respones in
+            guard let self = self else {
+                return
+            }
+            self.updateUi(response: respones)
+        }
+    }
+    @objc func searchPharmacy() {
+        viewModel.updateSearchResults(query: .pharmacy) {[weak self]  response in
+            guard let self = self else {
+                return
+            }
+            self.updateUi(response: response)
+        }
+    }
+    @objc func searchMedical() {
+        viewModel.updateSearchResults(query: .medikal) {[weak self]  response in
+            guard let self = self else {
+                return
+            }
+            self.updateUi(response: response)
+        }
+    }
     
     func updateUi(response: MKLocalSearch.Response) {
        

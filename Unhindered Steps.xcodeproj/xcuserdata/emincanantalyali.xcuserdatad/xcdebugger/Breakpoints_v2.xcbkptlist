@@ -14,10 +14,10 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "MapViewController"
-            landmarkType = "21">
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "startQuery()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "BA7A9B0C-C592-4024-BE9C-933E111FE8BE - 204b3560302d1208"
@@ -64,6 +64,21 @@
                   endingLineNumber = "57"
                   offsetFromSymbolStart = "32">
                </Location>
+               <Location
+                  uuid = "BA7A9B0C-C592-4024-BE9C-933E111FE8BE - 204b3560302d1cc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.MapViewController.startQuery() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "32">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -77,10 +92,10 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "MapViewController"
-            landmarkType = "21">
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "updateUi(response:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "3E25AEB7-6705-468B-83E2-C4EB2F04000E - 5b78abc3f5f0a09b"
@@ -157,6 +172,21 @@
                   endingLineNumber = "63"
                   offsetFromSymbolStart = "204">
                </Location>
+               <Location
+                  uuid = "3E25AEB7-6705-468B-83E2-C4EB2F04000E - 5b78abc3f5f0b6ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.MapViewController.updateUi(response: __C.MKLocalSearchResponse) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "164">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,8 +200,8 @@
             filePath = "Unhindered Steps/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "startQuery()"
             landmarkType = "7">
             <Locations>
@@ -203,6 +233,36 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "E5B71D48-6137-4647-A1A8-9B7C9E433F3C - d6d343ac81fbd508"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (__C.CLLocation) -&gt; () in Unhindered_Steps.MapViewController.startQuery() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "504">
+               </Location>
+               <Location
+                  uuid = "E5B71D48-6137-4647-A1A8-9B7C9E433F3C - 2ea36d43982ab7e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.MKLocalSearchResponse) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (__C.CLLocation) -&gt; () in Unhindered_Steps.MapViewController.startQuery() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>

@@ -22,9 +22,12 @@
 		A9B4578129FEA9B60069432E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578029FEA9B60069432E /* RegisterViewController.swift */; };
 		A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578229FEA9D60069432E /* RegisterViewModel.swift */; };
 		A9B4578729FEBB5F0069432E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578629FEBB5F0069432E /* LocationManager.swift */; };
+		CE3DC03BC4DC9174E57A7F80 /* Pods_Unhindered_Steps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351A0FD859BAA52282EEB63A /* Pods_Unhindered_Steps.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351A0FD859BAA52282EEB63A /* Pods_Unhindered_Steps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unhindered_Steps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64F02E399A433F4A81BBDB7 /* Pods-Unhindered Steps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unhindered Steps.release.xcconfig"; path = "Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps.release.xcconfig"; sourceTree = "<group>"; };
 		A9B4575529FEA8070069432E /* Unhindered Steps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unhindered Steps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B4575829FEA8070069432E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B4575A29FEA8070069432E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		A9B4578029FEA9B60069432E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A9B4578229FEA9D60069432E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		A9B4578629FEBB5F0069432E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DCF3C275A5220225F465007C /* Pods-Unhindered Steps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unhindered Steps.debug.xcconfig"; path = "Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3DC03BC4DC9174E57A7F80 /* Pods_Unhindered_Steps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +65,8 @@
 			children = (
 				A9B4575729FEA8070069432E /* Unhindered Steps */,
 				A9B4575629FEA8070069432E /* Products */,
+				F1DA289BA19F3718986AF076 /* Pods */,
+				A9C81A27563B204C0E204D8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +181,24 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		A9C81A27563B204C0E204D8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				351A0FD859BAA52282EEB63A /* Pods_Unhindered_Steps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1DA289BA19F3718986AF076 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCF3C275A5220225F465007C /* Pods-Unhindered Steps.debug.xcconfig */,
+				A64F02E399A433F4A81BBDB7 /* Pods-Unhindered Steps.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9B4576929FEA8080069432E /* Build configuration list for PBXNativeTarget "Unhindered Steps" */;
 			buildPhases = (
+				C950BCFB2406C32B1CAE502A /* [CP] Check Pods Manifest.lock */,
 				A9B4575129FEA8070069432E /* Sources */,
 				A9B4575229FEA8070069432E /* Frameworks */,
 				A9B4575329FEA8070069432E /* Resources */,
+				2DD03EB7FB212C7244CE5BC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +266,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DD03EB7FB212C7244CE5BC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C950BCFB2406C32B1CAE502A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unhindered Steps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9B4575129FEA8070069432E /* Sources */ = {
@@ -398,6 +467,7 @@
 		};
 		A9B4576A29FEA8080069432E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCF3C275A5220225F465007C /* Pods-Unhindered Steps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -427,6 +497,7 @@
 		};
 		A9B4576B29FEA8080069432E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A64F02E399A433F4A81BBDB7 /* Pods-Unhindered Steps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,0 +1,6 @@
+framework module Pods_Unhindered_Steps {
+  umbrella header "Pods-Unhindered Steps-umbrella.h"
+
+  export *
+  module * { export * }
+}
