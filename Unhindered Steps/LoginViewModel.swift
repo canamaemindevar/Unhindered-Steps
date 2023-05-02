@@ -10,13 +10,21 @@ import Foundation
 protocol LoginViewModelInterface {
     var view: LoginViewController? {get set}
     func viewDidLoad()
+    func loginRequest(email:String, Password: String)
 }
 
 class LoginViewModel: LoginViewModelInterface {
+  
+    
     
    weak var view: LoginViewController?
     
     func viewDidLoad() {
-        view?.setupConst()
+        view?.prepare()
+    }
+    
+    func loginRequest(email:String, Password: String) {
+        //TODO: NetworkMAnager.shared
+        
     }
 }

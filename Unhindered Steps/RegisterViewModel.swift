@@ -18,7 +18,7 @@ class RegisterViewModel: RegisterViewModelInterface {
     weak var view: RegisterViewController?
     
     func viewDidLoad() {
-        print("welcome")
+        view?.prepare()
     }
     
 }

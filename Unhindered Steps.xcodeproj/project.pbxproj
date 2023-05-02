@@ -144,9 +144,9 @@
 			children = (
 				A9B4577529FEA8FA0069432E /* SubViews */,
 				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
+				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
 				A9B4577629FEA9110069432E /* MapViewController.swift */,
 				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
-				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -195,7 +195,6 @@
 				DCF3C275A5220225F465007C /* Pods-Unhindered Steps.debug.xcconfig */,
 				A64F02E399A433F4A81BBDB7 /* Pods-Unhindered Steps.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

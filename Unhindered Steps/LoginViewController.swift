@@ -59,14 +59,14 @@ class LoginViewController: UIViewController {
     }
     
 
-    func setupConst() {
+    func prepare() {
         view.backgroundColor = .systemYellow
         stackview.backgroundColor = .clear
         view.addSubview(stackview)
         view.addSubview(loginButton)
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
-        
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         NSLayoutConstraint.activate([
             stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 5),
@@ -82,3 +82,12 @@ class LoginViewController: UIViewController {
     }
 
 }
+
+
+extension LoginViewController {
+    
+   @objc func login() {
+     //  viewModel.loginRequest(email: <#T##String#>, Password: <#T##String#>)
+    }
+}
+
