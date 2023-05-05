@@ -26,6 +26,18 @@ class LoginViewController: UIViewController {
         sView.spacing = 1
         return sView
     }()
+    private let dummyView: UIView = {
+        let sView = UIView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.backgroundColor = .systemYellow
+        return sView
+    }()
+    private let dummyView2: UIView = {
+        let sView = UIView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.backgroundColor = .systemTeal
+        return sView
+    }()
     
     private let mailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
@@ -62,11 +74,26 @@ class LoginViewController: UIViewController {
     func prepare() {
         view.backgroundColor = .systemYellow
         stackview.backgroundColor = .clear
+        view.addSubview(dummyView)
+        view.addSubview(dummyView2)
         view.addSubview(stackview)
         view.addSubview(loginButton)
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dummyView.topAnchor.constraint(equalTo: view.topAnchor),
+            view.trailingAnchor.constraint(equalTo: dummyView.trailingAnchor),
+            dummyView.bottomAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            dummyView2.leadingAnchor.constraint(equalTo: dummyView.leadingAnchor),
+            dummyView2.trailingAnchor.constraint(equalTo: dummyView.trailingAnchor),
+            dummyView2.topAnchor.constraint(equalTo: view.centerYAnchor),
+            dummyView2.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         NSLayoutConstraint.activate([
             stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 5),

@@ -27,6 +27,19 @@ class RegisterViewController: UIViewController {
         sView.axis = .vertical
         sView.distribution = .fillEqually
         sView.spacing = 1
+        sView.backgroundColor = .systemGray4
+        return sView
+    }()
+    private let dummyView: UIView = {
+        let sView = UIView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.backgroundColor = .systemYellow
+        return sView
+    }()
+    private let dummyView2: UIView = {
+        let sView = UIView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.backgroundColor = .systemTeal
         return sView
     }()
     
@@ -34,6 +47,12 @@ class RegisterViewController: UIViewController {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "E-mail giriniz."
+        return mailTextField
+    }()
+    private let nameTextField: UITextField = {
+        let mailTextField = MDCFilledTextField()
+        mailTextField.translatesAutoresizingMaskIntoConstraints = false
+        mailTextField.placeholder = "İsmini giriniz."
         return mailTextField
     }()
     private let helperMailTextField: UITextField = {
@@ -60,6 +79,12 @@ class RegisterViewController: UIViewController {
         passwordTextField.placeholder = "Şifre giriniz."
         return passwordTextField
     }()
+    private let passwordTextFieldAgain: UITextField = {
+        let passwordTextField = MDCFilledTextField()
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.placeholder = "Şifreyi Tekrar giriniz."
+        return passwordTextField
+    }()
     private let registerButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -81,26 +106,41 @@ class RegisterViewController: UIViewController {
     func prepare() {
         
         view.backgroundColor = .systemYellow
-        stackview.backgroundColor = .clear
+       // stackview.backgroundColor = .clear
+        view.addSubview(dummyView)
+        view.addSubview(dummyView2)
         view.addSubview(stackview)
-        view.addSubview(registerButton)
+       
         stackview.addArrangedSubview(mailTextField)
+        stackview.addArrangedSubview(nameTextField)
+        stackview.addArrangedSubview(helperNameTextField)
         stackview.addArrangedSubview(helperMailTextField)
         stackview.addArrangedSubview(helperPhoneNumber)
         stackview.addArrangedSubview(passwordTextField)
+        stackview.addArrangedSubview(passwordTextFieldAgain)
+        stackview.addArrangedSubview(registerButton)
         
         registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
-            stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
-            stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 4),
-            stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
-            stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dummyView.topAnchor.constraint(equalTo: view.topAnchor),
+            view.trailingAnchor.constraint(equalTo: dummyView.trailingAnchor),
+            dummyView.bottomAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         NSLayoutConstraint.activate([
-            registerButton.leadingAnchor.constraint(equalTo: stackview.leadingAnchor),
-            registerButton.trailingAnchor.constraint(equalTo: stackview.trailingAnchor),
-            registerButton.topAnchor.constraint(equalTo: stackview.bottomAnchor),
-            registerButton.heightAnchor.constraint(equalToConstant: 40)
+            dummyView2.leadingAnchor.constraint(equalTo: dummyView.leadingAnchor),
+            dummyView2.trailingAnchor.constraint(equalTo: dummyView.trailingAnchor),
+            dummyView2.topAnchor.constraint(equalTo: view.centerYAnchor),
+            dummyView2.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+         //   stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
+            stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 1.6),
+            stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
+            stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
