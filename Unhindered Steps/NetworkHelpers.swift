@@ -41,7 +41,10 @@ enum HTTPMethod: String {
 enum Endpoint {
     case register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String)
     case login(email: String, password: String)
-   // case posts(title: String, body: String, userID: Int)
+    case favorites(id: String)
+    case recentQueries(id: String)
+    case mostlyUsed(id: String)
+    case newQuery(id:String, query: String)
 }
 
 extension Endpoint: EndpointProtocol {
@@ -53,6 +56,10 @@ extension Endpoint: EndpointProtocol {
         switch self {
         case .register: return "/register.php"
         case .login: return "/login.php"
+        case .favorites: return "/favorites.php"
+        case .recentQueries: return "/recentQueries.php"
+        case .mostlyUsed: return "/mostlyUsed.php"
+        case .newQuery: return "/newQuery.php"
         }
     }
     
@@ -60,6 +67,10 @@ extension Endpoint: EndpointProtocol {
         switch self {
         case .login: return .post
         case .register: return .post
+        case .favorites: return .get
+        case .recentQueries: return .get
+        case .mostlyUsed: return .get
+        case .newQuery: return.post
         }
     }
     
@@ -70,15 +81,24 @@ extension Endpoint: EndpointProtocol {
     }
     
     var parameters: [String : Any]? {
-//        if case .posts(let title, let body, let userId) = self {
-//            return ["title": title, "body": body, "userId": userId]
-//        }
-//
+
         if case .login(let email, let password) = self {
-            return ["email": email , "password": password]
+            return ["fullName": email , "password": password]
         }
         if case .register(let username, let password, let mail, let helperMail, let helperName, let helperPhone) = self {
             return [ "username": username, "password": password,"mail": mail,"helperMail":helperMail,"helperName": helperName,"helperPhone": helperPhone]
+        }
+        if case .favorites(let id) = self {
+            return ["id": id]
+        }
+        if case .mostlyUsed(let id) = self {
+            return ["id": id]
+        }
+        if case .recentQueries(let id) = self {
+            return ["id": id]
+        }
+        if case .newQuery(let id, let query) = self {
+            return ["id": id, "query": query]
         }
         return nil
     }

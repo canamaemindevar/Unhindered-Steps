@@ -21,10 +21,13 @@ class LoginViewModel: LoginViewModelInterface {
     
     func viewDidLoad() {
         view?.prepare()
+        loginRequest(email: "emincan", Password: "Emincan21.")
     }
     
     func loginRequest(email:String, Password: String) {
         //TODO: NetworkMAnager.shared
-        
+        NetworkManager.shared.login(email: email, password: Password) { response in
+            print(response)
+        }
     }
 }

@@ -59,6 +59,14 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
+    private let gotoRegisterButton: UIButton = {
+        let loginButton = UIButton()
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+      //  loginButton.backgroundColor = .black
+        loginButton.setTitle("Yeni Hesap Aç.", for: .normal)
+        loginButton.layer.cornerRadius = 10
+        return loginButton
+    }()
     
     
     //MARK: Life cycle
@@ -78,9 +86,11 @@ class LoginViewController: UIViewController {
         view.addSubview(dummyView2)
         view.addSubview(stackview)
         view.addSubview(loginButton)
+        view.addSubview(gotoRegisterButton)
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        gotoRegisterButton.addTarget(self, action: #selector(goToRegisterView), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -95,7 +105,7 @@ class LoginViewController: UIViewController {
             dummyView2.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         NSLayoutConstraint.activate([
-            stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
+            stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 5),
             stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -105,6 +115,12 @@ class LoginViewController: UIViewController {
             loginButton.trailingAnchor.constraint(equalTo: stackview.trailingAnchor),
             loginButton.topAnchor.constraint(equalTo: stackview.bottomAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            gotoRegisterButton.leadingAnchor.constraint(equalTo: stackview.leadingAnchor),
+            gotoRegisterButton.trailingAnchor.constraint(equalTo: stackview.trailingAnchor),
+            gotoRegisterButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor),
+            gotoRegisterButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
@@ -116,5 +132,9 @@ extension LoginViewController {
    @objc func login() {
      //  viewModel.loginRequest(email: <#T##String#>, Password: <#T##String#>)
     }
+    
+    @objc func goToRegisterView() {
+      print("register")
+     }
 }
 

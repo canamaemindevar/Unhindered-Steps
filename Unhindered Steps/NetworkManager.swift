@@ -25,7 +25,7 @@ class NetworkManager {
                   completion(.failure(.responseError))
                   return
               }
-              
+              print(response.statusCode)
               guard let data = data else {
                   completion(.failure(.noData))
                   return
@@ -56,7 +56,51 @@ class NetworkManager {
         }
 
     }
+
+    
 }
 
+//MARK: - Queries
 
+extension NetworkManager {
+    
+    func login(email: String, password: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+            let endpoint = Endpoint.login(email: email, password: password)
+            request(endpoint, completion: completion)
+        
+        }
+    //TODO: Change Response
+    func register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        
+        let endpoint = Endpoint.register(username: username, password: password, mail: mail, helperMail: helperMail, helperName: helperName, helperPhone: helperPhone)
+        
+        request(endpoint, completion: completion)
+    }
+    
+    //TODO: Change Response
+    func fetchFavorites(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.favorites(id: id)
+        request(endpoint, completion: completion)
+    }
+    
+    //TODO: Change Response
+    func fetchRecentQueries(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        
+        let endpoint = Endpoint.recentQueries(id: id)
+        request(endpoint, completion: completion)
+    }
+    
+    //TODO: Change Response
+    func fetchMostlyUsed(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.mostlyUsed(id: id)
+        request(endpoint, completion: completion)
+    }
+    
+    //TODO: Change Response
+    
+    func makeQuery(id: String, query: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.newQuery(id: id, query: query)
+        request(endpoint, completion: completion)
+    }
+}
 
