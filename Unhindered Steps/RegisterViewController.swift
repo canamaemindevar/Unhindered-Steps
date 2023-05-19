@@ -59,7 +59,7 @@ class RegisterViewController: UIViewController {
     private let nameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "İsmini giriniz."
+        mailTextField.placeholder = "Kullanıcı ismini giriniz."
         return mailTextField
     }()
     private let helperMailTextField: UITextField = {
@@ -100,6 +100,38 @@ class RegisterViewController: UIViewController {
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
+    //errorMessageLabel
+    private let errorMessageLabel: UILabel = {
+        let errorMessageLabel = UILabel()
+        errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorMessageLabel.isHidden = true
+        errorMessageLabel.textColor = .red
+        errorMessageLabel.font = .boldSystemFont(ofSize: 10)
+        return errorMessageLabel
+    }()
+    
+    var mail: String? {
+        return mailTextField.text
+    }
+    var password: String? {
+        return passwordTextField.text
+    }
+    var passwordAgain: String? {
+        return passwordTextFieldAgain.text
+    }
+    var name: String? {
+        return nameTextField.text
+    }
+    var helpername: String? {
+        return helperNameTextField.text
+    }
+    var helpermail: String? {
+        return helperMailTextField.text
+    }
+    var helperphone: String? {
+        return helperPhoneNumber.text
+    }
+    
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -111,6 +143,15 @@ class RegisterViewController: UIViewController {
     
     
     func prepare() {
+        
+        helperPhoneNumber.delegate = self
+        helperMailTextField.delegate = self
+        helperNameTextField.delegate = self
+        mailTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordTextField.delegate = self
+        nameTextField.delegate = self
+        passwordTextFieldAgain.delegate = self
         
         view.backgroundColor = .systemYellow
        // stackview.backgroundColor = .clear
@@ -126,6 +167,7 @@ class RegisterViewController: UIViewController {
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(passwordTextFieldAgain)
         stackview.addArrangedSubview(registerButton)
+        stackview.addArrangedSubview(errorMessageLabel)
         
         registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
         
@@ -156,7 +198,21 @@ class RegisterViewController: UIViewController {
     
     @objc private func register() {
         
-        NetworkManager.shared.register(username: "", password: "", mail: "", helperMail: "", helperName: "", helperPhone: "")
+        guard let username = name, let password = password ,let mail = mail, let helpermail = helpermail, let helpername = helpername ,
+        let helperphone = helperphone, let passwordAgain = passwordAgain else {
+            configureView(withMessage:"Username / password cannot be blank")
+            return
+        }
+        if username.isEmpty || password.isEmpty {
+            configureView(withMessage:"Username / password cannot be blank")
+            return
+        }
+        guard password == passwordAgain else {
+            configureView(withMessage:"Parolanız uyuşmuyor")
+            return
+        }
+        
+        NetworkManager.shared.register(username: username, password: password, mail: mail, helperMail: helpermail, helperName: helpername, helperPhone: helperphone)
         { response in
             switch response {
             case .success(let success):
@@ -175,6 +231,24 @@ class RegisterViewController: UIViewController {
         
     }
     
+    private func configureView(withMessage message: String) {
+        errorMessageLabel.isHidden = false
+        errorMessageLabel.text = message
+    }
+    
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        helperPhoneNumber.endEditing(true)
+        helperMailTextField.endEditing(true)
+        helperNameTextField.endEditing(true)
+        mailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+        passwordTextFieldAgain.endEditing(true)
+        nameTextField.endEditing(true)
+        return true
+    }
 }
 
 extension RegisterViewController: RegisterViewControllerInterface {

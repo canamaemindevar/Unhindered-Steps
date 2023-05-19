@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         window?.rootViewController = checkUser()
-        
+      //  window?.rootViewController = registerVc
         window?.makeKeyAndVisible()
         loginVc.routeRegisterDelegate = self
         loginVc.loginSuccesDelegate = self
@@ -67,6 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return mainTabbar
         }else {
             return loginVc
+          //  return  UINavigationController(rootViewController: loginVc)
         }
     }
 

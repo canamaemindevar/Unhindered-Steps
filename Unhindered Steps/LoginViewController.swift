@@ -52,13 +52,14 @@ class LoginViewController: UIViewController {
     private let mailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "E-mail giriniz."
+        mailTextField.placeholder = "Kullanıcı adınızı giriniz."
         return mailTextField
     }()
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Şifre giriniz."
+        passwordTextField.isSecureTextEntry = true
         return passwordTextField
     }()
     private let loginButton: UIButton = {
@@ -72,11 +73,25 @@ class LoginViewController: UIViewController {
     private let gotoRegisterButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-      //  loginButton.backgroundColor = .black
         loginButton.setTitle("Yeni Hesap Aç.", for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
+    private let errorMessageLabel: UILabel = {
+        let errorMessageLabel = UILabel()
+        errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorMessageLabel.isHidden = true
+        errorMessageLabel.textColor = .red
+        errorMessageLabel.font = .boldSystemFont(ofSize: 10)
+        return errorMessageLabel
+    }()
+    
+    var username: String? {
+        return mailTextField.text
+    }
+    var password: String? {
+        return passwordTextField.text
+    }
     
     
     //MARK: Life cycle
@@ -90,6 +105,9 @@ class LoginViewController: UIViewController {
     
 
     func prepare() {
+        passwordTextField.delegate = self
+        mailTextField.delegate = self
+        
         view.backgroundColor = .systemYellow
         stackview.backgroundColor = .clear
         view.addSubview(dummyView)
@@ -99,6 +117,7 @@ class LoginViewController: UIViewController {
         view.addSubview(gotoRegisterButton)
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
+        stackview.addArrangedSubview(errorMessageLabel)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         gotoRegisterButton.addTarget(self, action: #selector(goToRegisterView), for: .touchUpInside)
         
@@ -129,20 +148,40 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             gotoRegisterButton.leadingAnchor.constraint(equalTo: stackview.leadingAnchor),
             gotoRegisterButton.trailingAnchor.constraint(equalTo: stackview.trailingAnchor),
-            gotoRegisterButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor),
+            gotoRegisterButton.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
             gotoRegisterButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        mailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+        return true
+    }
+}
+
 
 extension LoginViewController {
     
    @objc func login() {
-     //  viewModel.loginRequest(email: <#T##String#>, Password: <#T##String#>)
+     
+       print(username)
+       print(password)
        
-       NetworkManager.shared.login(email: "", password: "") { response in
+       guard let username = username, let password = password else {
+           configureView(withMessage:"Username / password cannot be blank")
+           return
+       }
+
+       if username.isEmpty || password.isEmpty {
+           configureView(withMessage:"Username / password cannot be blank")
+           return
+       }
+       
+       NetworkManager.shared.login(email: username, password: password) { response in
            switch response {
            case .success(let success):
                
@@ -171,6 +210,13 @@ extension LoginViewController {
     
     @objc func goToRegisterView() {
         routeRegisterDelegate?.routeToRegister()
+//        let vc = RegisterViewController()
+//        navigationController?.pushViewController(vc, animated: true)
      }
+    
+    private func configureView(withMessage message: String) {
+        errorMessageLabel.isHidden = false
+        errorMessageLabel.text = message
+    }
 }
 

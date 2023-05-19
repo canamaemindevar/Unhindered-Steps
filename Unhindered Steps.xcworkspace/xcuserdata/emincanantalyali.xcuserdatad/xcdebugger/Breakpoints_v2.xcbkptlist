@@ -14,13 +14,13 @@
             filePath = "Unhindered Steps/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "login()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1f0b7"
+                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1ccb4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "88">
                </Location>
                <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1f150"
+                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1cc97"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,12 +45,12 @@
                   urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "88">
                </Location>
                <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1f133"
+                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1ccd5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -60,9 +60,9 @@
                   urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -77,10 +77,88 @@
             filePath = "Unhindered Steps/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "register()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a7a83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a075b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a073a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a0719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E391914-B6AC-43AE-84B9-4080225A2F9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unhindered Steps/RegisterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "RegisterViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
