@@ -9,12 +9,14 @@ import Foundation
 
 protocol ProfileViewModelInterface {
     var view: ProfileViewController? {get set}
+    var user: UserModel? {get set}
     func viewDidLoad()
 }
 
 class ProfileViewModel: ProfileViewModelInterface {
     
    weak var view: ProfileViewController?
+   var user: UserModel?
     
     var userDataChoiceArr: [ProfileDataStruct] = [
         ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "Arama Geçmişi"),
@@ -24,6 +26,14 @@ class ProfileViewModel: ProfileViewModelInterface {
     
     func viewDidLoad() {
         view?.prepare()
+        CoreDataManager.shared.getDataForFavs { response in
+            switch response {
+            case .success(let success):
+                self.user = success.first
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
 

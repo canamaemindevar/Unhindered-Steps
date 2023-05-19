@@ -19,12 +19,21 @@ class MapViewModel:MapViewModelInterface {
     weak var view: MapViewController?
     var location = CLLocationCoordinate2D()
     var items = [MKAnnotation]()
+    var id = ""
     
     
     func viewDidLoad() {
         view?.setupMapConts()
         view?.mapView.showsUserLocation = true
         view?.startQuery()
+        CoreDataManager.shared.getDataForFavs { response in
+            switch response {
+            case .success(let success):
+                self.id = success.first?.id ?? ""
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 
     
@@ -45,6 +54,15 @@ class MapViewModel:MapViewModelInterface {
             }
           //  print(response)
             
+            // TODO: - id fetch
+            NetworkManager.shared.makeQuery(id: self.id, query: request.description) { response in
+                switch response {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
             completion(response)
 
         }

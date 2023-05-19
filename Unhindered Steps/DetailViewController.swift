@@ -45,10 +45,32 @@ class DetailViewController: UIViewController {
 
 }
 
+extension DetailViewController {
+    @objc func sendMail() {
+        
+        
+        if self.title == "Arama Geçmişi"
+        {
+            //TODO: arama geçmişi mail at
+            
+        } else if self.title == "Favoriler"
+        {
+            //TODO: favoriler mail at
+            
+        } else
+        {
+            //TODO: sık kullanılan  mail at
+        }
+
+        
+        
+    }
+}
+
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-        //self.array.count
+      // 10
+        self.array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

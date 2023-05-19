@@ -69,37 +69,40 @@ extension NetworkManager {
             request(endpoint, completion: completion)
         
         }
-    //TODO: Change Response
-    func register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+    
+    func register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String,completion: @escaping (Result<RegisterResponse, ErrosTypes>) -> Void) {
         
         let endpoint = Endpoint.register(username: username, password: password, mail: mail, helperMail: helperMail, helperName: helperName, helperPhone: helperPhone)
         
         request(endpoint, completion: completion)
     }
     
-    //TODO: Change Response
-    func fetchFavorites(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+    
+    func fetchFavorites(id: String,completion: @escaping (Result<FetchFavoritesResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.favorites(id: id)
         request(endpoint, completion: completion)
     }
     
-    //TODO: Change Response
-    func fetchRecentQueries(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+    
+    func fetchRecentQueries(id: String,completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void) {
         
         let endpoint = Endpoint.recentQueries(id: id)
+        request(endpoint, completion: completion)
+    }
+    
+    func makeQuery(id: String, query: String,completion: @escaping (Result<AddQueryResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.newQuery(id: id, query: query)
+        request(endpoint, completion: completion)
+    }
+    
+    func makeFavorite(id: String, query: String,completion: @escaping (Result<AddFavoriteResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.makeFavorite(id: id, word: query)
         request(endpoint, completion: completion)
     }
     
     //TODO: Change Response
     func fetchMostlyUsed(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.mostlyUsed(id: id)
-        request(endpoint, completion: completion)
-    }
-    
-    //TODO: Change Response
-    
-    func makeQuery(id: String, query: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
-        let endpoint = Endpoint.newQuery(id: id, query: query)
         request(endpoint, completion: completion)
     }
 }

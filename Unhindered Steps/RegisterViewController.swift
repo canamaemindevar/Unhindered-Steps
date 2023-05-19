@@ -11,13 +11,20 @@ import MaterialComponents.MaterialTextControls_FilledTextFields
 import MaterialComponents.MaterialTextControls_OutlinedTextAreas
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
-protocol RegisterViewControllerInterface {
+protocol RegisterSuccesfullDelegate:AnyObject {
+    func registerSuccesfull()
+}
+
+
+protocol RegisterViewControllerInterface: AnyObject {
     
 }
 
 class RegisterViewController: UIViewController {
     
     private lazy var viewModel = RegisterViewModel()
+    
+    weak var registerSuccesDelegate: RegisterSuccesfullDelegate?
     
     //MARK: - Componets
     private let stackview: UIStackView = {
@@ -148,6 +155,23 @@ class RegisterViewController: UIViewController {
     
     
     @objc private func register() {
+        
+        NetworkManager.shared.register(username: "", password: "", mail: "", helperMail: "", helperName: "", helperPhone: "")
+        { response in
+            switch response {
+            case .success(let success):
+                
+                if success.message == "succes" {
+                    self.registerSuccesDelegate?.registerSuccesfull()
+                } else {
+                    print("hata oluştu")
+                }
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+
         
     }
     

@@ -11,11 +11,21 @@ import MaterialComponents.MaterialTextControls_FilledTextFields
 import MaterialComponents.MaterialTextControls_OutlinedTextAreas
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
+protocol LoginViewRouteRegister: AnyObject {
+    func routeToRegister()
+}
+protocol LoginSuccesfullInterface: AnyObject {
+    func routeToTabbar()
+}
+
 class LoginViewController: UIViewController {
     
     private lazy var viewModel = LoginViewModel()
     
     //MARK: - Component
+    
+    weak var routeRegisterDelegate: LoginViewRouteRegister?
+    weak var loginSuccesDelegate: LoginSuccesfullInterface?
     
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -131,10 +141,36 @@ extension LoginViewController {
     
    @objc func login() {
      //  viewModel.loginRequest(email: <#T##String#>, Password: <#T##String#>)
+       
+       NetworkManager.shared.login(email: "", password: "") { response in
+           switch response {
+           case .success(let success):
+               
+               if success.message == "succes" {
+                   CoreDataManager.shared.saveCoreData(withModel: UserModel(id: success.id,
+                                                                            username: success.username,
+                                                                            mail: success.mail,
+                                                                            helperName: success.helperName,
+                                                                            helperMail: success.helperMail,
+                                                                            helperPhone: success.helperPhone))
+                   
+                self.loginSuccesDelegate?.routeToTabbar()
+               } else {
+                   print(success.message as Any)
+               }
+
+               
+               
+           case .failure(let failure):
+               print(failure)
+           }
+       }
+       
+       
     }
     
     @objc func goToRegisterView() {
-      print("register")
+        routeRegisterDelegate?.routeToRegister()
      }
 }
 

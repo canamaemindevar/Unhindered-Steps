@@ -186,24 +186,68 @@ extension ProfileViewController: UICollectionViewDelegate {
         case 0:
             // TODO: Arama geçmişi
             print("Arama Geçmişi")
-            //TODO: in closure
-            let vc = DetailViewController(array: [])
-            vc.title = "Arama Geçmişi"
-            self.navigationController?.pushViewController(vc, animated: true)
+
+            
+            NetworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
+                switch response {
+                case .success(let success):
+                    var array: [String]?
+                    success.forEach { response in
+                        array?.append(response.word ?? "error")
+                    }
+                    let vc = DetailViewController(array: array ?? [""])
+                    vc.title = "Arama Geçmişi"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+            
+            
+         
         case 1:
             //TODO: Favoriler
             print("Favoriler")
-            //TODO: in closure
-            let vc = DetailViewController(array: [])
-            vc.title = "Favoriler"
-            self.navigationController?.pushViewController(vc, animated: true)
+
+            NetworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
+                switch response {
+                case .success(let success):
+                    
+                    var array: [String]?
+                    success.forEach { response in
+                        array?.append(response.word ?? "error")
+                    }
+                    
+                    let vc = DetailViewController(array: array ?? [""])
+                    vc.title = "Favoriler"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+            
+            
+           
         case 2:
             //MARK: Sık Kullanılanlar
             print("Sık kullanılanlar")
-            //TODO: in closure
-            let vc = DetailViewController(array: [])
-            vc.title = "Sık kullanılanlar"
-            self.navigationController?.pushViewController(vc, animated: true)
+            NetworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
+                switch response {
+                case .success(let success):
+                    
+                    var array: [String]?
+                    success.forEach { response in
+                        array?.append(response.word ?? "error")
+                    }
+                    
+                    let vc = DetailViewController(array: array ?? [""])
+                    vc.title = "Sık kullanılanlar"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+            
         default:
             break
         }

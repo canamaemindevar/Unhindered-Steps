@@ -45,6 +45,7 @@ enum Endpoint {
     case recentQueries(id: String)
     case mostlyUsed(id: String)
     case newQuery(id:String, query: String)
+    case makeFavorite(id:String, word: String)
 }
 
 extension Endpoint: EndpointProtocol {
@@ -57,9 +58,11 @@ extension Endpoint: EndpointProtocol {
         case .register: return "/register.php"
         case .login: return "/login.php"
         case .favorites: return "/favorites.php"
-        case .recentQueries: return "/recentQueries.php"
+        case .recentQueries: return "/fetchFavorite.php"
+        case .newQuery: return "/addQuery.php"
+        case .makeFavorite: return "addFavorite.php"
+            //TODO:
         case .mostlyUsed: return "/mostlyUsed.php"
-        case .newQuery: return "/newQuery.php"
         }
     }
     
@@ -69,8 +72,10 @@ extension Endpoint: EndpointProtocol {
         case .register: return .post
         case .favorites: return .get
         case .recentQueries: return .get
-        case .mostlyUsed: return .get
         case .newQuery: return.post
+        case .makeFavorite: return .post
+            //TODO:
+        case .mostlyUsed: return .get
         }
     }
     
@@ -83,7 +88,7 @@ extension Endpoint: EndpointProtocol {
     var parameters: [String : Any]? {
 
         if case .login(let email, let password) = self {
-            return ["fullName": email , "password": password]
+            return ["username": email , "password": password]
         }
         if case .register(let username, let password, let mail, let helperMail, let helperName, let helperPhone) = self {
             return [ "username": username, "password": password,"mail": mail,"helperMail":helperMail,"helperName": helperName,"helperPhone": helperPhone]
@@ -99,6 +104,9 @@ extension Endpoint: EndpointProtocol {
         }
         if case .newQuery(let id, let query) = self {
             return ["id": id, "query": query]
+        }
+        if case .makeFavorite(let id, let word) = self {
+            return ["userId": id, "word": word]
         }
         return nil
     }
