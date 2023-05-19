@@ -11,7 +11,7 @@ class DetailViewController: UIViewController {
 
     
     var array: [String]
-    
+    var user: UserModel
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +23,17 @@ class DetailViewController: UIViewController {
         return tableView
     }()
     
-    init(array: [String]) {
+    private let mailButton: UIButton = {
+        let mailButton = UIButton()
+        mailButton.translatesAutoresizingMaskIntoConstraints = false
+        mailButton.setImage(UIImage(systemName: "mail.stack"), for: [])
+        mailButton.setTitle("Mail At", for: [])
+        return mailButton
+    }()
+    
+    init(array: [String], user: UserModel) {
         self.array = array
+        self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,6 +47,14 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = view.bounds
+        view.addSubview(mailButton)
+        mailButton.addTarget(self, action: #selector(sendMail), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 5),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 3),
+            mailButton.heightAnchor.constraint(equalToConstant: 90),
+            mailButton.widthAnchor.constraint(equalToConstant: 90)
+        ])
     }
     
 
@@ -52,6 +69,14 @@ extension DetailViewController {
         if self.title == "Arama Geçmişi"
         {
             //TODO: arama geçmişi mail at
+            NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "") { response in
+                switch response {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
             
         } else if self.title == "Favoriler"
         {

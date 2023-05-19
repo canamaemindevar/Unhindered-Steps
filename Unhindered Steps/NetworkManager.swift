@@ -100,6 +100,12 @@ extension NetworkManager {
         request(endpoint, completion: completion)
     }
     
+    func sendMail(id: String, mail: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.sendMail(id: id, mail: mail)
+        request(endpoint, completion: completion)
+    }
+    
+    
     //TODO: Change Response
     func fetchMostlyUsed(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.mostlyUsed(id: id)

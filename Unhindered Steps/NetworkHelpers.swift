@@ -46,6 +46,7 @@ enum Endpoint {
     case mostlyUsed(id: String)
     case newQuery(id:String, query: String)
     case makeFavorite(id:String, word: String)
+    case sendMail(id: String , mail: String)
 }
 
 extension Endpoint: EndpointProtocol {
@@ -60,9 +61,10 @@ extension Endpoint: EndpointProtocol {
         case .favorites: return "/favorites.php"
         case .recentQueries: return "/fetchFavorite.php"
         case .newQuery: return "/addQuery.php"
-        case .makeFavorite: return "addFavorite.php"
+        case .makeFavorite: return "/addFavorite.php"
             //TODO:
         case .mostlyUsed: return "/mostlyUsed.php"
+        case .sendMail: return "/mailsend.php"
         }
     }
     
@@ -76,6 +78,7 @@ extension Endpoint: EndpointProtocol {
         case .makeFavorite: return .post
             //TODO:
         case .mostlyUsed: return .get
+        case .sendMail: return .post
         }
     }
     
@@ -107,6 +110,9 @@ extension Endpoint: EndpointProtocol {
         }
         if case .makeFavorite(let id, let word) = self {
             return ["userId": id, "word": word]
+        }
+        if case .sendMail(let id, let mail) = self {
+            return ["id": id, "helperMail" : mail]
         }
         return nil
     }

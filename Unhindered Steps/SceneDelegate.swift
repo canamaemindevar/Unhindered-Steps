@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         
-        window?.rootViewController = checkUser()
-      //  window?.rootViewController = registerVc
+      //  window?.rootViewController = checkUser()
+        window?.rootViewController = DetailViewController(array: [])
         window?.makeKeyAndVisible()
         loginVc.routeRegisterDelegate = self
         loginVc.loginSuccesDelegate = self
