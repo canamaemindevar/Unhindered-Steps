@@ -15,25 +15,27 @@ class CoreDataManager{
     
     //MARK: - save
     func saveCoreData(withModel: UserModel){
-        if let appDelegate = UIApplication.shared.delegate as?AppDelegate{
-            let context = appDelegate.persistentContainer.viewContext
-            
-            let entityDescription = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
-            
+        DispatchQueue.main.async {
+            if let appDelegate = UIApplication.shared.delegate as?AppDelegate{
+                let context = appDelegate.persistentContainer.viewContext
+                
+                let entityDescription = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
+                
 
-            entityDescription.setValue(withModel.id, forKey: "id")
-            entityDescription.setValue(withModel.mail, forKey: "mail")
-            entityDescription.setValue(withModel.username, forKey: "username")
-            entityDescription.setValue(withModel.helperMail, forKey: "helperMail")
-            entityDescription.setValue(withModel.helperName, forKey: "helperName")
-            entityDescription.setValue(withModel.helperPhone, forKey: "helperPhone")
-            
-            
-            do{
-                try context.save()
-                print("Saved")
-            }catch{
-                print("Saving Error")
+                entityDescription.setValue(withModel.id, forKey: "id")
+                entityDescription.setValue(withModel.mail, forKey: "mail")
+                entityDescription.setValue(withModel.username, forKey: "username")
+                entityDescription.setValue(withModel.helperMail, forKey: "helperMail")
+                entityDescription.setValue(withModel.helperName, forKey: "helperName")
+                entityDescription.setValue(withModel.helperPhone, forKey: "helperPhone")
+                
+                
+                do{
+                    try context.save()
+                    print("Saved")
+                }catch{
+                    print("Saving Error")
+                }
             }
         }
         

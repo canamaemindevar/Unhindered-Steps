@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var array: [String]
     var user: UserModel
     private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero,style: .grouped)
+        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
         tableView.separatorColor = .systemGray
@@ -101,7 +101,7 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Eczane"
+        cell.textLabel?.text = array[indexPath.row]
         return cell
     }
     

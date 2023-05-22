@@ -10,13 +10,16 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     private lazy var viewModel = ProfileViewModel()
-    let user = MockUser(name: "Ali Can", mail: "alican@gmail.com", helperName: "Veli Can", helperPhone: "911")
+ 
+    
+   
     //MARK: - Components
     
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         label.font = .monospacedDigitSystemFont(ofSize: 30, weight: .heavy)
         return label
     }()
@@ -25,6 +28,7 @@ class ProfileViewController: UIViewController {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .italicSystemFont(ofSize: 20)
+        label.textColor = .black
         return label
     }()
     private let profileStackview: UIStackView = {
@@ -97,8 +101,7 @@ class ProfileViewController: UIViewController {
     
 
     func prepare() {
-        nameLabel.text = user.name
-        mailLabel.text = user.mail
+        
         view.backgroundColor = .white
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -157,6 +160,11 @@ class ProfileViewController: UIViewController {
         ])
         
     }
+    
+    func changeValues(name: String, mail: String) {
+        nameLabel.text = name
+        mailLabel.text = mail
+    }
 
 }
 
@@ -188,16 +196,23 @@ extension ProfileViewController: UICollectionViewDelegate {
             print("Arama Geçmişi")
 
             
-            NetworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
+            NetworkManager.shared.fetchRecentQueries(id: "1") { response in
                 switch response {
                 case .success(let success):
-                    var array: [String]?
-                    success.forEach { response in
-                        array?.append(response.word ?? "error")
+                    
+                  
+                    DispatchQueue.main.async {
+                        var array: [String] = []
+                        
+                        success.forEach { response in
+                            array.append(response.word ?? "error")
+                        }
+                        
+                        let vc = DetailViewController(array: array,user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        vc.title = "Arama Geçmişi"
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
-                    let vc = DetailViewController(array: array ?? [""])
-                    vc.title = "Arama Geçmişi"
-                    self.navigationController?.pushViewController(vc, animated: true)
+                 
                 case .failure(let failure):
                     print(failure)
                 }
@@ -213,14 +228,16 @@ extension ProfileViewController: UICollectionViewDelegate {
                 switch response {
                 case .success(let success):
                     
-                    var array: [String]?
-                    success.forEach { response in
-                        array?.append(response.word ?? "error")
+                    DispatchQueue.main.async {
+                        var array: [String]?
+                        success.forEach { response in
+                            array?.append(response.word ?? "error")
+                        }
+                        
+                        let vc = DetailViewController(array: array ?? [""], user: UserModel(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        vc.title = "Favoriler"
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
-                    
-                    let vc = DetailViewController(array: array ?? [""])
-                    vc.title = "Favoriler"
-                    self.navigationController?.pushViewController(vc, animated: true)
                 case .failure(let failure):
                     print(failure)
                 }
@@ -230,19 +247,24 @@ extension ProfileViewController: UICollectionViewDelegate {
            
         case 2:
             //MARK: Sık Kullanılanlar
+            
+            
+            //TODO: change endppint
             print("Sık kullanılanlar")
             NetworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case .success(let success):
                     
-                    var array: [String]?
-                    success.forEach { response in
-                        array?.append(response.word ?? "error")
+                    DispatchQueue.main.async {
+                        var array: [String]?
+                        success.forEach { response in
+                            array?.append(response.word ?? "error")
+                        }
+                        
+                        let vc = DetailViewController(array: array ?? [""], user: UserModel(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        vc.title = "Sık kullanılanlar"
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
-                    
-                    let vc = DetailViewController(array: array ?? [""])
-                    vc.title = "Sık kullanılanlar"
-                    self.navigationController?.pushViewController(vc, animated: true)
                 case .failure(let failure):
                     print(failure)
                 }
@@ -254,13 +276,5 @@ extension ProfileViewController: UICollectionViewDelegate {
     }
 }
 
-
-
-struct MockUser {
-    var name: String
-    var mail: String
-    var helperName: String
-    var helperPhone : String
-}
 
 

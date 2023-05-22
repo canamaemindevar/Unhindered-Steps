@@ -16,7 +16,10 @@ protocol ProfileViewModelInterface {
 class ProfileViewModel: ProfileViewModelInterface {
     
    weak var view: ProfileViewController?
-   var user: UserModel?
+    var user: UserModel?
+    
+  
+
     
     var userDataChoiceArr: [ProfileDataStruct] = [
         ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "Arama Geçmişi"),
@@ -30,6 +33,7 @@ class ProfileViewModel: ProfileViewModelInterface {
             switch response {
             case .success(let success):
                 self.user = success.first
+                self.view?.changeValues(name: success.first?.username ?? "Error", mail: success.first?.mail ?? "Error")
             case .failure(let failure):
                 print(failure)
             }

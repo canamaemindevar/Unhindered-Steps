@@ -7,158 +7,94 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unhindered Steps/LoginViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "login()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1ccb4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.LoginViewController.login() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1cc97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.LoginViewController.login() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "F69CE449-E8BF-4719-8269-7DD1A73938CE - 73a9cf7d8ff1ccd5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.LoginViewController.login() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unhindered Steps/RegisterViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "register()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a7a83"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a075b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a073a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "200"
-                  endingLineNumber = "200"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "7761AA4C-25BB-4E18-8AB6-F973E2D50D4F - f6c0d42db33a0719"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Unhindered_Steps.RegisterViewController.register() -&gt; ()"
-                  moduleName = "Unhindered Steps"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7E391914-B6AC-43AE-84B9-4080225A2F9F"
+            uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unhindered Steps/RegisterViewController.swift"
+            filePath = "Unhindered Steps/MapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "RegisterViewController"
-            landmarkType = "3">
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "updateSearchResults(query:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691 - fbfc2188aa6aea35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Unhindered_Steps.AddQueryResponse, Unhindered_Steps.ErrosTypes&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.MKLocalSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Unhindered_Steps.MapViewModel.updateSearchResults(query: Unhindered_Steps.PlaceEnums, completion: (__C.MKLocalSearchResponse) -&gt; ()) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691 - 6812dc4acd82ad77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.MKLocalSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Unhindered_Steps.MapViewModel.updateSearchResults(query: Unhindered_Steps.PlaceEnums, completion: (__C.MKLocalSearchResponse) -&gt; ()) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691 - fbfc2188aa6aea77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Unhindered_Steps.AddQueryResponse, Unhindered_Steps.ErrosTypes&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.MKLocalSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Unhindered_Steps.MapViewModel.updateSearchResults(query: Unhindered_Steps.PlaceEnums, completion: (__C.MKLocalSearchResponse) -&gt; ()) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691 - 6812dc4acd82ad56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.MKLocalSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Unhindered_Steps.MapViewModel.updateSearchResults(query: Unhindered_Steps.PlaceEnums, completion: (__C.MKLocalSearchResponse) -&gt; ()) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "7DC76648-CAE4-48E8-AD96-0CDA2197E691 - fbfc2188aa6aea56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Unhindered_Steps.AddQueryResponse, Unhindered_Steps.ErrosTypes&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.MKLocalSearchResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Unhindered_Steps.MapViewModel.updateSearchResults(query: Unhindered_Steps.PlaceEnums, completion: (__C.MKLocalSearchResponse) -&gt; ()) -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/MapViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

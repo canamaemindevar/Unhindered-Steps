@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Kullanıcı adınızı giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let passwordTextField: UITextField = {
@@ -192,6 +193,7 @@ extension LoginViewController {
                                                                             helperName: success.helperName,
                                                                             helperMail: success.helperMail,
                                                                             helperPhone: success.helperPhone))
+                   print(success)
                    
                 self.loginSuccesDelegate?.routeToTabbar()
                } else {

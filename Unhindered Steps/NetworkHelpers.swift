@@ -52,19 +52,19 @@ enum Endpoint {
 extension Endpoint: EndpointProtocol {
    
     var baseURL: String {
-        return "http://localhost/denemProje"
+        return "https://www.kouiot.com"
     }
     var path: String {
         switch self {
-        case .register: return "/register.php"
-        case .login: return "/login.php"
-        case .favorites: return "/favorites.php"
-        case .recentQueries: return "/fetchFavorite.php"
-        case .newQuery: return "/addQuery.php"
-        case .makeFavorite: return "/addFavorite.php"
+        case .register: return "/emincan/register.php"
+        case .login: return "/emincan/login.php"
+        case .favorites: return "/emincan/favorites.php"
+        case .recentQueries: return "/emincan/fetchFavorite.php"
+        case .newQuery: return "/emincan/addQuery.php"
+        case .makeFavorite: return "/emincan/addFavorite.php"
             //TODO:
-        case .mostlyUsed: return "/mostlyUsed.php"
-        case .sendMail: return "/mailsend.php"
+        case .mostlyUsed: return "/emincan/mostlyUsed.php"
+        case .sendMail: return "/emincan/mailsend.php"
         }
     }
     
@@ -72,20 +72,20 @@ extension Endpoint: EndpointProtocol {
         switch self {
         case .login: return .post
         case .register: return .post
-        case .favorites: return .get
-        case .recentQueries: return .get
+        case .favorites: return .post
+        case .recentQueries: return .post
         case .newQuery: return.post
         case .makeFavorite: return .post
             //TODO:
-        case .mostlyUsed: return .get
+        case .mostlyUsed: return .post
         case .sendMail: return .post
         }
     }
     
     var header: [String : String]? {
-//        var header: [String: String] = ["Content-type": "application/json; charset=UTF-8"]
-//        return header
-        return nil
+        var header: [String: String] = ["Content-type": "application/json"]
+        return header
+      //  return nil
     }
     
     var parameters: [String : Any]? {
@@ -106,10 +106,10 @@ extension Endpoint: EndpointProtocol {
             return ["id": id]
         }
         if case .newQuery(let id, let query) = self {
-            return ["id": id, "query": query]
+            return ["id": id, "word": query]
         }
         if case .makeFavorite(let id, let word) = self {
-            return ["userId": id, "word": word]
+            return ["userId": id, "word" : word]
         }
         if case .sendMail(let id, let mail) = self {
             return ["id": id, "helperMail" : mail]
@@ -138,9 +138,11 @@ extension Endpoint: EndpointProtocol {
         //Add Paramters
         if let parameters {
             do {
-                let data = try JSONSerialization.data(withJSONObject: parameters)
+                let data = try JSONSerialization.data(withJSONObject: parameters,options: .fragmentsAllowed)
                 request.httpBody = data
+                print(data)
             }catch {
+                print("Data adding error")
                 print(error.localizedDescription)
             }
         }

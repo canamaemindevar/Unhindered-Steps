@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         
-      //  window?.rootViewController = checkUser()
-        window?.rootViewController = DetailViewController(array: [])
+        window?.rootViewController = checkUser()
+     //   window?.rootViewController = DetailViewController(array: [])
         window?.makeKeyAndVisible()
         loginVc.routeRegisterDelegate = self
         loginVc.loginSuccesDelegate = self
@@ -103,12 +103,14 @@ extension SceneDelegate {
             self.window?.makeKeyAndVisible()
             return
         }
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-        UIView.transition(with: window,
-                          duration: 0.7,
-                          options: .transitionCrossDissolve,
-                          animations: nil)
+        DispatchQueue.main.async {
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
+            UIView.transition(with: window,
+                              duration: 0.7,
+                              options: .transitionCrossDissolve,
+                              animations: nil)
+        }
     }
 }
 

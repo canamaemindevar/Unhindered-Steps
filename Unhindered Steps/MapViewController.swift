@@ -14,6 +14,10 @@ class MapViewController: UIViewController {
     private lazy var viewModel = MapViewModel()
     let mapView = MKMapView()
     
+    let leftButton = UIButton(type: UIButton.ButtonType.detailDisclosure)
+    
+    let button = UIButton(type: UIButton.ButtonType.contactAdd)
+    
     //MARK: - Components
       private let scrollView: UIScrollView = {
           let sView = UIScrollView()
@@ -97,6 +101,7 @@ class MapViewController: UIViewController {
     func setupMapConts() {
         view.backgroundColor = .systemBackground
         view.addSubview(mapView)
+        mapView.delegate = self
         mapView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -195,5 +200,75 @@ extension MapViewController {
             self.mapView.addAnnotations(self.viewModel.items)
 
         }
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation{return nil}
+                
+                
+                let reuseId = "myAnnotation"
+                var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+                
+                if pinView == nil {
+                    pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                    pinView?.canShowCallout = true
+                    pinView?.tintColor = UIColor.black
+                    
+                   
+                    pinView?.leftCalloutAccessoryView = leftButton
+                    pinView?.rightCalloutAccessoryView = button
+                }else{
+                    pinView?.annotation = annotation
+                }
+                
+                return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        guard let title = view.annotation?.title else {
+            return
+        }
+        
+        if control == leftButton {
+            
+            guard let  place = view.annotation?.coordinate else {
+                return
+            }
+            var requestLocation = CLLocation(latitude: place.latitude, longitude: place.longitude)
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { placesMarks, error in
+                
+                if let placeMark = placesMarks{
+                    if placeMark.count > 0 {
+                        let newPlaceMark = MKPlacemark(placemark: placeMark[0])
+                        let item = MKMapItem(placemark: newPlaceMark)
+                        
+                        
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+            
+        }else {
+            
+            NetworkManager.shared.makeFavorite(id: viewModel.id, query: title ?? "") { response in
+                switch response {
+                case .success(let success):
+                    print("Saved as favorite: \(success)")
+                case .failure(let failure):
+                    print("Error while saving favorite: \(failure)")
+                }
+            }
+            
+        }
+        
+        
     }
 }

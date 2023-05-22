@@ -41,7 +41,8 @@ class MapViewModel:MapViewModelInterface {
     func updateSearchResults(query: PlaceEnums, completion: @escaping(MKLocalSearch.Response)-> Void)  {
         
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query.rawValue
+        let queryWord = query.rawValue
+        request.naturalLanguageQuery = queryWord
         
         // var coordinate = CLLocationCoordinate2D(latitude: 40.766666, longitude: 29.916668)
         let coordinate = location
@@ -55,7 +56,10 @@ class MapViewModel:MapViewModelInterface {
           //  print(response)
             
             // TODO: - id fetch
-            NetworkManager.shared.makeQuery(id: self.id, query: request.description) { response in
+            
+            print(self.id)
+            print(queryWord)
+            NetworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
                 case .success(let success):
                     print(success)
