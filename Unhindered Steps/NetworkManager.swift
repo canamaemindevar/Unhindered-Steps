@@ -79,7 +79,7 @@ extension NetworkManager {
     }
     
     
-    func fetchFavorites(id: String,completion: @escaping (Result<FetchFavoritesResponse, ErrosTypes>) -> Void) {
+    func fetchFavorites(id: String,completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.favorites(id: id)
         request(endpoint, completion: completion)
     }

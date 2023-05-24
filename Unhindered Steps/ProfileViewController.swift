@@ -88,6 +88,7 @@ class ProfileViewController: UIViewController {
         button.titleLabel?.numberOfLines = 0
         button.setTitleColor(.black, for: .normal)
         
+        
         return button
     }()
     
@@ -116,6 +117,8 @@ class ProfileViewController: UIViewController {
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
         
+        updateMyInfoBtn.addTarget(self, action:  #selector(seguToUserEdit), for: .touchUpInside)
+        updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
         let headerViewHeight = view.frame.height / 3.4
         let headerView2Height =  headerViewHeight / 2.5
         
@@ -196,22 +199,18 @@ extension ProfileViewController: UICollectionViewDelegate {
             print("Arama Geçmişi")
 
             
-            NetworkManager.shared.fetchRecentQueries(id: "1") { response in
+            NetworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case .success(let success):
                     
                   
                     DispatchQueue.main.async {
-                        var array: [String] = []
                         
-                        success.forEach { response in
-                            array.append(response.word ?? "error")
-                        }
-                        
-                        let vc = DetailViewController(array: array,user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        let vc = DetailViewController(array: success,user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                         vc.title = "Arama Geçmişi"
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
+                    
                  
                 case .failure(let failure):
                     print(failure)
@@ -229,12 +228,8 @@ extension ProfileViewController: UICollectionViewDelegate {
                 case .success(let success):
                     
                     DispatchQueue.main.async {
-                        var array: [String]?
-                        success.forEach { response in
-                            array?.append(response.word ?? "error")
-                        }
                         
-                        let vc = DetailViewController(array: array ?? [""], user: UserModel(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        let vc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                         vc.title = "Favoriler"
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
@@ -256,12 +251,12 @@ extension ProfileViewController: UICollectionViewDelegate {
                 case .success(let success):
                     
                     DispatchQueue.main.async {
-                        var array: [String]?
+                        var array: [FetchQueryResponseElement] = []
                         success.forEach { response in
-                            array?.append(response.word ?? "error")
+                            array.append(response)
                         }
                         
-                        let vc = DetailViewController(array: array ?? [""], user: UserModel(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                        let vc = DetailViewController(array: array , user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                         vc.title = "Sık kullanılanlar"
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
@@ -273,6 +268,17 @@ extension ProfileViewController: UICollectionViewDelegate {
         default:
             break
         }
+    }
+    
+    @objc func segueToHelperEdit() {
+        
+        let vc = UpdateHelperViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func seguToUserEdit() {
+        let vc = UpdateUserViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

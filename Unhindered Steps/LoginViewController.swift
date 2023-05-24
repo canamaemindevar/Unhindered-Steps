@@ -169,8 +169,6 @@ extension LoginViewController {
     
    @objc func login() {
      
-       print(username)
-       print(password)
        
        guard let username = username, let password = password else {
            configureView(withMessage:"Username / password cannot be blank")
@@ -198,13 +196,18 @@ extension LoginViewController {
                 self.loginSuccesDelegate?.routeToTabbar()
                } else {
                    print(success.message as Any)
+                   DispatchQueue.main.async {
+                       self.configureView(withMessage: success.message?.uppercased() ?? "")
+                   }
+                   
+
                }
 
                
                
            case .failure(let failure):
                print(failure)
-           }
+                          }
        }
        
        

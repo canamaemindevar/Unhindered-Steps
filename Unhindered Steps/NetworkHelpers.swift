@@ -58,8 +58,8 @@ extension Endpoint: EndpointProtocol {
         switch self {
         case .register: return "/emincan/register.php"
         case .login: return "/emincan/login.php"
-        case .favorites: return "/emincan/favorites.php"
-        case .recentQueries: return "/emincan/fetchFavorite.php"
+        case .favorites: return "/emincan/fetchFavorite.php"
+        case .recentQueries: return "/emincan/fetchQuery.php"
         case .newQuery: return "/emincan/addQuery.php"
         case .makeFavorite: return "/emincan/addFavorite.php"
             //TODO:
@@ -97,7 +97,7 @@ extension Endpoint: EndpointProtocol {
             return [ "username": username, "password": password,"mail": mail,"helperMail":helperMail,"helperName": helperName,"helperPhone": helperPhone]
         }
         if case .favorites(let id) = self {
-            return ["id": id]
+            return ["userId": id]
         }
         if case .mostlyUsed(let id) = self {
             return ["id": id]

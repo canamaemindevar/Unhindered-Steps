@@ -57,8 +57,8 @@ class MapViewModel:MapViewModelInterface {
             
             // TODO: - id fetch
             
-            print(self.id)
-            print(queryWord)
+          //  print(self.id)
+          //  print(queryWord)
             NetworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
                 case .success(let success):

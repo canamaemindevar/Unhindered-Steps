@@ -28,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         window?.rootViewController = checkUser()
-     //   window?.rootViewController = DetailViewController(array: [])
         window?.makeKeyAndVisible()
         loginVc.routeRegisterDelegate = self
         loginVc.loginSuccesDelegate = self
@@ -63,12 +62,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func checkUser() -> UIViewController {
-        if LocalState.hasOnboarded {
-            return mainTabbar
-        }else {
-            return loginVc
-          //  return  UINavigationController(rootViewController: loginVc)
-        }
+        var vc: UIViewController = RegisterViewController()
+         CoreDataManager.shared.getDataForFavs(completion: { response in
+            switch response {
+            case .success(let success):
+                if   success.count != 0 {
+                    vc = self.mainTabbar
+                } else {
+                    vc = self.loginVc
+                }
+                
+            case .failure(_):
+                vc = self.loginVc
+            }
+             
+             
+        })
+        
+        return vc
+//        if LocalState.hasOnboarded {
+//            return mainTabbar
+//        }else {
+//            return loginVc
+//          //  return  UINavigationController(rootViewController: loginVc)
+//        }
     }
 
 

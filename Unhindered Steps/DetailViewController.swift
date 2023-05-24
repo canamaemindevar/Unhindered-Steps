@@ -10,7 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     
-    var array: [String]
+    var array: [FetchQueryResponseElement]
     var user: UserModel
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
         return mailButton
     }()
     
-    init(array: [String], user: UserModel) {
+    init(array: [FetchQueryResponseElement], user: UserModel) {
         self.array = array
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -101,7 +101,7 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = array[indexPath.row]
+        cell.textLabel?.text = array[indexPath.row].word
         return cell
     }
     
