@@ -107,7 +107,7 @@ extension SceneDelegate: LoginSuccesfullInterface {
 
 extension SceneDelegate: RegisterSuccesfullDelegate {
     func registerSuccesfull() {
-        routeToRegister()
+        setRootViewController(loginVc )
     }
     
     

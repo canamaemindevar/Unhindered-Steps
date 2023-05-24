@@ -109,7 +109,8 @@ class RegisterViewController: UIViewController {
         errorMessageLabel.font = .boldSystemFont(ofSize: 10)
         return errorMessageLabel
     }()
-    
+   // let alert = UIAlertAction(title: , style: .default)
+    let alert = UIAlertController(title: "Başarılı", message: "Başarıyla Kayıt edildi, Lütfen şimdi giriş yapınız", preferredStyle: .alert)
     var mail: String? {
         return mailTextField.text
     }
@@ -218,6 +219,10 @@ class RegisterViewController: UIViewController {
             case .success(let success):
                 
                 if success.message == "succes" {
+                    self.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(self.alert, animated: true, completion: nil)
                     self.registerSuccesDelegate?.registerSuccesfull()
                 } else {
                     print("hata oluştu")

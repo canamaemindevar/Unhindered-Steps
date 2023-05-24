@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
         mailButton.translatesAutoresizingMaskIntoConstraints = false
         mailButton.setImage(UIImage(systemName: "mail.stack"), for: [])
         mailButton.setTitle("Mail At", for: [])
+        mailButton.setTitleColor(.systemBlue, for: [])
         return mailButton
     }()
     
@@ -50,10 +51,10 @@ class DetailViewController: UIViewController {
         view.addSubview(mailButton)
         mailButton.addTarget(self, action: #selector(sendMail), for: .touchUpInside)
         NSLayoutConstraint.activate([
-            view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 5),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 3),
-            mailButton.heightAnchor.constraint(equalToConstant: 90),
-            mailButton.widthAnchor.constraint(equalToConstant: 90)
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 8),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 2),
+            mailButton.heightAnchor.constraint(equalToConstant: 120),
+            mailButton.widthAnchor.constraint(equalToConstant: 120)
         ])
     }
     

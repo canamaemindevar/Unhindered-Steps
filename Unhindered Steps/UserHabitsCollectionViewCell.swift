@@ -25,7 +25,7 @@ class UserHabitsCollectionViewCell: UICollectionViewCell {
         let sView = UILabel()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.font.withSize(20)
-        sView.textColor = .black
+        sView.textColor = .label
         return sView
     }()
     

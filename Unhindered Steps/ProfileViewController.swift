@@ -103,7 +103,7 @@ class ProfileViewController: UIViewController {
 
     func prepare() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
