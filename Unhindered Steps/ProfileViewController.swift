@@ -20,18 +20,52 @@ class ProfileViewController: UIViewController {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .monospacedDigitSystemFont(ofSize: 30, weight: .heavy)
+        label.font = .monospacedDigitSystemFont(ofSize: 25, weight: .heavy)
         return label
     }()
     private let mailLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .italicSystemFont(ofSize: 15)
+        label.textColor = .black
+        return label
+    }()
+    private let helperLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .italicSystemFont(ofSize: 20)
+        label.textColor = .black
+        label.text = "Yardımcın:"
+        return label
+    }()
+    private let helperNameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .italicSystemFont(ofSize: 15)
+        label.textColor = .black
+        return label
+    }()
+    private let helperMailLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .italicSystemFont(ofSize: 15)
         label.textColor = .black
         return label
     }()
     private let profileStackview: UIStackView = {
+        let sView = UIStackView()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.layer.cornerRadius = 5
+        sView.axis = .vertical
+        sView.distribution = .fillProportionally
+        sView.alignment = .center
+        return sView
+    }()
+    private let helperStackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
@@ -45,7 +79,7 @@ class ProfileViewController: UIViewController {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
-        sView.backgroundColor = .cyan
+        sView.backgroundColor = .systemYellow
         return sView
     }()
     
@@ -75,7 +109,7 @@ class ProfileViewController: UIViewController {
         button.setTitle("Kişisel Bilgilerimi Güncelle", for: .normal)
         button.setImage(.init(systemName: "person"), for: .normal)
         button.titleLabel?.numberOfLines = 0
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         
         return button
     }()
@@ -86,10 +120,19 @@ class ProfileViewController: UIViewController {
         button.setTitle("Yardımcı Bilgilerimi Güncelle", for: .normal)
         button.setImage(.init(systemName: "person.2"), for: .normal)
         button.titleLabel?.numberOfLines = 0
-        button.setTitleColor(.black, for: .normal)
-        
-        
+        button.setTitleColor(.label, for: .normal)
         return button
+    }()
+   
+
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.image = .checkmark
+        iv.contentMode = .scaleAspectFit
+        iv.tintColor = .label
+        iv.image = UIImage(named: "wheelChair")
+        return iv
     }()
     
     //MARK: - Life Cycle
@@ -113,22 +156,43 @@ class ProfileViewController: UIViewController {
         view.addSubview(updateMyInfoBtn)
         view.addSubview(updateHelperInfoBtn)
         view.addSubview(profileStackview)
-        
+     //   view.addSubview(helperStackview)
+        view.addSubview(imageView)
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
+//        helperStackview.addArrangedSubview(helperLabel)
+//        helperStackview.addArrangedSubview(helperNameLabel)
+//        helperStackview.addArrangedSubview(helperMailLabel)
         
         updateMyInfoBtn.addTarget(self, action:  #selector(seguToUserEdit), for: .touchUpInside)
         updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
         let headerViewHeight = view.frame.height / 3.4
         let headerView2Height =  headerViewHeight / 2.5
-        
+        let width = view.frame.width / 3
+        NSLayoutConstraint.activate([
+          
+            imageView.widthAnchor.constraint(equalToConstant: width),
+            imageView.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 4)
+            
+        ])
+
         NSLayoutConstraint.activate([
             profileStackview.centerYAnchor.constraint(equalTo: dummyView.centerYAnchor),
             profileStackview.centerXAnchor.constraint(equalTo: dummyView.centerXAnchor),
-            profileStackview.widthAnchor.constraint(equalToConstant: view.frame.width),
-            profileStackview.heightAnchor.constraint(equalToConstant: headerViewHeight)
+            profileStackview.widthAnchor.constraint(equalToConstant: width),
+            profileStackview.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5)
         ])
-     
+//        NSLayoutConstraint.activate([
+//
+//            helperStackview.widthAnchor.constraint(equalToConstant: width),
+//            helperStackview.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5),
+//            view.trailingAnchor.constraint(equalTo: helperStackview.trailingAnchor),
+//            helperStackview.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 7)
+//
+//        ])
+
         
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -164,11 +228,13 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func changeValues(name: String, mail: String) {
+    func changeValues(name: String, mail: String, helperMail: String, helperName: String) {
         nameLabel.text = name
         mailLabel.text = mail
+        helperMailLabel.text = helperMail
+        helperNameLabel.text = helperName
     }
-
+    
 }
 
 //MARK: - CollectionView
@@ -255,6 +321,10 @@ extension ProfileViewController: UICollectionViewDelegate {
                     print(failure)
                 }
             }
+        case 3:
+            CoreDataManager.shared.deleteCoreData(with: viewModel.user?.id ?? "")
+            
+       // protocol yap
             
         default:
             break

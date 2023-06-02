@@ -3,4 +3,70 @@
    uuid = "17408D88-6AA9-45BF-9C4C-31B2A4E61D0A"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C332A80-78ED-443D-8C83-6805CFBE0A95"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unhindered Steps/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "changeValues(name:mail:helperMail:helperName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5EBA581-1FBC-4A76-86F1-AB884CDF1776"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Unhindered Steps/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "prepare()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E5EBA581-1FBC-4A76-86F1-AB884CDF1776 - 1c0bffda595f06e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.ProfileViewController.prepare() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "3428">
+               </Location>
+               <Location
+                  uuid = "E5EBA581-1FBC-4A76-86F1-AB884CDF1776 - 1c0bffda595f06e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Unhindered_Steps.ProfileViewController.prepare() -&gt; ()"
+                  moduleName = "Unhindered Steps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/Unhindered%20Steps/Unhindered%20Steps/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "3528">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

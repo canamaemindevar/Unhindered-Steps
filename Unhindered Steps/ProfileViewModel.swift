@@ -34,7 +34,7 @@ class ProfileViewModel: ProfileViewModelInterface {
             switch response {
             case .success(let success):
                 self.user = success.first
-                self.view?.changeValues(name: success.first?.username ?? "Error", mail: success.first?.mail ?? "Error")
+                self.view?.changeValues(name: success.first?.username ?? "Error", mail: success.first?.mail ?? "Error", helperMail: success.first?.helperMail ?? "Error",helperName: success.first?.helperName ?? "Error")
             case .failure(let failure):
                 print(failure)
             }
