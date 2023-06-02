@@ -46,7 +46,7 @@ enum Endpoint {
     case mostlyUsed(id: String)
     case newQuery(id:String, query: String)
     case makeFavorite(id:String, word: String)
-    case sendMail(id: String , mail: String)
+    case sendMail(id: String , mail: String, topic: String)
     case updateHelper(id: String, helperName: String, helperMail: String, helperPhone: String)
 }
 
@@ -114,8 +114,8 @@ extension Endpoint: EndpointProtocol {
         if case .makeFavorite(let id, let word) = self {
             return ["userId": id, "word" : word]
         }
-        if case .sendMail(let id, let mail) = self {
-            return ["id": id, "helperMail" : mail]
+        if case .sendMail(let id, let mail, let topic) = self {
+            return ["id": id, "helperMail" : mail, "topic": topic]
         }
         if case .updateHelper(let id, let helperName, let helperMail, let helperPhone) = self {
             return ["id": id, "helperMail" : helperMail, "helperPhone": helperPhone, "helperName": helperName]

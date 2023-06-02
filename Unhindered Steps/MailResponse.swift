@@ -10,10 +10,5 @@ import Foundation
 // MARK: - MailResponse
 struct MailResponse: Codable {
     let message: String?
-    let data: [Datum]?
 }
 
-// MARK: - Datum
-struct Datum: Codable {
-    let word: String?
-}

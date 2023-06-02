@@ -101,8 +101,8 @@ extension NetworkManager {
         request(endpoint, completion: completion)
     }
     
-    func sendMail(id: String, mail: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
-        let endpoint = Endpoint.sendMail(id: id, mail: mail)
+    func sendMail(id: String, mail: String,topic: String,completion: @escaping (Result<MailResponse, ErrosTypes>) -> Void) {
+        let endpoint = Endpoint.sendMail(id: id, mail: mail, topic: topic)
         request(endpoint, completion: completion)
     }
     

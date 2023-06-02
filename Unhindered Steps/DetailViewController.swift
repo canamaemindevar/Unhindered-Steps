@@ -66,36 +66,21 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     @objc func sendMail() {
         
-        
-        if self.title == "Arama Geçmişi"
-        {
-            //TODO: arama geçmişi mail at
-            NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "") { response in
-                switch response {
-                case .success(let success):
-                    print(success)
-                case .failure(let failure):
-                    print(failure)
-                }
+        //TODO: arama geçmişi mail at
+        NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: self.title ?? "") { response in
+            switch response {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
             }
-            
-        } else if self.title == "Favoriler"
-        {
-            //TODO: favoriler mail at
-            
-        } else
-        {
-            //TODO: sık kullanılan  mail at
         }
-
-        
         
     }
 }
 
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      // 10
         self.array.count
     }
     
