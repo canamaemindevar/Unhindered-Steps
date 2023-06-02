@@ -20,7 +20,7 @@ class MapViewModel:MapViewModelInterface {
     var location = CLLocationCoordinate2D()
     var items = [MKAnnotation]()
     var id = ""
-    
+    var user: UserModel?
     
     func viewDidLoad() {
         view?.setupMapConts()
@@ -30,6 +30,7 @@ class MapViewModel:MapViewModelInterface {
             switch response {
             case .success(let success):
                 self.id = success.first?.id ?? ""
+                self.user = success.first
             case .failure(let failure):
                 print(failure)
             }

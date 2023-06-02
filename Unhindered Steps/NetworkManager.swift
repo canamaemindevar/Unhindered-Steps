@@ -112,5 +112,14 @@ extension NetworkManager {
         let endpoint = Endpoint.mostlyUsed(id: id)
         request(endpoint, completion: completion)
     }
+    
+    // TODO: change response
+    
+    func updateHelper(id: String,helperName: String,helperMail: String,helperPhone: String,completion: @escaping (Result< LoginResponse, ErrosTypes>) -> Void) {
+        let endpoiont = Endpoint.updateHelper(id: id, helperName: helperName, helperMail: helperMail, helperPhone: helperPhone)
+        request(endpoiont, completion: completion)
+     }
+
+    //TODO: add updateUser 
 }
 

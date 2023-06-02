@@ -24,7 +24,8 @@ class ProfileViewModel: ProfileViewModelInterface {
     var userDataChoiceArr: [ProfileDataStruct] = [
         ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "Arama Geçmişi"),
         ProfileDataStruct(name: "list.star", string: "Favoriler"),
-        ProfileDataStruct(name: "folder.fill.badge.plus", string: "Sık Kullanılanlar")
+        ProfileDataStruct(name: "folder.fill.badge.plus", string: "Sık Kullanılanlar"),
+        ProfileDataStruct(name: "power.circle", string: "Çıkış Yap")
     ]
     
     func viewDidLoad() {

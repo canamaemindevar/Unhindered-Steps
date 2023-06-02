@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
-        sView.backgroundColor = .yellow
+        sView.backgroundColor = .clear
         return sView
     }()
     private let mainCollectionView: UICollectionView = {
@@ -150,13 +150,13 @@ class ProfileViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            updateMyInfoBtn.leadingAnchor.constraint(equalTo: dummyView2.leadingAnchor, constant: 5),
+            updateMyInfoBtn.leadingAnchor.constraint(equalTo: dummyView2.leadingAnchor, constant: 18),
             updateMyInfoBtn.topAnchor.constraint(equalTo: dummyView2.topAnchor, constant: 0),
             updateMyInfoBtn.bottomAnchor.constraint(equalTo: dummyView2.bottomAnchor, constant: 0),
             updateMyInfoBtn.widthAnchor.constraint(equalToConstant: view.frame.width / 2.5)
         ])
         NSLayoutConstraint.activate([
-            updateHelperInfoBtn.trailingAnchor.constraint(equalTo: dummyView2.trailingAnchor, constant: 5),
+            updateHelperInfoBtn.trailingAnchor.constraint(equalTo: dummyView2.trailingAnchor, constant: -18),
             updateHelperInfoBtn.topAnchor.constraint(equalTo: dummyView2.topAnchor, constant: 0),
             updateHelperInfoBtn.bottomAnchor.constraint(equalTo: dummyView2.bottomAnchor, constant: 0),
             updateHelperInfoBtn.widthAnchor.constraint(equalToConstant: view.frame.width / 2.5)
@@ -202,23 +202,16 @@ extension ProfileViewController: UICollectionViewDelegate {
             NetworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case .success(let success):
-                    
-                  
                     DispatchQueue.main.async {
-                        
                         let vc = DetailViewController(array: success,user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                         vc.title = "Arama Geçmişi"
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
-                    
-                 
                 case .failure(let failure):
                     print(failure)
                 }
             }
-            
-            
-         
+
         case 1:
             //TODO: Favoriler
             print("Favoriler")
@@ -237,9 +230,7 @@ extension ProfileViewController: UICollectionViewDelegate {
                     print(failure)
                 }
             }
-            
-            
-           
+
         case 2:
             //MARK: Sık Kullanılanlar
             

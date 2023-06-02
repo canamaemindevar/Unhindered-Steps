@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
           sView.backgroundColor = .clear
           sView.layer.cornerRadius = 5
           sView.alwaysBounceHorizontal = true
+          sView.isScrollEnabled = true
           return sView
       }()
       
@@ -66,6 +67,16 @@ class MapViewController: UIViewController {
         button.layer.cornerRadius = 5
         return button
     }()
+    private let phoneCallButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Acil Arama", for: .normal)
+        button.setImage(.add, for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemGreen
+        button.layer.cornerRadius = 5
+        return button
+    }()
       
       /// Mock
       private let medicalButton: UIButton = {
@@ -99,25 +110,29 @@ class MapViewController: UIViewController {
 
 
     func setupMapConts() {
+        mapView.showsUserLocation = true
         view.backgroundColor = .systemBackground
         view.addSubview(mapView)
         mapView.delegate = self
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mapView.bottomAnchor)
         ])
-        
+
+      
+          
         view.addSubview(scrollView)
-        
+        view.addSubview(phoneCallButton)
         scrollView.addSubview(stackview)
         stackview.addArrangedSubview(pharmecyButton)
         stackview.addArrangedSubview(hosptialButton)
         stackview.addArrangedSubview(medicalButton)
         stackview.addArrangedSubview(toiletButton)
-        
+        stackview.addArrangedSubview(phoneCallButton)
         // Note: dummy
         stackview.addArrangedSubview(bbutton)
         
@@ -126,14 +141,18 @@ class MapViewController: UIViewController {
          scrollView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
          scrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
          scrollView.heightAnchor.constraint(equalToConstant: (view.frame.height / 10)),
-         view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 3)
-                                            
+         view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 3),
+         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width)
+
         ])
-        
+    
+   
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 2, height: UIScreen.main.bounds.height / 10 )
         hosptialButton.addTarget(self, action: #selector(searchHospital), for: .touchUpInside)
         pharmecyButton.addTarget(self, action: #selector(searchPharmacy), for: .touchUpInside)
         medicalButton.addTarget(self, action: #selector(searchMedical), for: .touchUpInside)
         toiletButton.addTarget(self, action: #selector(searchToilet), for: .touchUpInside)
+        phoneCallButton.addTarget(self, action: #selector(makePhoneCall), for: .touchUpInside)
     }
 }
 
@@ -186,6 +205,18 @@ extension MapViewController {
             self.updateUi(response: response)
         }
     }
+    
+    @objc func  makePhoneCall() {
+        guard let helperPhone = viewModel.user?.helperPhone else {return}
+        guard let number = URL(string: "tel://\(helperPhone))") else { return }
+             if UIApplication.shared.canOpenURL(number) {
+                 UIApplication.shared.open(number)
+             } else {
+                 print("Can't open url on this device")
+             }
+  
+    }
+    
     
     func updateUi(response: MKLocalSearch.Response) {
        
