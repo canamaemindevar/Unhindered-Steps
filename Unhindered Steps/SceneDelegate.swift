@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let loginVc = LoginViewController()
     let registerVc = RegisterViewController()
     let mainTabbar = MainTabbar()
+    let profileVc = ProfileViewController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -65,13 +66,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var vc: UIViewController = RegisterViewController()
          CoreDataManager.shared.getDataForFavs(completion: { response in
             switch response {
+                
             case .success(let success):
                 if   success.count != 0 {
+             
                     vc = self.mainTabbar
+                 
                 } else {
                     vc = self.loginVc
                 }
-                
+              
             case .failure(_):
                 vc = self.loginVc
             }

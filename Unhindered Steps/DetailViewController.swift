@@ -12,6 +12,8 @@ class DetailViewController: UIViewController {
     
     var array: [FetchQueryResponseElement]
     var user: UserModel
+    
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false

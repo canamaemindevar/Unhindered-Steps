@@ -54,42 +54,49 @@ class RegisterViewController: UIViewController {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "E-mail giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let nameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Kullanıcı ismini giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let helperMailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Bir yakınızın e-mail giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let helperNameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Bir yakınızın ismini giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let helperPhoneNumber: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Acil durumlarda aramak için yakınızın numarasını giriniz."
+        mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Şifre giriniz."
+        passwordTextField.autocapitalizationType = .none
         return passwordTextField
     }()
     private let passwordTextFieldAgain: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Şifreyi Tekrar giriniz."
+        passwordTextField.autocapitalizationType = .none
         return passwordTextField
     }()
     private let registerButton: UIButton = {
@@ -109,7 +116,7 @@ class RegisterViewController: UIViewController {
         errorMessageLabel.font = .boldSystemFont(ofSize: 10)
         return errorMessageLabel
     }()
-   // let alert = UIAlertAction(title: , style: .default)
+ 
     let alert = UIAlertController(title: "Başarılı", message: "Başarıyla Kayıt edildi, Lütfen şimdi giriş yapınız", preferredStyle: .alert)
     var mail: String? {
         return mailTextField.text
@@ -218,14 +225,17 @@ class RegisterViewController: UIViewController {
             switch response {
             case .success(let success):
                 
-                if success.message == "succes" {
-                    self.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
-                    }))
-                    self.present(self.alert, animated: true, completion: nil)
-                    self.registerSuccesDelegate?.registerSuccesfull()
-                } else {
-                    print("hata oluştu")
+                DispatchQueue.main.async {
+                    if success.message == "succes" {
+                        self.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                        NSLog("The \"OK\" alert occured.")
+                        }))
+                        self.present(self.alert, animated: true, completion: nil)
+                        self.registerSuccesDelegate?.registerSuccesfull()
+                    } else {
+                        print("hata oluştu")
+                        self.errorMessageLabel.text = "Hata ile karşılaşıldı."
+                    }
                 }
                 
             case .failure(let failure):

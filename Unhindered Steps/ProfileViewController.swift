@@ -10,8 +10,6 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     private lazy var viewModel = ProfileViewModel()
- 
-    
    
     //MARK: - Components
     
@@ -324,7 +322,10 @@ extension ProfileViewController: UICollectionViewDelegate {
         case 3:
             CoreDataManager.shared.deleteCoreData(with: viewModel.user?.id ?? "")
             
-       // protocol yap
+           let vc = LoginViewController()
+            self.view.window?.rootViewController = vc
+            
+           
             
         default:
             break
