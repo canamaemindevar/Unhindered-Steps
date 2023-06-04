@@ -85,7 +85,7 @@ class UpdateHelperViewController: UIViewController {
         helperMailTextField.delegate = self
         helperNameTextField.delegate = self
         view.addSubview(stackview)
-        
+        stackview.backgroundColor = .clear
         stackview.addArrangedSubview(helperNameTextField)
         stackview.addArrangedSubview(helperMailTextField)
         stackview.addArrangedSubview(helperPhoneNumber)

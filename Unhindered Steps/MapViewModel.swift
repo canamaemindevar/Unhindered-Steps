@@ -25,7 +25,7 @@ class MapViewModel:MapViewModelInterface {
     func viewDidLoad() {
         view?.setupMapConts()
         view?.mapView.showsUserLocation = true
-        view?.startQuery()
+     //   view?.startQuery()
         CoreDataManager.shared.getDataForFavs { response in
             switch response {
             case .success(let success):
@@ -39,10 +39,10 @@ class MapViewModel:MapViewModelInterface {
 
     
     
-    func updateSearchResults(query: PlaceEnums, completion: @escaping(MKLocalSearch.Response)-> Void)  {
+    func updateSearchResults(query: String, completion: @escaping(MKLocalSearch.Response)-> Void)  {
         
         let request = MKLocalSearch.Request()
-        let queryWord = query.rawValue
+        let queryWord = query
         request.naturalLanguageQuery = queryWord
         
         // var coordinate = CLLocationCoordinate2D(latitude: 40.766666, longitude: 29.916668)

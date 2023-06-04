@@ -162,7 +162,7 @@ class RegisterViewController: UIViewController {
         passwordTextFieldAgain.delegate = self
         
         view.backgroundColor = .systemYellow
-       // stackview.backgroundColor = .clear
+        stackview.backgroundColor = .clear
         view.addSubview(dummyView)
         view.addSubview(dummyView2)
         view.addSubview(stackview)

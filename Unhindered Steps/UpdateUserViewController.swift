@@ -95,7 +95,7 @@ class UpdateUserViewController: UIViewController {
         nameTextField.delegate = self
         passwordTextFieldAgain.delegate = self
         // Do any additional setup after loading the view.
-        
+        stackview.backgroundColor = .clear
        
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(nameTextField)

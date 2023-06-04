@@ -179,7 +179,7 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([
             profileStackview.centerYAnchor.constraint(equalTo: dummyView.centerYAnchor),
             profileStackview.centerXAnchor.constraint(equalTo: dummyView.centerXAnchor),
-            profileStackview.widthAnchor.constraint(equalToConstant: width),
+            profileStackview.widthAnchor.constraint(equalToConstant: width * 2),
             profileStackview.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5)
         ])
 //        NSLayoutConstraint.activate([

@@ -18,63 +18,55 @@ class MapViewController: UIViewController {
     
     let button = UIButton(type: UIButton.ButtonType.contactAdd)
     
-    //MARK: - Components
-      private let scrollView: UIScrollView = {
-          let sView = UIScrollView()
-          sView.translatesAutoresizingMaskIntoConstraints = false
-          sView.backgroundColor = .clear
-          sView.layer.cornerRadius = 5
-          sView.alwaysBounceHorizontal = true
-          sView.isScrollEnabled = true
-          return sView
-      }()
-      
-      private let stackview: UIStackView = {
-          let sView = UIStackView()
-          sView.translatesAutoresizingMaskIntoConstraints = false
-          sView.layer.cornerRadius = 5
-          sView.axis = .horizontal
-          sView.distribution = .fillEqually
-          sView.spacing = 10
-          return sView
-      }()
-      
-      private let pharmecyButton: UIButton = {
-          let button = UIButton()
-          button.setTitle("Eczane", for: .normal)
-          button.setTitleColor(.secondaryLabel, for: .normal)
-          button.translatesAutoresizingMaskIntoConstraints = false
-          button.backgroundColor = .secondarySystemBackground
-          button.layer.cornerRadius = 5
-          return button
-      }()
-      private let hosptialButton: UIButton = {
-          let button = UIButton()
-          button.setTitle("Hospital", for: .normal)
-          button.setTitleColor(.secondaryLabel, for: .normal)
-          button.translatesAutoresizingMaskIntoConstraints = false
-          button.backgroundColor = .secondarySystemBackground
-          button.layer.cornerRadius = 5
-          return button
-      }()
     
-    private let toiletButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Tuvalet", for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .secondarySystemBackground
-        button.layer.cornerRadius = 5
-        return button
+    var buttonString:[String] = []
+    
+    //MARK: - Components
+
+    let mainCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let size = UIScreen.main.bounds.width
+        layout.itemSize = .init(width: size/3, height: 80)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.layer.cornerRadius = 5
+        collection.backgroundColor = .clear
+        collection.register(MyCell.self, forCellWithReuseIdentifier: MyCell.identier)
+        return collection
     }()
+
     private let phoneCallButton: UIButton = {
         let button = UIButton()
         button.setTitle("Acil Arama", for: .normal)
-        button.setImage(.add, for: .normal)
+        button.setImage(UIImage(systemName: "phone"), for: .normal)
         button.setTitleColor(.secondaryLabel, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 5
+        button.titleLabel?.numberOfLines = 0
+        return button
+    }()
+    private let healtyhButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sağlık", for: .normal)
+        button.setImage(UIImage(systemName: "phone"), for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.titleLabel?.numberOfLines = 0
+        return button
+    }()
+    private let saleAndServiceButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Bakım Ve Satış", for: .normal)
+        button.setImage(UIImage(systemName: "phone"), for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemOrange
+        button.layer.cornerRadius = 5
+        button.titleLabel?.numberOfLines = 0
         return button
     }()
       
@@ -84,7 +76,7 @@ class MapViewController: UIViewController {
           button.setTitle("Medical", for: .normal)
           button.setTitleColor(.secondaryLabel, for: .normal)
           button.translatesAutoresizingMaskIntoConstraints = false
-          button.backgroundColor = .secondarySystemBackground
+          button.backgroundColor = .white
           button.layer.cornerRadius = 5
           return button
       }()
@@ -110,6 +102,8 @@ class MapViewController: UIViewController {
 
 
     func setupMapConts() {
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
         mapView.showsUserLocation = true
         view.backgroundColor = .systemBackground
         view.addSubview(mapView)
@@ -123,36 +117,45 @@ class MapViewController: UIViewController {
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mapView.bottomAnchor)
         ])
 
-      
-          
-        view.addSubview(scrollView)
+       
+        view.addSubview(mainCollectionView)
         view.addSubview(phoneCallButton)
-        scrollView.addSubview(stackview)
-        stackview.addArrangedSubview(pharmecyButton)
-        stackview.addArrangedSubview(hosptialButton)
-        stackview.addArrangedSubview(medicalButton)
-        stackview.addArrangedSubview(toiletButton)
-        stackview.addArrangedSubview(phoneCallButton)
-        // Note: dummy
-        stackview.addArrangedSubview(bbutton)
-        
-        
+        view.addSubview(saleAndServiceButton)
+        view.addSubview(healtyhButton)
+
+
         NSLayoutConstraint.activate([
-         scrollView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
-         scrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
-         scrollView.heightAnchor.constraint(equalToConstant: (view.frame.height / 10)),
-         view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 3),
-         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width)
+         mainCollectionView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
+         mainCollectionView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
+         mainCollectionView.heightAnchor.constraint(equalToConstant: (view.frame.height / 10)),
+         view.trailingAnchor.constraint(equalToSystemSpacingAfter: mainCollectionView.trailingAnchor, multiplier: 3),
+         mainCollectionView.widthAnchor.constraint(equalToConstant: view.frame.width)
 
         ])
     
-   
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 2, height: UIScreen.main.bounds.height / 10 )
-        hosptialButton.addTarget(self, action: #selector(searchHospital), for: .touchUpInside)
-        pharmecyButton.addTarget(self, action: #selector(searchPharmacy), for: .touchUpInside)
-        medicalButton.addTarget(self, action: #selector(searchMedical), for: .touchUpInside)
-        toiletButton.addTarget(self, action: #selector(searchToilet), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            saleAndServiceButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            saleAndServiceButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            saleAndServiceButton.heightAnchor.constraint(equalToConstant: 50),
+            saleAndServiceButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        NSLayoutConstraint.activate([
+            phoneCallButton.leadingAnchor.constraint(equalTo: saleAndServiceButton.leadingAnchor),
+            phoneCallButton.trailingAnchor.constraint(equalTo: saleAndServiceButton.trailingAnchor),
+            phoneCallButton.topAnchor.constraint(equalTo: saleAndServiceButton.bottomAnchor, constant: 10),
+            phoneCallButton.heightAnchor.constraint(equalToConstant: 50),
+            phoneCallButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        NSLayoutConstraint.activate([
+            healtyhButton.leadingAnchor.constraint(equalTo: saleAndServiceButton.leadingAnchor),
+            healtyhButton.trailingAnchor.constraint(equalTo: saleAndServiceButton.trailingAnchor),
+            healtyhButton.bottomAnchor.constraint(equalTo: saleAndServiceButton.topAnchor, constant: -10),
+            healtyhButton.heightAnchor.constraint(equalToConstant: 50),
+            healtyhButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
         phoneCallButton.addTarget(self, action: #selector(makePhoneCall), for: .touchUpInside)
+        healtyhButton.addTarget(self, action: #selector(healthList), for: .touchUpInside)
+        saleAndServiceButton.addTarget(self, action:  #selector(serviceList), for: .touchUpInside)
     }
 }
 
@@ -165,46 +168,15 @@ extension MapViewController {
 
                 self?.viewModel.location = location.coordinate
                 self?.mapView.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-                self?.viewModel.updateSearchResults(query: .pharmacy, completion: { response in
-                    self?.updateUi(response: response)
-                })
+//                self?.viewModel.updateSearchResults(query: "", completion: { response in
+//                    self?.updateUi(response: response)
+//                })
             }
         }
     
     }
     
-    @objc func searchHospital() {
-        viewModel.updateSearchResults(query: .hospital) {[weak self]  respones in
-            guard let self = self else {
-                return
-            }
-            self.updateUi(response: respones)
-        }
-    }
-    @objc func searchPharmacy() {
-        viewModel.updateSearchResults(query: .pharmacy) {[weak self]  response in
-            guard let self = self else {
-                return
-            }
-            self.updateUi(response: response)
-        }
-    }
-    @objc func searchMedical() {
-        viewModel.updateSearchResults(query: .medikal) {[weak self]  response in
-            guard let self = self else {
-                return
-            }
-            self.updateUi(response: response)
-        }
-    }
-    @objc func searchToilet() {
-        viewModel.updateSearchResults(query: .tuvalet) {[weak self]  response in
-            guard let self = self else {
-                return
-            }
-            self.updateUi(response: response)
-        }
-    }
+
     
     @objc func  makePhoneCall() {
         guard let helperPhone = viewModel.user?.helperPhone else {return}
@@ -215,6 +187,18 @@ extension MapViewController {
                  print("Can't open url on this device")
              }
   
+    }
+    @objc func healthList() {
+        DispatchQueue.main.async {
+            self.buttonString = ["Hastane","Eczane","Medikal","Engelli Tuvaleti"]
+            self.mainCollectionView.reloadData()
+        }
+    }
+    @objc func serviceList() {
+        DispatchQueue.main.async {
+            self.buttonString = ["Tekerlekli Sandalye Satış Mağazası","Tekerlekli Sandalye Bakım Merkezi",]
+            self.mainCollectionView.reloadData()
+        }
     }
     
     
@@ -230,6 +214,37 @@ extension MapViewController {
             }
             self.mapView.addAnnotations(self.viewModel.items)
 
+        }
+    }
+}
+
+extension MapViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return buttonString.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard  let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MyCell.identier, for: indexPath)  as? MyCell else {
+            return UICollectionViewCell()
+        }
+        cell.wordLabel.text = buttonString[indexPath.row]
+        
+        return cell
+    }
+    
+    
+}
+
+extension MapViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let word = buttonString[indexPath.row]
+        viewModel.updateSearchResults(query: word) {[weak self]  response in
+            guard let self = self else {
+                return
+            }
+            self.updateUi(response: response)
         }
     }
 }
