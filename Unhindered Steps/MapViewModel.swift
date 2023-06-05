@@ -54,12 +54,7 @@ class MapViewModel:MapViewModelInterface {
             guard let response = response else {
                 return
             }
-          //  print(response)
-            
-            // TODO: - id fetch
-            
-          //  print(self.id)
-          //  print(queryWord)
+         
             NetworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
                 case .success(let success):
@@ -72,13 +67,4 @@ class MapViewModel:MapViewModelInterface {
 
         }
     }
-}
-
-
-
-enum PlaceEnums: String {
-    case pharmacy = "Eczane"
-    case hospital = "Hastane"
-    case medikal = "Medikal"
-    case tuvalet = "Engelli Tuvaleti"
 }

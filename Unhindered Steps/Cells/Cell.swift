@@ -16,9 +16,10 @@ class MyCell:  UICollectionViewCell {
      let wordLabel: UILabel = {
         let sView = UILabel()
         sView.translatesAutoresizingMaskIntoConstraints = false
-        sView.font.withSize(10)
          sView.textAlignment = .center
          sView.numberOfLines = 0
+         sView.textColor = .label
+         sView.adjustsFontSizeToFitWidth = true
         return sView
     }()
     
@@ -27,7 +28,7 @@ class MyCell:  UICollectionViewCell {
         super.init(frame: frame)
         setupConts()
         addSubview(wordLabel)
-        backgroundColor = .yellow
+        backgroundColor = .secondarySystemFill
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +36,13 @@ class MyCell:  UICollectionViewCell {
     }
     
     func setupConts() {
-        
-        wordLabel.frame = bounds
+        contentView.addSubview(wordLabel)
+        NSLayoutConstraint.activate([
+            wordLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            trailingAnchor.constraint(equalTo: wordLabel.trailingAnchor),
+            bottomAnchor.constraint(equalTo: wordLabel.bottomAnchor),
+            wordLabel.topAnchor.constraint(equalTo: topAnchor)
+        ])
+       
     }
 }

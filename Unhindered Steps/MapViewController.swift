@@ -70,25 +70,6 @@ class MapViewController: UIViewController {
         return button
     }()
       
-      /// Mock
-      private let medicalButton: UIButton = {
-          let button = UIButton()
-          button.setTitle("Medical", for: .normal)
-          button.setTitleColor(.secondaryLabel, for: .normal)
-          button.translatesAutoresizingMaskIntoConstraints = false
-          button.backgroundColor = .white
-          button.layer.cornerRadius = 5
-          return button
-      }()
-      private let bbutton: UIButton = {
-          let button = UIButton()
-          button.setTitle("Hospital", for: .normal)
-          button.setTitleColor(.secondaryLabel, for: .normal)
-          button.translatesAutoresizingMaskIntoConstraints = false
-          button.backgroundColor = .secondarySystemBackground
-          button.layer.cornerRadius = 5
-          return button
-      }()
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -196,7 +177,7 @@ extension MapViewController {
     }
     @objc func serviceList() {
         DispatchQueue.main.async {
-            self.buttonString = ["Tekerlekli Sandalye Satış Mağazası","Tekerlekli Sandalye Bakım Merkezi",]
+            self.buttonString = ["Sandalye Satış Mağazası","Sandalye Bakım Merkezi",]
             self.mainCollectionView.reloadData()
         }
     }
