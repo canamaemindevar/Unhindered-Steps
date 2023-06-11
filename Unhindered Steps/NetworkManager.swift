@@ -108,18 +108,23 @@ extension NetworkManager {
     
     
     //TODO: Change Response
-    func fetchMostlyUsed(id: String,completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
+    func fetchMostlyUsed(id: String,completion: @escaping (Result<PopularResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.mostlyUsed(id: id)
         request(endpoint, completion: completion)
     }
     
     // TODO: change response
     
-    func updateHelper(id: String,helperName: String,helperMail: String,helperPhone: String,completion: @escaping (Result< LoginResponse, ErrosTypes>) -> Void) {
+    func updateHelper(id: String,helperName: String,helperMail: String,helperPhone: String,completion: @escaping (Result< UpdateHelperResponse, ErrosTypes>) -> Void) {
         let endpoiont = Endpoint.updateHelper(id: id, helperName: helperName, helperMail: helperMail, helperPhone: helperPhone)
         request(endpoiont, completion: completion)
      }
 
-    //TODO: add updateUser 
+    //TODO: add updateUser
+    
+    func updateUser(id: String,mail: String, password: String, completion: @escaping (Result< UpdateUserResponse, ErrosTypes>) -> Void) {
+        let endpoiont = Endpoint.updateUser(id: id, mail: mail, password: password)
+        request(endpoiont, completion: completion)
+     }
 }
 

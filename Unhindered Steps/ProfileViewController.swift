@@ -77,7 +77,7 @@ class ProfileViewController: UIViewController {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
-        sView.backgroundColor = .systemYellow
+        sView.backgroundColor = .systemRed
         return sView
     }()
     
@@ -126,9 +126,9 @@ class ProfileViewController: UIViewController {
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = .checkmark
         iv.contentMode = .scaleAspectFit
         iv.tintColor = .label
+        iv.backgroundColor = .white
         iv.image = UIImage(named: "wheelChair")
         return iv
     }()
@@ -169,13 +169,22 @@ class ProfileViewController: UIViewController {
         let width = view.frame.width / 3
         NSLayoutConstraint.activate([
           
-            imageView.widthAnchor.constraint(equalToConstant: width),
-            imageView.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5),
+            imageView.widthAnchor.constraint(equalToConstant: 120),
+            imageView.heightAnchor.constraint(equalToConstant: 120),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 4)
+            imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10)
             
         ])
-
+        
+       //  let radius = CGRectGetWidth(self.imageView.frame) / 2
+      //  imageView.layer.cornerRadius = radius/2
+        imageView.layer.borderWidth = 1
+        imageView.layer.masksToBounds = false
+        imageView.layer.borderColor = UIColor.black.cgColor
+       
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 120 / 2
+      
         NSLayoutConstraint.activate([
             profileStackview.centerYAnchor.constraint(equalTo: dummyView.centerYAnchor),
             profileStackview.centerXAnchor.constraint(equalTo: dummyView.centerXAnchor),

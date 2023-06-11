@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
     private let dummyView: UIView = {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
-        sView.backgroundColor = .systemYellow
+        sView.backgroundColor = .white
         return sView
     }()
     private let dummyView2: UIView = {
@@ -161,7 +161,7 @@ class RegisterViewController: UIViewController {
         nameTextField.delegate = self
         passwordTextFieldAgain.delegate = self
         
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .red
         stackview.backgroundColor = .clear
         view.addSubview(dummyView)
         view.addSubview(dummyView2)

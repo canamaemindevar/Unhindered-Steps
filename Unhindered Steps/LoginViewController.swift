@@ -39,13 +39,13 @@ class LoginViewController: UIViewController {
     private let dummyView: UIView = {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
-        sView.backgroundColor = .systemYellow
+        sView.backgroundColor = .systemRed
         return sView
     }()
     private let dummyView2: UIView = {
         let sView = UIView()
         sView.translatesAutoresizingMaskIntoConstraints = false
-        sView.backgroundColor = .systemTeal
+        sView.backgroundColor = .white
         return sView
     }()
     
@@ -75,6 +75,7 @@ class LoginViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.setTitle("Yeni Hesap Aç.", for: .normal)
+        loginButton.setTitleColor(.black, for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
@@ -109,7 +110,7 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         mailTextField.delegate = self
         
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .red
         stackview.backgroundColor = .clear
         view.addSubview(dummyView)
         view.addSubview(dummyView2)

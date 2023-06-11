@@ -48,6 +48,7 @@ enum Endpoint {
     case makeFavorite(id:String, word: String)
     case sendMail(id: String , mail: String, topic: String)
     case updateHelper(id: String, helperName: String, helperMail: String, helperPhone: String)
+    case updateUser(id: String, mail: String, password: String)
 }
 
 extension Endpoint: EndpointProtocol {
@@ -63,11 +64,11 @@ extension Endpoint: EndpointProtocol {
         case .recentQueries: return "/emincan/fetchQuery.php"
         case .newQuery: return "/emincan/addQuery.php"
         case .makeFavorite: return "/emincan/addFavorite.php"
-            //TODO:
-        case .mostlyUsed: return "/emincan/mostlyUsed.php"
+        case .mostlyUsed: return "/emincan/fetchPopular.php"
         case .sendMail: return "/emincan/mailsend.php"
         case .updateHelper: return "/emincan/updateHelper.php"
-
+        case .updateUser: return "/emincan/updateUser.php"
+            
         }
     }
     
@@ -83,6 +84,8 @@ extension Endpoint: EndpointProtocol {
         case .mostlyUsed: return .post
         case .sendMail: return .post
         case .updateHelper: return .post
+        case .updateUser: return .post
+            
         }
     }
     var header: [String : String]? {
@@ -119,6 +122,9 @@ extension Endpoint: EndpointProtocol {
         }
         if case .updateHelper(let id, let helperName, let helperMail, let helperPhone) = self {
             return ["id": id, "helperMail" : helperMail, "helperPhone": helperPhone, "helperName": helperName]
+        }
+        if case .updateUser(let id, let mail, let password) = self {
+            return ["userId": id, "mail" : mail, "password": password]
         }
         return nil
     }

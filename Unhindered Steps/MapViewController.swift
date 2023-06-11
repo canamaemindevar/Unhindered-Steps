@@ -40,7 +40,7 @@ class MapViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Acil Arama", for: .normal)
         button.setImage(UIImage(systemName: "phone"), for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 5
@@ -50,8 +50,8 @@ class MapViewController: UIViewController {
     private let healtyhButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sağlık", for: .normal)
-        button.setImage(UIImage(systemName: "phone"), for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setImage(UIImage(systemName: "stethoscope"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
@@ -61,8 +61,8 @@ class MapViewController: UIViewController {
     private let saleAndServiceButton: UIButton = {
         let button = UIButton()
         button.setTitle("Bakım Ve Satış", for: .normal)
-        button.setImage(UIImage(systemName: "phone"), for: .normal)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setImage(UIImage(systemName: "oilcan"), for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemOrange
         button.layer.cornerRadius = 5

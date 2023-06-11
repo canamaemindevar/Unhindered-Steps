@@ -25,7 +25,7 @@ class MapViewModel:MapViewModelInterface {
     func viewDidLoad() {
         view?.setupMapConts()
         view?.mapView.showsUserLocation = true
-     //   view?.startQuery()
+        view?.startQuery()
         CoreDataManager.shared.getDataForFavs { response in
             switch response {
             case .success(let success):
