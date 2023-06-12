@@ -121,7 +121,7 @@ extension Endpoint: EndpointProtocol {
             return ["id": id, "helperMail" : mail, "topic": topic]
         }
         if case .updateHelper(let id, let helperName, let helperMail, let helperPhone) = self {
-            return ["id": id, "helperMail" : helperMail, "helperPhone": helperPhone, "helperName": helperName]
+            return ["userId": id, "helperMail" : helperMail, "helperPhone": helperPhone, "helperName": helperName]
         }
         if case .updateUser(let id, let mail, let password) = self {
             return ["userId": id, "mail" : mail, "password": password]

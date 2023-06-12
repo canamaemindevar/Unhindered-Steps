@@ -78,6 +78,10 @@ class MapViewController: UIViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidAppear()
+    }
+    
     
     //MARK: - Funcs
 

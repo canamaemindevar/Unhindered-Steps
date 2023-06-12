@@ -108,7 +108,7 @@ extension NetworkManager {
     
     
     //TODO: Change Response
-    func fetchMostlyUsed(id: String,completion: @escaping (Result<PopularResponse, ErrosTypes>) -> Void) {
+    func fetchMostlyUsed(id: String,completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.mostlyUsed(id: id)
         request(endpoint, completion: completion)
     }

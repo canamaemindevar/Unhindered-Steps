@@ -11,6 +11,8 @@ class ProfileViewController: UIViewController {
 
     private lazy var viewModel = ProfileViewModel()
    
+    var id: String = ""
+    
     //MARK: - Components
     
     private let nameLabel: UILabel = {
@@ -140,6 +142,9 @@ class ProfileViewController: UIViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidAppear()
+    }
     
 
     func prepare() {
@@ -154,14 +159,12 @@ class ProfileViewController: UIViewController {
         view.addSubview(updateMyInfoBtn)
         view.addSubview(updateHelperInfoBtn)
         view.addSubview(profileStackview)
-     //   view.addSubview(helperStackview)
+     
         view.addSubview(imageView)
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
-//        helperStackview.addArrangedSubview(helperLabel)
-//        helperStackview.addArrangedSubview(helperNameLabel)
-//        helperStackview.addArrangedSubview(helperMailLabel)
-        
+
+
         updateMyInfoBtn.addTarget(self, action:  #selector(seguToUserEdit), for: .touchUpInside)
         updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
         let headerViewHeight = view.frame.height / 3.4
@@ -176,8 +179,6 @@ class ProfileViewController: UIViewController {
             
         ])
         
-       //  let radius = CGRectGetWidth(self.imageView.frame) / 2
-      //  imageView.layer.cornerRadius = radius/2
         imageView.layer.borderWidth = 1
         imageView.layer.masksToBounds = false
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -191,14 +192,6 @@ class ProfileViewController: UIViewController {
             profileStackview.widthAnchor.constraint(equalToConstant: width * 2),
             profileStackview.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5)
         ])
-//        NSLayoutConstraint.activate([
-//
-//            helperStackview.widthAnchor.constraint(equalToConstant: width),
-//            helperStackview.heightAnchor.constraint(equalToConstant: headerViewHeight / 1.5),
-//            view.trailingAnchor.constraint(equalTo: helperStackview.trailingAnchor),
-//            helperStackview.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 7)
-//
-//        ])
 
         
         NSLayoutConstraint.activate([
@@ -235,11 +228,12 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func changeValues(name: String, mail: String, helperMail: String, helperName: String) {
+    func changeValues(id: String ,name: String, mail: String, helperMail: String, helperName: String) {
         nameLabel.text = name
         mailLabel.text = mail
         helperMailLabel.text = helperMail
         helperNameLabel.text = helperName
+        self.id = id
     }
     
 }
@@ -310,24 +304,21 @@ extension ProfileViewController: UICollectionViewDelegate {
             
             //TODO: change endppint
             print("Sık kullanılanlar")
-            NetworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
+            NetworkManager.shared.fetchMostlyUsed(id: id) { response in
                 switch response {
                 case .success(let success):
                     
                     DispatchQueue.main.async {
-                        var array: [FetchQueryResponseElement] = []
-                        success.forEach { response in
-                            array.append(response)
-                        }
-                        
-                        let vc = DetailViewController(array: array , user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        vc.title = "Sık kullanılanlar"
-                        self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    let vc = DetailViewController(array: success , user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    vc.title = "Sık kullanılanlar"
+                    self.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .failure(let failure):
                     print(failure)
                 }
             }
+            
         case 3:
             CoreDataManager.shared.deleteCoreData(with: viewModel.user?.id ?? "")
             
@@ -344,11 +335,19 @@ extension ProfileViewController: UICollectionViewDelegate {
     @objc func segueToHelperEdit() {
         
         let vc = UpdateHelperViewController()
+        vc.id = id
+        vc.mail = mailLabel.text ?? ""
+        vc.username = nameLabel.text ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func seguToUserEdit() {
         let vc = UpdateUserViewController()
+        vc.id = id
+        vc.helperMail = viewModel.user?.helperMail ?? ""
+        vc.helperName = viewModel.user?.helperName ?? ""
+        vc.helperPhone = viewModel.user?.helperPhone ?? ""
+        vc.username = nameLabel.text ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -30,11 +30,15 @@ class ProfileViewModel: ProfileViewModelInterface {
     
     func viewDidLoad() {
         view?.prepare()
+        
+    }
+    func viewDidAppear() {
         CoreDataManager.shared.getDataForFavs { response in
             switch response {
             case .success(let success):
-                self.user = success.first
-                self.view?.changeValues(name: success.first?.username ?? "Error", mail: success.first?.mail ?? "Error", helperMail: success.first?.helperMail ?? "Error",helperName: success.first?.helperName ?? "Error")
+                
+                self.user = success.last
+                self.view?.changeValues(id: success.last?.id ?? "Error", name: success.last?.username ?? "Error", mail: success.last?.mail ?? "Error", helperMail: success.last?.helperMail ?? "Error",helperName: success.last?.helperName ?? "Error")
             case .failure(let failure):
                 print(failure)
             }

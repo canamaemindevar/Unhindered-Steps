@@ -26,17 +26,20 @@ class MapViewModel:MapViewModelInterface {
         view?.setupMapConts()
         view?.mapView.showsUserLocation = true
         view?.startQuery()
+
+    }
+
+    func viewDidAppear() {
         CoreDataManager.shared.getDataForFavs { response in
             switch response {
             case .success(let success):
-                self.id = success.first?.id ?? ""
-                self.user = success.first
+                self.id = success.last?.id ?? ""
+                self.user = success.last
             case .failure(let failure):
                 print(failure)
             }
         }
     }
-
     
     
     func updateSearchResults(query: String, completion: @escaping(MKLocalSearch.Response)-> Void)  {

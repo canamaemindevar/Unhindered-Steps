@@ -13,6 +13,10 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
 class UpdateHelperViewController: UIViewController {
     
+    var id: String = ""
+    var mail: String = ""
+    var username: String = ""
+    
     private let stackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +47,7 @@ class UpdateHelperViewController: UIViewController {
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
         mailTextField.placeholder = "Acil durumlarda aramak için yakınızın numarasını giriniz."
         mailTextField.backgroundColor = .secondarySystemBackground
-        mailTextField.adjustsFontSizeToFitWidth
+        mailTextField.adjustsFontSizeToFitWidth = true
         return mailTextField
     }()
     
@@ -93,9 +97,9 @@ class UpdateHelperViewController: UIViewController {
         stackview.addArrangedSubview(registerButton)
         stackview.addArrangedSubview(errorMessageLabel)
         
+        registerButton.addTarget(self, action: #selector(updateHelper), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-         //   stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
             stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -117,5 +121,31 @@ extension UpdateHelperViewController: UITextFieldDelegate {
         helperMailTextField.endEditing(true)
         helperNameTextField.endEditing(true)
         return true
+    }
+    
+    @objc func updateHelper() {
+        
+        guard let helpermail = helpermail , let  helpername = helpername, let helperphone = helperphone
+        else {
+            return
+        }
+        
+        NetworkManager.shared.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
+            switch response {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.navigationController?.popViewController(animated: true)
+                    
+                    CoreDataManager.shared.saveCoreData(withModel: UserModel(id: self.id,
+                                                                             username: self.username,
+                                                                             mail: self.mail,
+                                                                             helperName: success.helperName,
+                                                                             helperMail: success.helperMail,
+                                                                             helperPhone: success.helperPhone))
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
