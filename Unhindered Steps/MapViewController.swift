@@ -12,6 +12,9 @@ class MapViewController: UIViewController {
     // MARK: - Components
 
     private lazy var viewModel = MapViewModel()
+
+    var networkManager: FavoriteMakeble
+
     let mapView = MKMapView()
 
     let leftButton = UIButton(type: UIButton.ButtonType.detailDisclosure)
@@ -19,6 +22,16 @@ class MapViewController: UIViewController {
     let button = UIButton(type: UIButton.ButtonType.contactAdd)
 
     var buttonString: [String] = []
+
+    init(networkManager: FavoriteMakeble = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Components
 
@@ -265,7 +278,7 @@ extension MapViewController: MKMapViewDelegate {
             }
 
         } else {
-            CoreNettworkManager.shared.makeFavorite(id: viewModel.id, query: title ?? "") { response in
+            networkManager.makeFavorite(id: viewModel.id, query: title ?? "") { response in
                 switch response {
                 case let .success(success):
                     print("Saved as favorite: \(success)")

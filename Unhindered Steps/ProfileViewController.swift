@@ -12,9 +12,9 @@ class ProfileViewController: UIViewController {
 
     var id: String = ""
 
-    var networkManager: FavoritesFetchable
+    var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable
 
-    init(networkManager: FavoritesFetchable = NetworkManager()) {
+    init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager
         super.init(nibName: nil, bundle: nil)
     }
@@ -272,7 +272,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0:
-            CoreNettworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
+            networkManager.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {
@@ -301,7 +301,7 @@ extension ProfileViewController: UICollectionViewDelegate {
 
         case 2:
             print("Sık kullanılanlar")
-            CoreNettworkManager.shared.fetchMostlyUsed(id: id) { response in
+            networkManager.fetchMostlyUsed(id: id) { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {

@@ -11,6 +11,8 @@ class DetailViewController: UIViewController {
     var array: [FetchQueryResponseElement]
     var user: UserModel
 
+    var networkManger: MailSendable
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +33,10 @@ class DetailViewController: UIViewController {
         return mailButton
     }()
 
-    init(array: [FetchQueryResponseElement], user: UserModel) {
+    init(array: [FetchQueryResponseElement], user: UserModel, networkManger: MailSendable = NetworkManager()) {
         self.array = array
         self.user = user
+        self.networkManger = networkManger
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -61,8 +64,7 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     @objc func sendMail() {
-        // TODO: arama geçmişi mail at
-        CoreNettworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
+        networkManger.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
             switch response {
             case let .success(success):
                 print(success)

@@ -20,6 +20,11 @@ class MapViewModel: MapViewModelInterface {
     var items = [MKAnnotation]()
     var id = ""
     var user: UserModel?
+    var networkManager: QueryMakeble
+
+    init(networkManager: QueryMakeble = NetworkManager()) {
+        self.networkManager = networkManager
+    }
 
     func viewDidLoad() {
         view?.setupMapConts()
@@ -54,7 +59,7 @@ class MapViewModel: MapViewModelInterface {
                 return
             }
 
-            CoreNettworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
+            self.networkManager.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
                 case let .success(success):
                     print(success)

@@ -14,8 +14,8 @@
             filePath = "Unhindered Steps/MapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "updateSearchResults(query:completion:)"
             landmarkType = "7">
          </BreakpointContent>

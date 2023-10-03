@@ -16,6 +16,18 @@ class UpdateHelperViewController: UIViewController {
     var mail: String = ""
     var username: String = ""
 
+    var networkManager: HelperUpdateble
+
+    init(networkManager: HelperUpdateble = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private let stackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +142,7 @@ extension UpdateHelperViewController: UITextFieldDelegate {
             return
         }
 
-        CoreNettworkManager.shared.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
+        networkManager.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
             switch response {
             case let .success(success):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

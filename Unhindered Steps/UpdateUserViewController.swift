@@ -17,6 +17,19 @@ class UpdateUserViewController: UIViewController {
     var helperMail: String = ""
     var helperPhone: String = ""
     var username: String = ""
+
+    var networkManager: UserUpdateable
+
+    init(networkManager: UserUpdateable = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private let stackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
@@ -144,7 +157,7 @@ extension UpdateUserViewController: UITextFieldDelegate {
             return
         }
 
-        CoreNettworkManager.shared.updateUser(id: id, mail: mail, password: password) { response in
+        networkManager.updateUser(id: id, mail: mail, password: password) { response in
             switch response {
             case let .success(succes):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
