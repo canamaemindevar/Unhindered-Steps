@@ -144,7 +144,7 @@ extension UpdateUserViewController: UITextFieldDelegate {
             return
         }
 
-        NetworkManager.shared.updateUser(id: id, mail: mail, password: password) { response in
+        CoreNettworkManager.shared.updateUser(id: id, mail: mail, password: password) { response in
             switch response {
             case let .success(succes):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

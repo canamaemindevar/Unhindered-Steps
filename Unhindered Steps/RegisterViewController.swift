@@ -228,7 +228,7 @@ class RegisterViewController: UIViewController {
             return
         }
 
-        NetworkManager.shared.register(username: username, password: password, mail: mail, helperMail: helpermail, helperName: helpername, helperPhone: helperphone)
+        CoreNettworkManager.shared.register(username: username, password: password, mail: mail, helperMail: helpermail, helperName: helpername, helperPhone: helperphone)
             { response in
                 switch response {
                 case let .success(success):

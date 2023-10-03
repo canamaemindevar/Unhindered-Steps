@@ -181,7 +181,7 @@ extension LoginViewController {
             return
         }
 
-        NetworkManager.shared.login(email: username, password: password) { response in
+        CoreNettworkManager.shared.login(email: username, password: password) { response in
             switch response {
             case let .success(success):
 

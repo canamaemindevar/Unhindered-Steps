@@ -21,7 +21,7 @@ class LoginViewModel: LoginViewModelInterface {
     }
 
     func loginRequest(email: String, password: String) {
-        NetworkManager.shared.login(email: email, password: password) { response in
+        CoreNettworkManager.shared.login(email: email, password: password) { response in
             print(response)
         }
     }

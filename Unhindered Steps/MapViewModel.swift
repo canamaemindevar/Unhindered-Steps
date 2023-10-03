@@ -54,7 +54,7 @@ class MapViewModel: MapViewModelInterface {
                 return
             }
 
-            NetworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
+            CoreNettworkManager.shared.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
                 case let .success(success):
                     print(success)

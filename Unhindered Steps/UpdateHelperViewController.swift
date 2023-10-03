@@ -130,7 +130,7 @@ extension UpdateHelperViewController: UITextFieldDelegate {
             return
         }
 
-        NetworkManager.shared.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
+        CoreNettworkManager.shared.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
             switch response {
             case let .success(success):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

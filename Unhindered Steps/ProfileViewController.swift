@@ -260,7 +260,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0:
-            NetworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
+            CoreNettworkManager.shared.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {
@@ -274,7 +274,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             }
 
         case 1:
-            NetworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
+            CoreNettworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {
@@ -289,7 +289,7 @@ extension ProfileViewController: UICollectionViewDelegate {
 
         case 2:
             print("Sık kullanılanlar")
-            NetworkManager.shared.fetchMostlyUsed(id: id) { response in
+            CoreNettworkManager.shared.fetchMostlyUsed(id: id) { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {

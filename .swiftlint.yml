@@ -2,3 +2,4 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - line_length
   - cyclomatic_complexity
   - trailing_comma
+  - function_parameter_count

@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     @objc func sendMail() {
         // TODO: arama geçmişi mail at
-        NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
+        CoreNettworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
             switch response {
             case let .success(success):
                 print(success)

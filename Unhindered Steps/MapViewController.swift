@@ -265,7 +265,7 @@ extension MapViewController: MKMapViewDelegate {
             }
 
         } else {
-            NetworkManager.shared.makeFavorite(id: viewModel.id, query: title ?? "") { response in
+            CoreNettworkManager.shared.makeFavorite(id: viewModel.id, query: title ?? "") { response in
                 switch response {
                 case let .success(success):
                     print("Saved as favorite: \(success)")
