@@ -12,6 +12,18 @@ class ProfileViewController: UIViewController {
 
     var id: String = ""
 
+    var networkManager: FavoritesFetchable
+
+    init(networkManager: FavoritesFetchable = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Components
 
     private let nameLabel: UILabel = {
@@ -274,7 +286,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             }
 
         case 1:
-            CoreNettworkManager.shared.fetchFavorites(id: viewModel.user?.id ?? "") { response in
+            networkManager.fetchFavorites(id: viewModel.user?.id ?? "") { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {

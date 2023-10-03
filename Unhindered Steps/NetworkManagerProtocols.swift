@@ -7,42 +7,42 @@
 
 import Foundation
 
-protocol LoginInterface {
+protocol LoginInterface: AnyObject {
     func login(email: String, password: String, completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void)
 }
 
-protocol RegisterInterface {
+protocol RegisterInterface: AnyObject {
     func register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String, completion: @escaping (Result<RegisterResponse, ErrosTypes>) -> Void)
 }
 
-protocol FavoritesFetchable {
+protocol FavoritesFetchable: AnyObject {
     func fetchFavorites(id: String, completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void)
 }
 
-protocol RecentQueriesFetchable {
+protocol RecentQueriesFetchable: AnyObject {
     func fetchRecentQueries(id: String, completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void)
 }
 
-protocol QueryMakeble {
+protocol QueryMakeble: AnyObject {
     func makeQuery(id: String, query: String, completion: @escaping (Result<AddQueryResponse, ErrosTypes>) -> Void)
 }
 
-protocol FavoriteMakeble {
+protocol FavoriteMakeble: AnyObject {
     func makeFavorite(id: String, query: String, completion: @escaping (Result<AddFavoriteResponse, ErrosTypes>) -> Void)
 }
 
-protocol MailSendable {
+protocol MailSendable: AnyObject {
     func sendMail(id: String, mail: String, topic: String, completion: @escaping (Result<MailResponse, ErrosTypes>) -> Void)
 }
 
-protocol MostlyUsedFetchable {
+protocol MostlyUsedFetchable: AnyObject {
     func fetchMostlyUsed(id: String, completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void)
 }
 
-protocol HelperUpdateble {
+protocol HelperUpdateble: AnyObject {
     func updateHelper(id: String, helperName: String, helperMail: String, helperPhone: String, completion: @escaping (Result<UpdateHelperResponse, ErrosTypes>) -> Void)
 }
 
-protocol UserUpdateable {
+protocol UserUpdateable: AnyObject {
     func updateUser(id: String, mail: String, password: String, completion: @escaping (Result<UpdateUserResponse, ErrosTypes>) -> Void)
 }

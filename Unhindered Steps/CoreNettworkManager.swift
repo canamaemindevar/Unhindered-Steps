@@ -56,22 +56,6 @@ final class CoreNettworkManager: CoreNetworkManagerInterface {
 // MARK: - Queries
 
 extension CoreNettworkManager {
-    func login(email: String, password: String, completion: @escaping (Result<LoginResponse, ErrosTypes>) -> Void) {
-        let endpoint = Endpoint.login(email: email, password: password)
-        request(endpoint, completion: completion)
-    }
-
-    func register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String, completion: @escaping (Result<RegisterResponse, ErrosTypes>) -> Void) {
-        let endpoint = Endpoint.register(username: username, password: password, mail: mail, helperMail: helperMail, helperName: helperName, helperPhone: helperPhone)
-
-        request(endpoint, completion: completion)
-    }
-
-    func fetchFavorites(id: String, completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void) {
-        let endpoint = Endpoint.favorites(id: id)
-        request(endpoint, completion: completion)
-    }
-
     func fetchRecentQueries(id: String, completion: @escaping (Result<FetchQueryResponse, ErrosTypes>) -> Void) {
         let endpoint = Endpoint.recentQueries(id: id)
         request(endpoint, completion: completion)

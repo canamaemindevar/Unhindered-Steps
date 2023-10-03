@@ -59,24 +59,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func checkUser() -> UIViewController {
-        var vc: UIViewController = RegisterViewController()
+        var targetVc: UIViewController = RegisterViewController()
         CoreDataManager.shared.getDataForFavs(completion: { response in
             switch response {
             case let .success(success):
                 if success.count != 0 {
-                    vc = self.mainTabbar
+                    targetVc = self.mainTabbar
 
                 } else {
-                    vc = self.loginVc
+                    targetVc = self.loginVc
                 }
 
             case .failure:
-                vc = self.loginVc
+                targetVc = self.loginVc
             }
 
         })
 
-        return vc
+        return targetVc
 //        if LocalState.hasOnboarded {
 //            return mainTabbar
 //        }else {

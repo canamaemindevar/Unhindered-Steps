@@ -21,8 +21,19 @@ class RegisterViewController: UIViewController {
     private lazy var viewModel = RegisterViewModel()
 
     weak var registerSuccesDelegate: RegisterSuccesfullDelegate?
+    var networkManager: RegisterInterface
 
     // MARK: - Componets
+
+    init(networkManager: RegisterInterface = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -228,28 +239,27 @@ class RegisterViewController: UIViewController {
             return
         }
 
-        CoreNettworkManager.shared.register(username: username, password: password, mail: mail, helperMail: helpermail, helperName: helpername, helperPhone: helperphone)
-            { response in
-                switch response {
-                case let .success(success):
+        networkManager.register(username: username, password: password, mail: mail, helperMail: helpermail, helperName: helpername, helperPhone: helperphone) { response in
+            switch response {
+            case let .success(success):
 
-                    DispatchQueue.main.async {
-                        if success.message == "succes" {
-                            self.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                                NSLog("The \"OK\" alert occured.")
-                            }))
-                            self.present(self.alert, animated: true, completion: nil)
-                            self.registerSuccesDelegate?.registerSuccesfull()
-                        } else {
-                            print("hata oluştu")
-                            self.errorMessageLabel.text = "Hata ile karşılaşıldı."
-                        }
+                DispatchQueue.main.async {
+                    if success.message == "succes" {
+                        self.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                            NSLog("The \"OK\" alert occured.")
+                        }))
+                        self.present(self.alert, animated: true, completion: nil)
+                        self.registerSuccesDelegate?.registerSuccesfull()
+                    } else {
+                        print("hata oluştu")
+                        self.errorMessageLabel.text = "Hata ile karşılaşıldı."
                     }
-
-                case let .failure(failure):
-                    print(failure)
                 }
+
+            case let .failure(failure):
+                print(failure)
             }
+        }
     }
 
     private func configureView(withMessage message: String) {

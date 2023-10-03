@@ -26,6 +26,17 @@ class LoginViewController: UIViewController {
 
     weak var routeRegisterDelegate: LoginViewRouteRegister?
     weak var loginSuccesDelegate: LoginSuccesfullInterface?
+    var networkManager: LoginInterface
+
+    init(networkManager: LoginInterface = NetworkManager()) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -180,8 +191,10 @@ extension LoginViewController {
             configureView(withMessage: "Username / password cannot be blank")
             return
         }
-
-        CoreNettworkManager.shared.login(email: username, password: password) { response in
+        networkManager.login(email: username, password: password) { response in
+            // CoreNettworkManager.shared.login(email: username, password: password) { response in
+            print("çalıştı")
+            print("<------>")
             switch response {
             case let .success(success):
 
