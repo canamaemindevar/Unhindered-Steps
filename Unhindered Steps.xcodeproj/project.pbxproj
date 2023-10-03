@@ -42,6 +42,7 @@
 		A9B4578C2A0151BB0069432E /* ProfileDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */; };
 		A9B4578F2A0154BC0069432E /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4578E2A0154BC0069432E /* MainTabbar.swift */; };
 		A9BC80AE2A08EA8300260237 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BC80AD2A08EA8300260237 /* LoginResponse.swift */; };
+		A9BEEBE62ACC90D30074A3C5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A9BEEBE52ACC90D30074A3C5 /* .swiftlint.yml */; };
 		A9C2B7062A35CF8300EEF6EE /* UpdateUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2B7052A35CF8300EEF6EE /* UpdateUserResponse.swift */; };
 		A9C2B7082A35CFF600EEF6EE /* UpdateHelperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2B7072A35CFF600EEF6EE /* UpdateHelperResponse.swift */; };
 		A9C2B70A2A35D06000EEF6EE /* PopularResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2B7092A35D06000EEF6EE /* PopularResponse.swift */; };
@@ -88,6 +89,7 @@
 		A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataStruct.swift; sourceTree = "<group>"; };
 		A9B4578E2A0154BC0069432E /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		A9BC80AD2A08EA8300260237 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		A9BEEBE52ACC90D30074A3C5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A9C2B7052A35CF8300EEF6EE /* UpdateUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserResponse.swift; sourceTree = "<group>"; };
 		A9C2B7072A35CFF600EEF6EE /* UpdateHelperResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHelperResponse.swift; sourceTree = "<group>"; };
 		A9C2B7092A35D06000EEF6EE /* PopularResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularResponse.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		A9B4574C29FEA8070069432E = {
 			isa = PBXGroup;
 			children = (
+				A9BEEBE52ACC90D30074A3C5 /* .swiftlint.yml */,
 				A9B4575729FEA8070069432E /* Unhindered Steps */,
 				A9B4575629FEA8070069432E /* Products */,
 				F1DA289BA19F3718986AF076 /* Pods */,
@@ -311,6 +314,8 @@
 				A9B4575229FEA8070069432E /* Frameworks */,
 				A9B4575329FEA8070069432E /* Resources */,
 				2DD03EB7FB212C7244CE5BC0 /* [CP] Embed Pods Frameworks */,
+				A9BEEBE32ACC882B0074A3C5 /* Swiftlint */,
+				A9BEEBE42ACC893F0074A3C5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -359,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BEEBE62ACC90D30074A3C5 /* .swiftlint.yml in Resources */,
 				A9B4576529FEA8080069432E /* LaunchScreen.storyboard in Resources */,
 				A9B4576229FEA8080069432E /* Assets.xcassets in Resources */,
 				A9B4576029FEA8070069432E /* Main.storyboard in Resources */,
@@ -384,6 +390,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unhindered Steps/Pods-Unhindered Steps-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A9BEEBE32ACC882B0074A3C5 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		A9BEEBE42ACC893F0074A3C5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat > /dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 		C950BCFB2406C32B1CAE502A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - UpdateHelperResponse
+
 struct UpdateHelperResponse: Codable {
     let message, helperName, helperPhone, helperMail: String?
 }
-

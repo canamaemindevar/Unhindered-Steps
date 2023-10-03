@@ -12,9 +12,9 @@
 import Foundation
 
 // MARK: - FetchFavoritesResponseElement
-//struct FetchFavoritesResponseElement: Codable {
-//    let word: String?
-//}
-//
-//typealias FetchFavoritesResponse = [FetchFavoritesResponseElement]
 
+// struct FetchFavoritesResponseElement: Codable {
+//    let word: String?
+// }
+//
+// typealias FetchFavoritesResponse = [FetchFavoritesResponseElement]

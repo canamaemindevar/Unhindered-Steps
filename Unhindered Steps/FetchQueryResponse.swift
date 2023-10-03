@@ -13,9 +13,9 @@
 import Foundation
 
 // MARK: - FetchQueryResponseElement
+
 struct FetchQueryResponseElement: Codable {
     let word: String?
 }
 
 typealias FetchQueryResponse = [FetchQueryResponseElement]
-

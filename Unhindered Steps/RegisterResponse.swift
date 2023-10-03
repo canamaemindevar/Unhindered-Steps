@@ -13,7 +13,7 @@
 import Foundation
 
 // MARK: - RegisterResponse
+
 struct RegisterResponse: Codable {
     let message, username, helperName: String?
 }
-

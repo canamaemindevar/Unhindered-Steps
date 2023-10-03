@@ -13,6 +13,7 @@
 import Foundation
 
 // MARK: - AddFavoriteResponse
+
 struct AddFavoriteResponse: Codable {
     let message, word, userID: String?
 
@@ -21,4 +22,3 @@ struct AddFavoriteResponse: Codable {
         case userID = "userId"
     }
 }
-

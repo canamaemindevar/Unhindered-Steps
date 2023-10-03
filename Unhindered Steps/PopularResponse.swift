@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - PopularResponseElement
+
 struct PopularResponseElement: Codable {
     let word: String?
 }

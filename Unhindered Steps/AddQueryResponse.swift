@@ -13,6 +13,7 @@
 import Foundation
 
 // MARK: - AddQueryResponse
+
 struct AddQueryResponse: Codable {
     let message, word, userID: String?
 
@@ -21,4 +22,3 @@ struct AddQueryResponse: Codable {
         case userID = "userId"
     }
 }
-

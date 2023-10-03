@@ -8,25 +8,20 @@
 import Foundation
 
 protocol LoginViewModelInterface {
-    var view: LoginViewController? {get set}
+    var view: LoginViewController? { get set }
     func viewDidLoad()
-    func loginRequest(email:String, Password: String)
+    func loginRequest(email: String, password: String)
 }
 
 class LoginViewModel: LoginViewModelInterface {
-  
-    
-    
-   weak var view: LoginViewController?
-    
+    weak var view: LoginViewController?
     func viewDidLoad() {
         view?.prepare()
-        loginRequest(email: "emincan", Password: "Emincan21.")
+        loginRequest(email: "emincan", password: "Emincan21.")
     }
-    
-    func loginRequest(email:String, Password: String) {
-        //TODO: NetworkMAnager.shared
-        NetworkManager.shared.login(email: email, password: Password) { response in
+
+    func loginRequest(email: String, password: String) {
+        NetworkManager.shared.login(email: email, password: password) { response in
             print(response)
         }
     }

@@ -8,12 +8,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    
     var array: [FetchQueryResponseElement]
     var user: UserModel
-    
-    
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,10 +18,10 @@ class DetailViewController: UIViewController {
         tableView.separatorColor = .systemGray
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.layer.cornerRadius = 0
-        
+
         return tableView
     }()
-    
+
     private let mailButton: UIButton = {
         let mailButton = UIButton()
         mailButton.translatesAutoresizingMaskIntoConstraints = false
@@ -33,17 +30,18 @@ class DetailViewController: UIViewController {
         mailButton.setTitleColor(.systemBlue, for: [])
         return mailButton
     }()
-    
+
     init(array: [FetchQueryResponseElement], user: UserModel) {
         self.array = array
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
@@ -56,45 +54,35 @@ class DetailViewController: UIViewController {
             view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 8),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 2),
             mailButton.heightAnchor.constraint(equalToConstant: 120),
-            mailButton.widthAnchor.constraint(equalToConstant: 120)
+            mailButton.widthAnchor.constraint(equalToConstant: 120),
         ])
     }
-    
-
-  
-
 }
 
 extension DetailViewController {
     @objc func sendMail() {
-        
-        //TODO: arama geçmişi mail at
-        NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: self.title ?? "") { response in
+        // TODO: arama geçmişi mail at
+        NetworkManager.shared.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
             switch response {
-            case .success(let success):
+            case let .success(success):
                 print(success)
-            case .failure(let failure):
+            case let .failure(failure):
                 print(failure)
             }
         }
-        
     }
 }
 
 extension DetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.array.count
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        array.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = array[indexPath.row].word
         return cell
     }
-    
-    
 }
 
 extension DetailViewController: UITableViewDelegate {}
-

@@ -5,18 +5,17 @@
 //  Created by Emincan Antalyalı on 23.05.2023.
 //
 
-import UIKit
 import MaterialComponents.MaterialTextControls_FilledTextAreas
 import MaterialComponents.MaterialTextControls_FilledTextFields
 import MaterialComponents.MaterialTextControls_OutlinedTextAreas
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
+import UIKit
 
 class UpdateHelperViewController: UIViewController {
-    
     var id: String = ""
     var mail: String = ""
     var username: String = ""
-    
+
     private let stackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +26,7 @@ class UpdateHelperViewController: UIViewController {
         sView.backgroundColor = .systemGray4
         return sView
     }()
-    
+
     private let helperMailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +34,7 @@ class UpdateHelperViewController: UIViewController {
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
+
     private let helperNameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +42,7 @@ class UpdateHelperViewController: UIViewController {
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
+
     private let helperPhoneNumber: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +51,7 @@ class UpdateHelperViewController: UIViewController {
         mailTextField.adjustsFontSizeToFitWidth = true
         return mailTextField
     }()
-    
+
     private let errorMessageLabel: UILabel = {
         let errorMessageLabel = UILabel()
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -59,23 +60,25 @@ class UpdateHelperViewController: UIViewController {
         errorMessageLabel.font = .boldSystemFont(ofSize: 10)
         return errorMessageLabel
     }()
+
     private let registerButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .systemBlue
         loginButton.setTitle("Yardımcını Güncelle", for: .normal)
         loginButton.layer.cornerRadius = 10
-        
+
         return loginButton
     }()
-    
-    
+
     var helpername: String? {
         return helperNameTextField.text
     }
+
     var helpermail: String? {
         return helperMailTextField.text
     }
+
     var helperphone: String? {
         return helperPhoneNumber.text
     }
@@ -93,20 +96,19 @@ class UpdateHelperViewController: UIViewController {
         stackview.addArrangedSubview(helperNameTextField)
         stackview.addArrangedSubview(helperMailTextField)
         stackview.addArrangedSubview(helperPhoneNumber)
-        
+
         stackview.addArrangedSubview(registerButton)
         stackview.addArrangedSubview(errorMessageLabel)
-        
+
         registerButton.addTarget(self, action: #selector(updateHelper), for: .touchUpInside)
-        
+
         NSLayoutConstraint.activate([
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
             stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-    
 
     private func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
@@ -114,28 +116,26 @@ class UpdateHelperViewController: UIViewController {
     }
 }
 
-
 extension UpdateHelperViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_: UITextField) -> Bool {
         helperPhoneNumber.endEditing(true)
         helperMailTextField.endEditing(true)
         helperNameTextField.endEditing(true)
         return true
     }
-    
+
     @objc func updateHelper() {
-        
-        guard let helpermail = helpermail , let  helpername = helpername, let helperphone = helperphone
+        guard let helpermail = helpermail, let helpername = helpername, let helperphone = helperphone
         else {
             return
         }
-        
+
         NetworkManager.shared.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
             switch response {
-            case .success(let success):
+            case let .success(success):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.navigationController?.popViewController(animated: true)
-                    
+
                     CoreDataManager.shared.saveCoreData(withModel: UserModel(id: self.id,
                                                                              username: self.username,
                                                                              mail: self.mail,
@@ -143,7 +143,7 @@ extension UpdateHelperViewController: UITextFieldDelegate {
                                                                              helperMail: success.helperMail,
                                                                              helperPhone: success.helperPhone))
                 }
-            case .failure(let failure):
+            case let .failure(failure):
                 print(failure)
             }
         }
