@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
         let mailButton = UIButton()
         mailButton.translatesAutoresizingMaskIntoConstraints = false
         mailButton.setImage(UIImage(systemName: "mail.stack"), for: [])
-        mailButton.setTitle("Mail At", for: [])
+        mailButton.setTitle("sendMail".localized, for: [])
         mailButton.setTitleColor(.systemBlue, for: [])
         return mailButton
     }()

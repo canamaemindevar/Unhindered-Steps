@@ -50,7 +50,7 @@ class MapViewController: UIViewController {
 
     private let phoneCallButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Acil Arama", for: .normal)
+        button.setTitle("emergencyCall".localized, for: .normal)
         button.setImage(UIImage(systemName: "phone"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,7 @@ class MapViewController: UIViewController {
 
     private let healtyhButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sağlık", for: .normal)
+        button.setTitle("health".localized, for: .normal)
         button.setImage(UIImage(systemName: "stethoscope"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +74,7 @@ class MapViewController: UIViewController {
 
     private let saleAndServiceButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Bakım Ve Satış", for: .normal)
+        button.setTitle("supportAndSell".localized, for: .normal)
         button.setImage(UIImage(systemName: "oilcan"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -181,14 +181,14 @@ extension MapViewController {
 
     @objc func healthList() {
         DispatchQueue.main.async {
-            self.buttonString = ["Hastane", "Eczane", "Medikal", "Engelli Tuvaleti"]
+            self.buttonString = ["hospital".localized, "pharmacy".localized, "medical".localized, "disabledToilet".localized]
             self.mainCollectionView.reloadData()
         }
     }
 
     @objc func serviceList() {
         DispatchQueue.main.async {
-            self.buttonString = ["Sandalye Satış Mağazası", "Sandalye Bakım Merkezi"]
+            self.buttonString = ["wheelchairOutlet".localized, "wheelchairCareCenter".localized]
             self.mainCollectionView.reloadData()
         }
     }

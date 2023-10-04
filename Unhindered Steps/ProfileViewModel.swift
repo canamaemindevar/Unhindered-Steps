@@ -23,10 +23,10 @@ class ProfileViewModel: ProfileViewModelInterface {
 
     var user: UserModel?
     var userDataChoiceArr: [ProfileDataStruct] = [
-        ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "Arama Geçmişi"),
-        ProfileDataStruct(name: "list.star", string: "Favoriler"),
-        ProfileDataStruct(name: "folder.fill.badge.plus", string: "Sık Kullanılanlar"),
-        ProfileDataStruct(name: "power.circle", string: "Çıkış Yap"),
+        ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "searchHistory".localized),
+        ProfileDataStruct(name: "list.star", string: "favorites".localized),
+        ProfileDataStruct(name: "folder.fill.badge.plus", string: "mostlyUsed".localized),
+        ProfileDataStruct(name: "power.circle", string: "logout".localized),
     ]
     func viewDidLoad() {
         view?.prepare()

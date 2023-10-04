@@ -1,0 +1,53 @@
+/* 
+  Localizable.strings
+  Unhindered Steps
+
+  Created by Emincan Antalyalı on 4.10.2023.
+  
+*/
+
+
+"enterUserName" = "Enter username";
+"enterPassword" = "Enter Password";
+"login" = "Login";
+"register" = "Register";
+"crateAnAccount" = "Create new account";
+"yourHelper" = "Your helper:";
+"showPersonelInformation" = "Show personel information";
+"usernamePasswordCannotBeBlank" = "Username / password cannot be blank";
+
+
+"updatePersonalInformation" = "Update personal information";
+"updateHelperInformation" = "Update helper information";
+"showHelperInformation" = "Show helper information";
+"searchHistory" = "Search History";
+"favorites" = "Favorites";
+"mostlyUsed" = "Mostly Used";
+"logout" = "Log out";
+
+"emergencyCall" = "Emergency Call";
+"health" = "Health";
+"supportAndSell" = "Support and Sell";
+
+"hospital" = "Hospital";
+"pharmacy" = "Pharmacy";
+"medical" = "Medical";
+"disabledToilet" = "Disabled Toilet";
+"wheelchairOutlet" = "Wheelchair Outlet";
+"wheelchairCareCenter" = "Wheelchair Care Center";
+"sendMail" = "Send Mail";
+
+
+"updateHelper" = "Update Helper";
+"enterHelperPhone" = "Enter your relative's number to call in case of emergency.";
+"enterHelperName" = "Enter the name of a relative.";
+"enterHelperMail" = "Enter the e-mail address of a relative of yours.";
+"enterMail" = "Enter Mail";
+
+"updateUser" = "Update User";
+"enterPassword" = "Enter Password";
+"enterPasswordAgain" = "Enter Password Again";
+
+"succes" = "Succes";
+"registerSucces" = "Successfully Registered, Please log in now";
+"passwordMatchError" = "Your password does not match";

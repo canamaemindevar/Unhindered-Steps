@@ -15,14 +15,20 @@ protocol LoginViewModelInterface {
 
 class LoginViewModel: LoginViewModelInterface {
     weak var view: LoginViewController?
+
+    var logger: Loggable
+
+    init(logger: Loggable = Logger()) {
+        self.logger = logger
+    }
+
     func viewDidLoad() {
         view?.prepare()
-        loginRequest(email: "emincan", password: "Emincan21.")
     }
 
     func loginRequest(email: String, password: String) {
+        logger.log(email, function: #function, line: #line, filePath: #filePath)
         view?.networkManager.login(email: email, password: password) { response in
-            print("vm den çalıştı")
             print(response)
         }
     }

@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .italicSystemFont(ofSize: 20)
         label.textColor = .black
-        label.text = "Yardımcın:"
+        label.text = "yourHelper:".localized
         return label
     }()
 
@@ -124,7 +124,7 @@ class ProfileViewController: UIViewController {
     private let updateMyInfoBtn: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Kişisel Bilgilerimi Güncelle", for: .normal)
+        button.setTitle("updatePersonalInformation".localized, for: .normal)
         button.setImage(.init(systemName: "person"), for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.setTitleColor(.label, for: .normal)
@@ -135,7 +135,7 @@ class ProfileViewController: UIViewController {
     private let updateHelperInfoBtn: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Yardımcı Bilgilerimi Güncelle", for: .normal)
+        button.setTitle("updateHelperInformation".localized, for: .normal)
         button.setImage(.init(systemName: "person.2"), for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.setTitleColor(.label, for: .normal)
@@ -275,7 +275,7 @@ extension ProfileViewController: UICollectionViewDelegate {
                 case let .success(success):
                     DispatchQueue.main.async {
                         let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "Arama Geçmişi"
+                        targetVc.title = "searchHistory".localized
                         self.navigationController?.pushViewController(targetVc, animated: true)
                     }
                 case let .failure(failure):
@@ -288,7 +288,7 @@ extension ProfileViewController: UICollectionViewDelegate {
                 case let .success(success):
                     DispatchQueue.main.async {
                         let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "Favoriler"
+                        targetVc.title = "favorites".localized
                         self.navigationController?.pushViewController(targetVc, animated: true)
                     }
                 case let .failure(failure):
@@ -296,13 +296,12 @@ extension ProfileViewController: UICollectionViewDelegate {
                 }
             }
         case 2:
-            print("Sık kullanılanlar")
             networkManager.fetchMostlyUsed(id: id) { response in
                 switch response {
                 case let .success(success):
                     DispatchQueue.main.async {
                         let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "Sık kullanılanlar"
+                        targetVc.title = "mostlyUsed".localized
                         self.navigationController?.pushViewController(targetVc, animated: true)
                     }
                 case let .failure(failure):

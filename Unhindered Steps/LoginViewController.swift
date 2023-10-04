@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
     private let mailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Kullanıcı adınızı giriniz."
+        mailTextField.placeholder = "enterUserName".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Şifre giriniz."
+        passwordTextField.placeholder = "enterPassword".localized
         passwordTextField.isSecureTextEntry = true
         return passwordTextField
     }()
@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .black
-        loginButton.setTitle("Giriş Yap", for: .normal)
+        loginButton.setTitle("login".localized, for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
     private let gotoRegisterButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.setTitle("Yeni Hesap Aç.", for: .normal)
+        loginButton.setTitle("crateAnAccount".localized, for: .normal)
         loginButton.setTitleColor(.black, for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
@@ -183,18 +183,15 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController {
     @objc func login() {
         guard let username = username, let password = password else {
-            configureView(withMessage: "Username / password cannot be blank")
+            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return
         }
 
         if username.isEmpty || password.isEmpty {
-            configureView(withMessage: "Username / password cannot be blank")
+            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return
         }
         networkManager.login(email: username, password: password) { response in
-            // CoreNettworkManager.shared.login(email: username, password: password) { response in
-            print("çalıştı")
-            print("<------>")
             switch response {
             case let .success(success):
 

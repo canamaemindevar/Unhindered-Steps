@@ -6,7 +6,6 @@
 //
 
 import CoreData
-import Foundation
 import UIKit
 
 protocol CoreDataManagerInterface {

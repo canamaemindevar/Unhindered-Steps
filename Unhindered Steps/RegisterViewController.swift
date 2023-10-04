@@ -60,7 +60,7 @@ class RegisterViewController: UIViewController {
     private let mailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "E-mail giriniz."
+        mailTextField.placeholder = "enterMail".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController {
     private let nameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Kullanıcı ismini giriniz."
+        mailTextField.placeholder = "enterUserName".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -76,7 +76,7 @@ class RegisterViewController: UIViewController {
     private let helperMailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Bir yakınızın e-mail giriniz."
+        mailTextField.placeholder = "enterHelperMail".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -84,7 +84,7 @@ class RegisterViewController: UIViewController {
     private let helperNameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Bir yakınızın ismini giriniz."
+        mailTextField.placeholder = "enterHelperName".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -92,7 +92,7 @@ class RegisterViewController: UIViewController {
     private let helperPhoneNumber: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Acil durumlarda aramak için yakınızın numarasını giriniz."
+        mailTextField.placeholder = "enterHelperPhone".localized
         mailTextField.autocapitalizationType = .none
         return mailTextField
     }()
@@ -100,7 +100,7 @@ class RegisterViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Şifre giriniz."
+        passwordTextField.placeholder = "enterPassword".localized
         passwordTextField.autocapitalizationType = .none
         return passwordTextField
     }()
@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController {
     private let passwordTextFieldAgain: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Şifreyi Tekrar giriniz."
+        passwordTextField.placeholder = "enterPasswordAgain".localized
         passwordTextField.autocapitalizationType = .none
         return passwordTextField
     }()
@@ -117,7 +117,7 @@ class RegisterViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .black
-        loginButton.setTitle("Kayıt Ol", for: .normal)
+        loginButton.setTitle("register".localized, for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
@@ -132,7 +132,7 @@ class RegisterViewController: UIViewController {
         return errorMessageLabel
     }()
 
-    let alert = UIAlertController(title: "Başarılı", message: "Başarıyla Kayıt edildi, Lütfen şimdi giriş yapınız", preferredStyle: .alert)
+    let alert = UIAlertController(title: "succes".localized, message: "registerSucces".localized, preferredStyle: .alert)
     var mail: String? {
         return mailTextField.text
     }
@@ -224,15 +224,15 @@ class RegisterViewController: UIViewController {
         guard let username = name, let password = password, let mail = mail, let helpermail = helpermail, let helpername = helpername,
               let helperphone = helperphone, let passwordAgain = passwordAgain
         else {
-            configureView(withMessage: "Username / password cannot be blank")
+            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return
         }
         if username.isEmpty || password.isEmpty {
-            configureView(withMessage: "Username / password cannot be blank")
+            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return
         }
         guard password == passwordAgain else {
-            configureView(withMessage: "Parolanız uyuşmuyor")
+            configureView(withMessage: "passwordMatchError".localized)
             return
         }
 
@@ -248,7 +248,6 @@ class RegisterViewController: UIViewController {
                         self.present(self.alert, animated: true, completion: nil)
                         self.registerSuccesDelegate?.registerSuccesfull()
                     } else {
-                        print("hata oluştu")
                         self.errorMessageLabel.text = "Hata ile karşılaşıldı."
                     }
                 }

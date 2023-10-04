@@ -42,7 +42,7 @@ class UpdateHelperViewController: ViewController {
     private let helperMailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Bir yakınızın e-mail giriniz."
+        mailTextField.placeholder = "enterHelperMail".localized
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
@@ -50,7 +50,7 @@ class UpdateHelperViewController: ViewController {
     private let helperNameTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Bir yakınızın ismini giriniz."
+        mailTextField.placeholder = "enterHelperName".localized
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
@@ -58,7 +58,7 @@ class UpdateHelperViewController: ViewController {
     private let helperPhoneNumber: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "Acil durumlarda aramak için yakınızın numarasını giriniz."
+        mailTextField.placeholder = "enterHelperPhone".localized
         mailTextField.backgroundColor = .secondarySystemBackground
         mailTextField.adjustsFontSizeToFitWidth = true
         return mailTextField
@@ -77,7 +77,7 @@ class UpdateHelperViewController: ViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .systemBlue
-        loginButton.setTitle("Yardımcını Güncelle", for: .normal)
+        loginButton.setTitle("updateHelper".localized, for: .normal)
         loginButton.layer.cornerRadius = 10
 
         return loginButton

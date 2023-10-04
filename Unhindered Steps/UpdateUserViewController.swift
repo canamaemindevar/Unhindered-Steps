@@ -44,7 +44,7 @@ class UpdateUserViewController: UIViewController {
     private let mailTextField: UITextField = {
         let mailTextField = MDCFilledTextField()
         mailTextField.translatesAutoresizingMaskIntoConstraints = false
-        mailTextField.placeholder = "E-mail giriniz."
+        mailTextField.placeholder = "enterMail".localized
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
@@ -61,7 +61,7 @@ class UpdateUserViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .systemBlue
-        loginButton.setTitle("Kullancı  güncelle", for: .normal)
+        loginButton.setTitle("updateUser".localized, for: .normal)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
@@ -69,7 +69,7 @@ class UpdateUserViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Şifre giriniz."
+        passwordTextField.placeholder = "enterPassword.".localized
         passwordTextField.backgroundColor = .secondarySystemBackground
         return passwordTextField
     }()
@@ -77,7 +77,7 @@ class UpdateUserViewController: UIViewController {
     private let passwordTextFieldAgain: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Şifreyi Tekrar giriniz."
+        passwordTextField.placeholder = "enterPasswordAgain".localized
         passwordTextField.backgroundColor = .secondarySystemBackground
         return passwordTextField
     }()
@@ -103,10 +103,6 @@ class UpdateUserViewController: UIViewController {
     var passwordAgain: String? {
         return passwordTextFieldAgain.text
     }
-
-//    var name: String? {
-//        return nameTextField.text
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
