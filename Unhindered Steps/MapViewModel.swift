@@ -21,9 +21,13 @@ class MapViewModel: MapViewModelInterface {
     var id = ""
     var user: UserModel?
     var networkManager: QueryMakeble
+    var dbManager: CoreDataManagerInterface
 
-    init(networkManager: QueryMakeble = NetworkManager()) {
+    init(networkManager: QueryMakeble = NetworkManager(),
+         dbManager: CoreDataManagerInterface = CoreDataManager())
+    {
         self.networkManager = networkManager
+        self.dbManager = dbManager
     }
 
     func viewDidLoad() {
@@ -33,7 +37,7 @@ class MapViewModel: MapViewModelInterface {
     }
 
     func viewDidAppear() {
-        CoreDataManager.shared.getDataForFavs { response in
+        dbManager.getDataForFavs { response in
             switch response {
             case let .success(success):
                 self.id = success.last?.id ?? ""

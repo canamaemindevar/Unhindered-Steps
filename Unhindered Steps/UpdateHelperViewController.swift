@@ -5,21 +5,21 @@
 //  Created by Emincan Antalyalı on 23.05.2023.
 //
 
-import MaterialComponents.MaterialTextControls_FilledTextAreas
-import MaterialComponents.MaterialTextControls_FilledTextFields
-import MaterialComponents.MaterialTextControls_OutlinedTextAreas
-import MaterialComponents.MaterialTextControls_OutlinedTextFields
+import MaterialComponents
 import UIKit
 
-class UpdateHelperViewController: UIViewController {
+class UpdateHelperViewController: ViewController {
     var id: String = ""
     var mail: String = ""
     var username: String = ""
 
     var networkManager: HelperUpdateble
-
-    init(networkManager: HelperUpdateble = NetworkManager()) {
+    var dbManager: CoreDataManagerInterface
+    init(networkManager: HelperUpdateble = NetworkManager(),
+         dbManager: CoreDataManagerInterface = CoreDataManager())
+    {
         self.networkManager = networkManager
+        self.dbManager = dbManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -148,12 +148,12 @@ extension UpdateHelperViewController: UITextFieldDelegate {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.navigationController?.popViewController(animated: true)
 
-                    CoreDataManager.shared.saveCoreData(withModel: UserModel(id: self.id,
-                                                                             username: self.username,
-                                                                             mail: self.mail,
-                                                                             helperName: success.helperName,
-                                                                             helperMail: success.helperMail,
-                                                                             helperPhone: success.helperPhone))
+                    self.dbManager.saveCoreData(withModel: UserModel(id: self.id,
+                                                                     username: self.username,
+                                                                     mail: self.mail,
+                                                                     helperName: success.helperName,
+                                                                     helperMail: success.helperMail,
+                                                                     helperPhone: success.helperPhone))
                 }
             case let .failure(failure):
                 print(failure)

@@ -169,20 +169,26 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-
         view.addSubview(dummyView)
         view.addSubview(dummyView2)
         view.addSubview(mainCollectionView)
         view.addSubview(updateMyInfoBtn)
         view.addSubview(updateHelperInfoBtn)
         view.addSubview(profileStackview)
-
         view.addSubview(imageView)
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
-
         updateMyInfoBtn.addTarget(self, action: #selector(seguToUserEdit), for: .touchUpInside)
         updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
+        imageView.layer.borderWidth = 1
+        imageView.layer.masksToBounds = false
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 120 / 2
+        setupConstraints()
+    }
+
+    func setupConstraints() {
         let headerViewHeight = view.frame.height / 3.4
         let headerView2Height = headerViewHeight / 2.5
         let width = view.frame.width / 3
@@ -193,14 +199,6 @@ class ProfileViewController: UIViewController {
             imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
 
         ])
-
-        imageView.layer.borderWidth = 1
-        imageView.layer.masksToBounds = false
-        imageView.layer.borderColor = UIColor.black.cgColor
-
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 120 / 2
-
         NSLayoutConstraint.activate([
             profileStackview.centerYAnchor.constraint(equalTo: dummyView.centerYAnchor),
             profileStackview.centerXAnchor.constraint(equalTo: dummyView.centerXAnchor),
@@ -284,7 +282,6 @@ extension ProfileViewController: UICollectionViewDelegate {
                     print(failure)
                 }
             }
-
         case 1:
             networkManager.fetchFavorites(id: viewModel.user?.id ?? "") { response in
                 switch response {
@@ -298,7 +295,6 @@ extension ProfileViewController: UICollectionViewDelegate {
                     print(failure)
                 }
             }
-
         case 2:
             print("Sık kullanılanlar")
             networkManager.fetchMostlyUsed(id: id) { response in
@@ -313,13 +309,11 @@ extension ProfileViewController: UICollectionViewDelegate {
                     print(failure)
                 }
             }
-
         case 3:
             CoreDataManager.shared.deleteCoreData(with: viewModel.user?.id ?? "")
 
             let targetVc = LoginViewController()
             view.window?.rootViewController = targetVc
-
         default:
             break
         }

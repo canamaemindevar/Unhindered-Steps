@@ -15,6 +15,12 @@ protocol ProfileViewModelInterface {
 
 class ProfileViewModel: ProfileViewModelInterface {
     weak var view: ProfileViewController?
+    var dbManger: CoreDataManagerInterface
+
+    init(dbManger: CoreDataManagerInterface = CoreDataManager()) {
+        self.dbManger = dbManger
+    }
+
     var user: UserModel?
     var userDataChoiceArr: [ProfileDataStruct] = [
         ProfileDataStruct(name: "rectangle.and.text.magnifyingglass", string: "Arama Geçmişi"),
@@ -28,7 +34,7 @@ class ProfileViewModel: ProfileViewModelInterface {
 
     // swiftlint:disable all
     func viewDidAppear() {
-        CoreDataManager.shared.getDataForFavs { response in
+        dbManger.getDataForFavs { response in
             switch response {
             case let .success(success):
                 self.user = success.last

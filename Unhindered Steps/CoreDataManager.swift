@@ -9,9 +9,22 @@ import CoreData
 import Foundation
 import UIKit
 
+protocol CoreDataManagerInterface {
+    func saveCoreData(withModel: UserModel)
+    func deleteCoreData(with dataId: String)
+    func getDataForFavs(completion: @escaping ((Result<[UserModel], Error>) -> Void))
+    var logger: Loggable { get }
+}
+
 // swiftlint:disable all
-class CoreDataManager {
+final class CoreDataManager: CoreDataManagerInterface {
     static let shared = CoreDataManager()
+    var logger: Loggable
+
+    init(logger: Loggable = Logger()) {
+        self.logger = logger
+    }
+
     func saveCoreData(withModel: UserModel) {
         DispatchQueue.main.async {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -25,9 +38,9 @@ class CoreDataManager {
                 entityDescription.setValue(withModel.helperPhone, forKey: "helperPhone")
                 do {
                     try context.save()
-                    print("Saved")
+                    self.logger.log("Saved")
                 } catch {
-                    print("Saving Error")
+                    self.logger.log("Saving Error")
                 }
             }
         }
@@ -44,17 +57,17 @@ class CoreDataManager {
                 if results.count > 0 {
                     for result in results as! [NSManagedObject] {
                         context.delete(result)
-                        print("Delete?")
+                        logger.log("Delete?")
                         do {
                             try context.save()
-                            print("Deleted")
+                            logger.log("Deleted")
                         } catch {
-                            print("error deleting")
+                            logger.log("error deleting")
                         }
                     }
                 }
             } catch {
-                print("error deleting")
+                logger.log("error deleting")
             }
         }
     }
@@ -77,7 +90,8 @@ class CoreDataManager {
                 }
                 completion(.success(anArray))
             } catch {
-                // TODO: check:
+                logger.log(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

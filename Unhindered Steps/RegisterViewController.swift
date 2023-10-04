@@ -5,10 +5,7 @@
 //  Created by Emincan Antalyalı on 30.04.2023.
 //
 
-import MaterialComponents.MaterialTextControls_FilledTextAreas
-import MaterialComponents.MaterialTextControls_FilledTextFields
-import MaterialComponents.MaterialTextControls_OutlinedTextAreas
-import MaterialComponents.MaterialTextControls_OutlinedTextFields
+import MaterialComponents
 import UIKit
 
 protocol RegisterSuccesfullDelegate: AnyObject {

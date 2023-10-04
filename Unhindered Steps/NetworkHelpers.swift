@@ -7,15 +7,6 @@
 
 import Foundation
 
-enum ErrosTypes: String, Error {
-    case invalidUrl = "InvalidUrl"
-    case noData = "No data"
-    case invalidRequest = "Invalid request"
-    case generalError = "General Error"
-    case parsingError = "Parsing Error"
-    case responseError = "Response Error"
-}
-
 protocol EndpointProtocol {
     var baseURL: String { get }
     var path: String { get }
@@ -25,13 +16,6 @@ protocol EndpointProtocol {
     func request() -> URLRequest
 }
 
-enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case delete = "DELETE"
-}
-
-// IMPORTANT
 enum Endpoint {
     case register(username: String, password: String, mail: String, helperMail: String, helperName: String, helperPhone: String)
     case login(email: String, password: String)
@@ -73,7 +57,6 @@ extension Endpoint: EndpointProtocol {
         case .recentQueries: return .post
         case .newQuery: return .post
         case .makeFavorite: return .post
-        // TODO:
         case .mostlyUsed: return .post
         case .sendMail: return .post
         case .updateHelper: return .post
@@ -126,11 +109,6 @@ extension Endpoint: EndpointProtocol {
             fatalError("URL ERROR")
         }
 
-        // Add QueryItem
-//        if case .comments(let id) = self {
-//            components.queryItems = [URLQueryItem(name: "postId", value: id)]
-//        }
-
         // Add Path
         components.path = path
 
@@ -149,14 +127,11 @@ extension Endpoint: EndpointProtocol {
                 print(error.localizedDescription)
             }
         }
-
-        // Add Header
         if let header = header {
             for (key, value) in header {
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
-
         return request
     }
 }

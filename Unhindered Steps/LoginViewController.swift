@@ -5,10 +5,7 @@
 //  Created by Emincan Antalyalı on 30.04.2023.
 //
 
-import MaterialComponents.MaterialTextControls_FilledTextAreas
-import MaterialComponents.MaterialTextControls_FilledTextFields
-import MaterialComponents.MaterialTextControls_OutlinedTextAreas
-import MaterialComponents.MaterialTextControls_OutlinedTextFields
+import MaterialComponents
 import UIKit
 
 protocol LoginViewRouteRegister: AnyObject {
@@ -27,9 +24,12 @@ class LoginViewController: UIViewController {
     weak var routeRegisterDelegate: LoginViewRouteRegister?
     weak var loginSuccesDelegate: LoginSuccesfullInterface?
     var networkManager: LoginInterface
-
-    init(networkManager: LoginInterface = NetworkManager()) {
+    var dbManager: CoreDataManagerInterface
+    init(networkManager: LoginInterface = NetworkManager(),
+         dbManager: CoreDataManagerInterface = CoreDataManager())
+    {
         self.networkManager = networkManager
+        self.dbManager = dbManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -199,14 +199,13 @@ extension LoginViewController {
             case let .success(success):
 
                 if success.message == "succes" {
-                    CoreDataManager.shared.saveCoreData(withModel: UserModel(id: success.id,
-                                                                             username: success.username,
-                                                                             mail: success.mail,
-                                                                             helperName: success.helperName,
-                                                                             helperMail: success.helperMail,
-                                                                             helperPhone: success.helperPhone))
+                    self.dbManager.saveCoreData(withModel: UserModel(id: success.id,
+                                                                     username: success.username,
+                                                                     mail: success.mail,
+                                                                     helperName: success.helperName,
+                                                                     helperMail: success.helperMail,
+                                                                     helperPhone: success.helperPhone))
                     print(success)
-
                     self.loginSuccesDelegate?.routeToTabbar()
                 } else {
                     print(success.message as Any)

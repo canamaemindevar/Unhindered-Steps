@@ -12,8 +12,6 @@ protocol CoreNetworkManagerInterface: AnyObject {
 }
 
 final class CoreNettworkManager: CoreNetworkManagerInterface {
-    static let shared = CoreNettworkManager()
-
     func request<T: Codable>(_ endpoint: Endpoint, completion: @escaping (Result<T, ErrosTypes>) -> Void) {
         let task = URLSession.shared.dataTask(with: endpoint.request()) { data, response, error in
 

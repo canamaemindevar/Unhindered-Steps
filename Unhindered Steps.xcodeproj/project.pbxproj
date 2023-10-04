@@ -12,6 +12,9 @@
 		A92AB27A2A01B8AC000CFF29 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */; };
 		A92AB27C2A024F6E000CFF29 /* CoreNettworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */; };
 		A92AB27E2A024FD5000CFF29 /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */; };
+		A9493C9F2ACD80EB0017FC94 /* ErrosTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */; };
+		A9493CA12ACD81020017FC94 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CA02ACD81020017FC94 /* HTTPMethod.swift */; };
+		A9493CAB2ACD82950017FC94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CAA2ACD82950017FC94 /* Logger.swift */; };
 		A961B3932A1576C70081A824 /* FetchFavoritesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */; };
 		A961B3952A1576FD0081A824 /* FetchQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */; };
 		A961B3972A15772C0081A824 /* AddFavoriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */; };
@@ -59,6 +62,9 @@
 		A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNettworkManager.swift; sourceTree = "<group>"; };
 		A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelpers.swift; sourceTree = "<group>"; };
+		A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrosTypes.swift; sourceTree = "<group>"; };
+		A9493CA02ACD81020017FC94 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A9493CAA2ACD82950017FC94 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFavoritesResponse.swift; sourceTree = "<group>"; };
 		A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQueryResponse.swift; sourceTree = "<group>"; };
 		A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteResponse.swift; sourceTree = "<group>"; };
@@ -121,6 +127,65 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		A9493CA22ACD81B60017FC94 /* ProflileView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577A29FEA94A0069432E /* ProfileViewModel.swift */,
+				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
+			);
+			name = ProflileView;
+			sourceTree = "<group>";
+		};
+		A9493CA32ACD81D20017FC94 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577C29FEA95B0069432E /* MapViewModel.swift */,
+				A9B4577629FEA9110069432E /* MapViewController.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
+		A9493CA42ACD81F40017FC94 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */,
+			);
+			name = DetailView;
+			sourceTree = "<group>";
+		};
+		A9493CA52ACD81FD0017FC94 /* UpdateHelperView */ = {
+			isa = PBXGroup;
+			children = (
+				A9A5960F2A1D082600694785 /* UpdateHelperViewController.swift */,
+			);
+			name = UpdateHelperView;
+			sourceTree = "<group>";
+		};
+		A9493CA62ACD82090017FC94 /* UpdateUserView */ = {
+			isa = PBXGroup;
+			children = (
+				A91E66502A1E0DCC0077D8FD /* UpdateUserViewController.swift */,
+			);
+			name = UpdateUserView;
+			sourceTree = "<group>";
+		};
+		A9493CA72ACD82370017FC94 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
+				A9B4578229FEA9D60069432E /* RegisterViewModel.swift */,
+			);
+			name = RegisterView;
+			sourceTree = "<group>";
+		};
+		A9493CA92ACD82840017FC94 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				A9493CAA2ACD82950017FC94 /* Logger.swift */,
+			);
+			name = Logger;
+			sourceTree = "<group>";
+		};
 		A961B39C2A17A7BE0081A824 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +227,6 @@
 				A9B4576C29FEA88C0069432E /* Base */,
 				A9B4578829FEBB8B0069432E /* Managers */,
 				A9B4578529FEA9F20069432E /* Extensions+Helpers */,
-				A9B4578429FEA9E40069432E /* Onboarding */,
 				A9B4576D29FEA89F0069432E /* Feature */,
 			);
 			path = "Unhindered Steps";
@@ -187,8 +251,9 @@
 		A9B4576D29FEA89F0069432E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				A9B4577529FEA8FA0069432E /* Tabbar */,
+				A909BB6F2A2CF7CF002EBD62 /* Cells */,
 				A9B4576F29FEA8C40069432E /* Model */,
-				A9B4577029FEA8CB0069432E /* ViewModel */,
 				A9B4577129FEA8D10069432E /* View */,
 			);
 			name = Feature;
@@ -222,50 +287,34 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A9B4577029FEA8CB0069432E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4577A29FEA94A0069432E /* ProfileViewModel.swift */,
-				A9B4577C29FEA95B0069432E /* MapViewModel.swift */,
-				A9B4577E29FEA9700069432E /* LoginViewModel.swift */,
-				A9B4578229FEA9D60069432E /* RegisterViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
 		A9B4577129FEA8D10069432E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A9B4578D2A0151EC0069432E /* Login&Register */,
-				A9B4577529FEA8FA0069432E /* SubViews */,
-				A9B4577629FEA9110069432E /* MapViewController.swift */,
-				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
-				A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */,
-				A9A5960F2A1D082600694785 /* UpdateHelperViewController.swift */,
-				A91E66502A1E0DCC0077D8FD /* UpdateUserViewController.swift */,
+				A9493CA72ACD82370017FC94 /* RegisterView */,
+				A9493CA62ACD82090017FC94 /* UpdateUserView */,
+				A9493CA52ACD81FD0017FC94 /* UpdateHelperView */,
+				A9493CA42ACD81F40017FC94 /* DetailView */,
+				A9493CA32ACD81D20017FC94 /* MapView */,
+				A9493CA22ACD81B60017FC94 /* ProflileView */,
+				A9B4578D2A0151EC0069432E /* LoginView */,
 			);
 			name = View;
 			sourceTree = "<group>";
 		};
-		A9B4577529FEA8FA0069432E /* SubViews */ = {
+		A9B4577529FEA8FA0069432E /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
 				A9B4578E2A0154BC0069432E /* MainTabbar.swift */,
-				A909BB6F2A2CF7CF002EBD62 /* Cells */,
 			);
-			name = SubViews;
-			sourceTree = "<group>";
-		};
-		A9B4578429FEA9E40069432E /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Onboarding;
+			name = Tabbar;
 			sourceTree = "<group>";
 		};
 		A9B4578529FEA9F20069432E /* Extensions+Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A9493CA92ACD82840017FC94 /* Logger */,
+				A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */,
+				A9493CA02ACD81020017FC94 /* HTTPMethod.swift */,
 			);
 			name = "Extensions+Helpers";
 			sourceTree = "<group>";
@@ -280,20 +329,20 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
-		A9B4578D2A0151EC0069432E /* Login&Register */ = {
+		A9B4578D2A0151EC0069432E /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
 				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
-				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
+				A9B4577E29FEA9700069432E /* LoginViewModel.swift */,
 			);
-			name = "Login&Register";
+			name = LoginView;
 			sourceTree = "<group>";
 		};
 		A9BEEBE72ACC92350074A3C5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */,
 				A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */,
+				A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -337,7 +386,7 @@
 				A9B4575329FEA8070069432E /* Resources */,
 				2DD03EB7FB212C7244CE5BC0 /* [CP] Embed Pods Frameworks */,
 				A9BEEBE32ACC882B0074A3C5 /* Swiftlint */,
-				A9BEEBE42ACC893F0074A3C5 /* ShellScript */,
+				A9BEEBE42ACC893F0074A3C5 /* Swift formatter */,
 			);
 			buildRules = (
 			);
@@ -415,7 +464,6 @@
 		};
 		A9BEEBE32ACC882B0074A3C5 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -432,9 +480,8 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		A9BEEBE42ACC893F0074A3C5 /* ShellScript */ = {
+		A9BEEBE42ACC893F0074A3C5 /* Swift formatter */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -442,6 +489,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Swift formatter";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -490,9 +538,11 @@
 				A961B3AB2A180EC70081A824 /* MailResponse.swift in Sources */,
 				A9C2B70A2A35D06000EEF6EE /* PopularResponse.swift in Sources */,
 				A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */,
+				A9493C9F2ACD80EB0017FC94 /* ErrosTypes.swift in Sources */,
 				A9BC80AE2A08EA8300260237 /* LoginResponse.swift in Sources */,
 				A961B3932A1576C70081A824 /* FetchFavoritesResponse.swift in Sources */,
 				A92AB27E2A024FD5000CFF29 /* NetworkHelpers.swift in Sources */,
+				A9493CAB2ACD82950017FC94 /* Logger.swift in Sources */,
 				A9A596102A1D082600694785 /* UpdateHelperViewController.swift in Sources */,
 				A9B4575929FEA8070069432E /* AppDelegate.swift in Sources */,
 				A92AB27A2A01B8AC000CFF29 /* DetailViewController.swift in Sources */,
@@ -501,6 +551,7 @@
 				A9B4578A2A0146940069432E /* UserHabitsCollectionViewCell.swift in Sources */,
 				A9B4577729FEA9110069432E /* MapViewController.swift in Sources */,
 				A92AB27C2A024F6E000CFF29 /* CoreNettworkManager.swift in Sources */,
+				A9493CA12ACD81020017FC94 /* HTTPMethod.swift in Sources */,
 				A9B4578F2A0154BC0069432E /* MainTabbar.swift in Sources */,
 				A9B4575B29FEA8070069432E /* SceneDelegate.swift in Sources */,
 				A961B3952A1576FD0081A824 /* FetchQueryResponse.swift in Sources */,
