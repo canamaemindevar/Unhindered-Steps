@@ -12,21 +12,9 @@ final class ProfileViewController: UIViewController {
 
     var id: String = ""
 
-    var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable
-
-    init(networkManager: NetworkManager = NetworkManager()) {
-        self.networkManager = networkManager
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Components
 
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +23,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let mailLabel: UILabel = {
+    let mailLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +32,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let helperLabel: UILabel = {
+    let helperLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +42,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let helperNameLabel: UILabel = {
+    let helperNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +51,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let helperMailLabel: UILabel = {
+    let helperMailLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +60,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    private let profileStackview: UIStackView = {
+    let profileStackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
@@ -82,7 +70,7 @@ final class ProfileViewController: UIViewController {
         return sView
     }()
 
-    private let helperStackview: UIStackView = {
+    let helperStackview: UIStackView = {
         let sView = UIStackView()
         sView.translatesAutoresizingMaskIntoConstraints = false
         sView.layer.cornerRadius = 5
@@ -178,8 +166,8 @@ final class ProfileViewController: UIViewController {
         view.addSubview(imageView)
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
-        updateMyInfoBtn.addTarget(self, action: #selector(seguToUserEdit), for: .touchUpInside)
-        updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
+        updateMyInfoBtn.addTarget(self, action: #selector(viewModel.seguToUserEdit), for: .touchUpInside)
+        updateHelperInfoBtn.addTarget(self, action: #selector(viewModel.segueToHelperEdit), for: .touchUpInside)
         imageView.layer.borderWidth = 1
         imageView.layer.masksToBounds = false
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -270,69 +258,15 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0:
-            networkManager.fetchRecentQueries(id: viewModel.user?.id ?? "") { response in
-                switch response {
-                case let .success(success):
-                    DispatchQueue.main.async {
-                        let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "searchHistory".localized
-                        self.navigationController?.pushViewController(targetVc, animated: true)
-                    }
-                case let .failure(failure):
-                    print(failure)
-                }
-            }
+            viewModel.fetchRecentQueries()
         case 1:
-            networkManager.fetchFavorites(id: viewModel.user?.id ?? "") { response in
-                switch response {
-                case let .success(success):
-                    DispatchQueue.main.async {
-                        let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "favorites".localized
-                        self.navigationController?.pushViewController(targetVc, animated: true)
-                    }
-                case let .failure(failure):
-                    print(failure)
-                }
-            }
+            viewModel.fetchFavorites()
         case 2:
-            networkManager.fetchMostlyUsed(id: id) { response in
-                switch response {
-                case let .success(success):
-                    DispatchQueue.main.async {
-                        let targetVc = DetailViewController(array: success, user: self.viewModel.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
-                        targetVc.title = "mostlyUsed".localized
-                        self.navigationController?.pushViewController(targetVc, animated: true)
-                    }
-                case let .failure(failure):
-                    print(failure)
-                }
-            }
+            viewModel.fetchMostlyUsed()
         case 3:
-            CoreDataManager.shared.deleteCoreData(with: viewModel.user?.id ?? "")
-
-            let targetVc = LoginViewController()
-            view.window?.rootViewController = targetVc
+            viewModel.logOut()
         default:
             break
         }
-    }
-
-    @objc func segueToHelperEdit() {
-        let targetVc = UpdateHelperViewController()
-        targetVc.id = id
-        targetVc.mail = mailLabel.text ?? ""
-        targetVc.username = nameLabel.text ?? ""
-        navigationController?.pushViewController(targetVc, animated: true)
-    }
-
-    @objc func seguToUserEdit() {
-        let targetVc = UpdateUserViewController()
-        targetVc.id = id
-        targetVc.helperMail = viewModel.user?.helperMail ?? ""
-        targetVc.helperName = viewModel.user?.helperName ?? ""
-        targetVc.helperPhone = viewModel.user?.helperPhone ?? ""
-        targetVc.username = nameLabel.text ?? ""
-        navigationController?.pushViewController(targetVc, animated: true)
     }
 }

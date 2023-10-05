@@ -15,20 +15,7 @@ final class UpdateUserViewController: UIViewController {
     var helperPhone: String = ""
     var username: String = ""
 
-    var networkManager: UserUpdateable
-    var dbManager: CoreDataManagerInterface
-    init(networkManager: UserUpdateable = NetworkManager(),
-         dbManager: CoreDataManagerInterface = CoreDataManager())
-    {
-        self.networkManager = networkManager
-        self.dbManager = dbManager
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private lazy var viewModel = UpdateUserViewModel()
 
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -48,14 +35,6 @@ final class UpdateUserViewController: UIViewController {
         mailTextField.backgroundColor = .secondarySystemBackground
         return mailTextField
     }()
-
-//    private let nameTextField: UITextField = {
-//        let mailTextField = MDCFilledTextField()
-//        mailTextField.translatesAutoresizingMaskIntoConstraints = false
-//        mailTextField.placeholder = "Kullanıcı ismini giriniz."
-//        mailTextField.backgroundColor = .secondarySystemBackground
-//        return mailTextField
-//    }()
 
     private let registerButton: UIButton = {
         let loginButton = UIButton()
@@ -82,7 +61,6 @@ final class UpdateUserViewController: UIViewController {
         return passwordTextField
     }()
 
-    // errorMessageLabel
     private let errorMessageLabel: UILabel = {
         let errorMessageLabel = UILabel()
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -106,18 +84,18 @@ final class UpdateUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
+    }
 
+    func prepare() {
         view.backgroundColor = .systemBackground
         mailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.delegate = self
-        //   nameTextField.delegate = self
         passwordTextFieldAgain.delegate = self
-        // Do any additional setup after loading the view.
         stackview.backgroundColor = .clear
-        registerButton.addTarget(self, action: #selector(updateUser), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(viewModel.updateUser), for: .touchUpInside)
         stackview.addArrangedSubview(mailTextField)
-        //   stackview.addArrangedSubview(nameTextField)
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(passwordTextFieldAgain)
         stackview.addArrangedSubview(registerButton)
@@ -138,37 +116,6 @@ extension UpdateUserViewController: UITextFieldDelegate {
         mailTextField.endEditing(true)
         passwordTextField.endEditing(true)
         passwordTextFieldAgain.endEditing(true)
-        //   nameTextField.endEditing(true)
         return true
-    }
-
-    @objc func updateUser() {
-        guard let password = password, let mail = mail else {
-            // configureView(withMessage:"Username / password cannot be blank")
-            return
-        }
-
-        if password.isEmpty || mail.isEmpty {
-            // configureView(withMessage:"Username / password cannot be blank")
-            return
-        }
-
-        networkManager.updateUser(id: id, mail: mail, password: password) { response in
-            switch response {
-            case let .success(succes):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.navigationController?.popViewController(animated: true)
-                    self.dbManager.saveCoreData(withModel: UserModel(id: self.id,
-                                                                     username: self.username,
-                                                                     mail: succes.mail,
-                                                                     helperName: self.helperName,
-                                                                     helperMail: self.helperMail,
-                                                                     helperPhone: self.helperPhone))
-                }
-
-            case let .failure(failure):
-                print(failure)
-            }
-        }
     }
 }

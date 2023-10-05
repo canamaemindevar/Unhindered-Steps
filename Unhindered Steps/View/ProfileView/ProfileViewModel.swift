@@ -17,7 +17,12 @@ final class ProfileViewModel: ProfileViewModelInterface {
     weak var view: ProfileViewController?
     var dbManger: CoreDataManagerInterface
 
-    init(dbManger: CoreDataManagerInterface = CoreDataManager()) {
+    var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable
+
+    init(networkManager: NetworkManager = NetworkManager(),
+         dbManger: CoreDataManagerInterface = CoreDataManager())
+    {
+        self.networkManager = networkManager
         self.dbManger = dbManger
     }
 
@@ -43,6 +48,80 @@ final class ProfileViewModel: ProfileViewModelInterface {
                 print(failure)
             }
         }
+    }
+
+    @objc func segueToHelperEdit() {
+        let targetVc = UpdateHelperViewController()
+        guard let view = view else { return }
+        targetVc.id = view.id
+        targetVc.mail = view.mailLabel.text ?? ""
+        targetVc.username = view.nameLabel.text ?? ""
+        view.navigationController?.pushViewController(targetVc, animated: true)
+    }
+
+    @objc func seguToUserEdit() {
+        let targetVc = UpdateUserViewController()
+        guard let view = view else { return }
+        targetVc.id = view.id
+        targetVc.helperMail = user?.helperMail ?? ""
+        targetVc.helperName = user?.helperName ?? ""
+        targetVc.helperPhone = user?.helperPhone ?? ""
+        targetVc.username = view.nameLabel.text ?? ""
+        view.navigationController?.pushViewController(targetVc, animated: true)
+    }
+}
+
+extension ProfileViewModel {
+    func fetchRecentQueries() {
+        networkManager.fetchRecentQueries(id: user?.id ?? "") { response in
+            switch response {
+            case let .success(success):
+                DispatchQueue.main.async {
+                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    targetVc.title = "searchHistory".localized
+                    self.view?.navigationController?.pushViewController(targetVc, animated: true)
+                }
+            case let .failure(failure):
+                print(failure)
+            }
+        }
+    }
+
+    func fetchFavorites() {
+        networkManager.fetchFavorites(id: user?.id ?? "") { response in
+            switch response {
+            case let .success(success):
+                DispatchQueue.main.async {
+                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    targetVc.title = "favorites".localized
+                    self.view?.navigationController?.pushViewController(targetVc, animated: true)
+                }
+            case let .failure(failure):
+                print(failure)
+            }
+        }
+    }
+
+    func fetchMostlyUsed() {
+        networkManager.fetchMostlyUsed(id: view?.id ?? "") { response in
+            switch response {
+            case let .success(success):
+                DispatchQueue.main.async {
+                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    targetVc.title = "mostlyUsed".localized
+                    self.view?.navigationController?.pushViewController(targetVc, animated: true)
+                }
+            case let .failure(failure):
+                print(failure)
+            }
+        }
+    }
+
+    func logOut() {
+        dbManger.deleteCoreData(with: user?.id ?? "")
+
+        let targetVc = LoginViewController()
+        view?.view.window?.rootViewController = targetVc
     }
 }
 

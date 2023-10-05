@@ -23,20 +23,6 @@ final class LoginViewController: UIViewController {
 
     weak var routeRegisterDelegate: LoginViewRouteRegister?
     weak var loginSuccesDelegate: LoginSuccesfullInterface?
-    var networkManager: LoginInterface
-    var dbManager: CoreDataManagerInterface
-    init(networkManager: LoginInterface = NetworkManager(),
-         dbManager: CoreDataManagerInterface = CoreDataManager())
-    {
-        self.networkManager = networkManager
-        self.dbManager = dbManager
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -136,8 +122,8 @@ final class LoginViewController: UIViewController {
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(errorMessageLabel)
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-        gotoRegisterButton.addTarget(self, action: #selector(goToRegisterView), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(viewModel.login), for: .touchUpInside)
+        gotoRegisterButton.addTarget(self, action: #selector(viewModel.goToRegisterView), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -181,49 +167,7 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController {
-    @objc func login() {
-        guard let username = username, let password = password else {
-            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
-            return
-        }
-
-        if username.isEmpty || password.isEmpty {
-            configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
-            return
-        }
-        networkManager.login(email: username, password: password) { response in
-            switch response {
-            case let .success(success):
-
-                if success.message == "succes" {
-                    self.dbManager.saveCoreData(withModel: UserModel(id: success.id,
-                                                                     username: success.username,
-                                                                     mail: success.mail,
-                                                                     helperName: success.helperName,
-                                                                     helperMail: success.helperMail,
-                                                                     helperPhone: success.helperPhone))
-                    print(success)
-                    self.loginSuccesDelegate?.routeToTabbar()
-                } else {
-                    print(success.message as Any)
-                    DispatchQueue.main.async {
-                        self.configureView(withMessage: success.message?.uppercased() ?? "")
-                    }
-                }
-
-            case let .failure(failure):
-                print(failure)
-            }
-        }
-    }
-
-    @objc func goToRegisterView() {
-        routeRegisterDelegate?.routeToRegister()
-//        let vc = RegisterViewController()
-//        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    private func configureView(withMessage message: String) {
+    func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
     }
