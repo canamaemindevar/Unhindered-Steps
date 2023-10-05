@@ -69,6 +69,7 @@
 		A9493CAA2ACD82950017FC94 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A9493CC12ACDAB2A0017FC94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A9493CC32ACDAD0E0017FC94 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		A9493CC52ACEA4820017FC94 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFavoritesResponse.swift; sourceTree = "<group>"; };
 		A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQueryResponse.swift; sourceTree = "<group>"; };
 		A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteResponse.swift; sourceTree = "<group>"; };
@@ -425,6 +426,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = A9B4574C29FEA8070069432E;
 			productRefGroup = A9B4575629FEA8070069432E /* Products */;
@@ -585,6 +587,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A9493CC12ACDAB2A0017FC94 /* en */,
+				A9493CC52ACEA4820017FC94 /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

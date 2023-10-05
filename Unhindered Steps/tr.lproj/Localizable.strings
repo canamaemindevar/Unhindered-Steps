@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  Unhindered Steps
+
+  Created by Emincan Antalyalı on 4.10.2023.
+  
+*/
+
+"enterUserName" = "Kullanıcı adınızı girin";
+"enterPassword" = "Şifreyi girin";
+"login" = "Giriş yap";
+"register" = "Kayıt ol";
+"crateAnAccount" = "Yeni bir hesap oluştur";
+"yourHelper" = "Sizin yardımcınız:";
+"showPersonelInformation" = "Kişisel bilgileri göster";
+"usernamePasswordCannotBeBlank" = "Kullanıcı adı/şifre boş bırakılamaz";
+
+"updatePersonalInformation" = "Kişisel bilgileri güncelle";
+"updateHelperInformation" = "Yardımcı bilgilerini güncelle";
+"showHelperInformation" = "Yardımcı bilgilerini göster";
+"searchHistory" = "Arama Geçmişi";
+"favorites" = "Favoriler";
+"mostlyUsed" = "En Çok Kullanılanlar";
+"logout" = "Çıkış yap";
+
+"emergencyCall" = "Acil Çağrı";
+"health" = "Sağlık";
+"supportAndSell" = "Destek ve Satış";
+
+"hospital" = "Hastane";
+"pharmacy" = "Eczane";
+"medical" = "Tıbbi";
+"disabledToilet" = "Engelli Tuvaleti";
+"wheelchairOutlet" = "Tekerlekli Sandalye Satış Mağazası";
+"wheelchairCareCenter" = "Tekerlekli Sandalye Bakım Merkezi";
+"sendMail" = "E-posta Gönder";
+
+"updateHelper" = "Yardımcıyı Güncelle";
+"enterHelperPhone" = "Acil durumda aramak için bir yakınınızın numarasını girin.";
+"enterHelperName" = "Bir yakının adını girin.";
+"enterHelperMail" = "Bir yakınınızın e-posta adresini girin.";
+"enterMail" = "E-posta Adresi Girin";
+
+"updateUser" = "Kullanıcıyı Güncelle";
+"enterPassword" = "Şifreyi Girin";
+"enterPasswordAgain" = "Şifreyi Tekrar Girin";
+
+"succes" = "Başarılı";
+"registerSucces" = "Başarıyla Kaydedildi, Lütfen Şimdi Giriş Yapın";
+"passwordMatchError" = "Şifreniz uyuşmuyor";
