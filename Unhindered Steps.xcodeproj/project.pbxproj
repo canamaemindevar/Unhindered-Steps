@@ -132,63 +132,128 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A9493CA22ACD81B60017FC94 /* ProflileView */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
-				A9B4577A29FEA94A0069432E /* ProfileViewModel.swift */,
-			);
-			name = ProflileView;
-			sourceTree = "<group>";
-		};
-		A9493CA32ACD81D20017FC94 /* MapView */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4577C29FEA95B0069432E /* MapViewModel.swift */,
-				A9B4577629FEA9110069432E /* MapViewController.swift */,
-			);
-			name = MapView;
-			sourceTree = "<group>";
-		};
-		A9493CA42ACD81F40017FC94 /* DetailView */ = {
-			isa = PBXGroup;
-			children = (
-				A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */,
-			);
-			name = DetailView;
-			sourceTree = "<group>";
-		};
-		A9493CA52ACD81FD0017FC94 /* UpdateHelperView */ = {
-			isa = PBXGroup;
-			children = (
-				A9A5960F2A1D082600694785 /* UpdateHelperViewController.swift */,
-			);
-			name = UpdateHelperView;
-			sourceTree = "<group>";
-		};
-		A9493CA62ACD82090017FC94 /* UpdateUserView */ = {
-			isa = PBXGroup;
-			children = (
-				A91E66502A1E0DCC0077D8FD /* UpdateUserViewController.swift */,
-			);
-			name = UpdateUserView;
-			sourceTree = "<group>";
-		};
-		A9493CA72ACD82370017FC94 /* RegisterView */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
-				A9B4578229FEA9D60069432E /* RegisterViewModel.swift */,
-			);
-			name = RegisterView;
-			sourceTree = "<group>";
-		};
 		A9493CA92ACD82840017FC94 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
 				A9493CAA2ACD82950017FC94 /* Logger.swift */,
 			);
 			name = Logger;
+			sourceTree = "<group>";
+		};
+		A9493CCF2ACEA6CD0017FC94 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9493CC32ACDAD0E0017FC94 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A9493CD02ACEA6DF0017FC94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9493CD72ACEA7680017FC94 /* RegisterView */,
+				A9493CD62ACEA7590017FC94 /* UpdateUserView */,
+				A9493CD52ACEA7450017FC94 /* UpdateHelperView */,
+				A9493CD42ACEA7380017FC94 /* DetailView */,
+				A9493CD32ACEA7260017FC94 /* MapView */,
+				A9493CD22ACEA7170017FC94 /* ProfileView */,
+				A9493CD12ACEA7020017FC94 /* LoginView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A9493CD12ACEA7020017FC94 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
+				A9B4577E29FEA9700069432E /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A9493CD22ACEA7170017FC94 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577829FEA9230069432E /* ProfileViewController.swift */,
+				A9B4577A29FEA94A0069432E /* ProfileViewModel.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		A9493CD32ACEA7260017FC94 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4577C29FEA95B0069432E /* MapViewModel.swift */,
+				A9B4577629FEA9110069432E /* MapViewController.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		A9493CD42ACEA7380017FC94 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A92AB2792A01B8AC000CFF29 /* DetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A9493CD52ACEA7450017FC94 /* UpdateHelperView */ = {
+			isa = PBXGroup;
+			children = (
+				A9A5960F2A1D082600694785 /* UpdateHelperViewController.swift */,
+			);
+			path = UpdateHelperView;
+			sourceTree = "<group>";
+		};
+		A9493CD62ACEA7590017FC94 /* UpdateUserView */ = {
+			isa = PBXGroup;
+			children = (
+				A91E66502A1E0DCC0077D8FD /* UpdateUserViewController.swift */,
+			);
+			path = UpdateUserView;
+			sourceTree = "<group>";
+		};
+		A9493CD72ACEA7680017FC94 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4578029FEA9B60069432E /* RegisterViewController.swift */,
+				A9B4578229FEA9D60069432E /* RegisterViewModel.swift */,
+			);
+			path = RegisterView;
+			sourceTree = "<group>";
+		};
+		A9493CD82ACEA7860017FC94 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */,
+				A9493CA02ACD81020017FC94 /* HTTPMethod.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		A9493CDA2ACEA7BA0017FC94 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4576129FEA8080069432E /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A9493CDC2ACEA7D70017FC94 /* CoredataModel */ = {
+			isa = PBXGroup;
+			children = (
+				A961B3A52A17AB120081A824 /* User.xcdatamodeld */,
+			);
+			path = CoredataModel;
+			sourceTree = "<group>";
+		};
+		A9493CDE2ACEA7FA0017FC94 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4575829FEA8070069432E /* AppDelegate.swift */,
+				A9B4575A29FEA8070069432E /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
 			sourceTree = "<group>";
 		};
 		A961B39C2A17A7BE0081A824 /* Location */ = {
@@ -229,11 +294,16 @@
 		A9B4575729FEA8070069432E /* Unhindered Steps */ = {
 			isa = PBXGroup;
 			children = (
+				A9493CDE2ACEA7FA0017FC94 /* AppDelegates */,
+				A9493CDA2ACEA7BA0017FC94 /* Assets */,
 				A9B4576C29FEA88C0069432E /* Base */,
-				A9B4578829FEBB8B0069432E /* Managers */,
+				A9493CDC2ACEA7D70017FC94 /* CoredataModel */,
+				A9493CD82ACEA7860017FC94 /* Enums */,
 				A9B4578529FEA9F20069432E /* Extensions+Helpers */,
 				A9B4576D29FEA89F0069432E /* Feature */,
-				A9493CC22ACDAB2A0017FC94 /* Localizable.strings */,
+				A9B4578829FEBB8B0069432E /* Managers */,
+				A9B4576F29FEA8C40069432E /* Model */,
+				A9493CD02ACEA6DF0017FC94 /* View */,
 			);
 			path = "Unhindered Steps";
 			sourceTree = "<group>";
@@ -241,15 +311,10 @@
 		A9B4576C29FEA88C0069432E /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				A9B4575829FEA8070069432E /* AppDelegate.swift */,
-				A9B4575A29FEA8070069432E /* SceneDelegate.swift */,
 				A9B4575C29FEA8070069432E /* ViewController.swift */,
 				A9B4575E29FEA8070069432E /* Main.storyboard */,
-				A9B4576129FEA8080069432E /* Assets.xcassets */,
 				A9B4576329FEA8080069432E /* LaunchScreen.storyboard */,
 				A9B4576629FEA8080069432E /* Info.plist */,
-				A961B3A52A17AB120081A824 /* User.xcdatamodeld */,
-				A961B3A82A17B27C0081A824 /* HasLoggedIn.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -259,8 +324,6 @@
 			children = (
 				A9B4577529FEA8FA0069432E /* Tabbar */,
 				A909BB6F2A2CF7CF002EBD62 /* Cells */,
-				A9B4576F29FEA8C40069432E /* Model */,
-				A9B4577129FEA8D10069432E /* View */,
 			);
 			name = Feature;
 			sourceTree = "<group>";
@@ -293,20 +356,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A9B4577129FEA8D10069432E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A9493CA72ACD82370017FC94 /* RegisterView */,
-				A9493CA62ACD82090017FC94 /* UpdateUserView */,
-				A9493CA52ACD81FD0017FC94 /* UpdateHelperView */,
-				A9493CA42ACD81F40017FC94 /* DetailView */,
-				A9493CA32ACD81D20017FC94 /* MapView */,
-				A9493CA22ACD81B60017FC94 /* ProflileView */,
-				A9B4578D2A0151EC0069432E /* LoginView */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		A9B4577529FEA8FA0069432E /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,10 +367,10 @@
 		A9B4578529FEA9F20069432E /* Extensions+Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A961B3A82A17B27C0081A824 /* HasLoggedIn.swift */,
+				A9493CCF2ACEA6CD0017FC94 /* Extensions */,
+				A9493CC22ACDAB2A0017FC94 /* Localizable.strings */,
 				A9493CA92ACD82840017FC94 /* Logger */,
-				A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */,
-				A9493CA02ACD81020017FC94 /* HTTPMethod.swift */,
-				A9493CC32ACDAD0E0017FC94 /* String+Extensions.swift */,
 			);
 			name = "Extensions+Helpers";
 			sourceTree = "<group>";
@@ -334,15 +383,6 @@
 				A9B4576E29FEA8A90069432E /* Network */,
 			);
 			name = Managers;
-			sourceTree = "<group>";
-		};
-		A9B4578D2A0151EC0069432E /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4577229FEA8ED0069432E /* LoginViewController.swift */,
-				A9B4577E29FEA9700069432E /* LoginViewModel.swift */,
-			);
-			name = LoginView;
 			sourceTree = "<group>";
 		};
 		A9BEEBE72ACC92350074A3C5 /* Core */ = {
