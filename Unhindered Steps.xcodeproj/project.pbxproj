@@ -225,6 +225,7 @@
 		A9493CD82ACEA7860017FC94 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				A961B3A82A17B27C0081A824 /* HasLoggedIn.swift */,
 				A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */,
 				A9493CA02ACD81020017FC94 /* HTTPMethod.swift */,
 			);
@@ -256,7 +257,44 @@
 			path = AppDelegates;
 			sourceTree = "<group>";
 		};
-		A961B39C2A17A7BE0081A824 /* Location */ = {
+		A9493CDF2ACEA87F0017FC94 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */,
+				A9BC80AD2A08EA8300260237 /* LoginResponse.swift */,
+				A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */,
+				A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */,
+				A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */,
+				A961B3982A15776A0081A824 /* AddQueryResponse.swift */,
+				A961B39A2A1577FF0081A824 /* RegisterResponse.swift */,
+				A961B3A02A17A81D0081A824 /* UserModel.swift */,
+				A961B3AA2A180EC70081A824 /* MailResponse.swift */,
+				A9C2B7052A35CF8300EEF6EE /* UpdateUserResponse.swift */,
+				A9C2B7072A35CFF600EEF6EE /* UpdateHelperResponse.swift */,
+				A9C2B7092A35D06000EEF6EE /* PopularResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A9493CE02ACEA8A70017FC94 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A961B39E2A17A7E10081A824 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A9493CE12ACEA8BB0017FC94 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A9493CE32ACEA8D60017FC94 /* Network */,
+				A9493CE22ACEA8C90017FC94 /* Location */,
+				A9493CE02ACEA8A70017FC94 /* CoreData */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A9493CE22ACEA8C90017FC94 /* Location */ = {
 			isa = PBXGroup;
 			children = (
 				A9B4578629FEBB5F0069432E /* LocationManager.swift */,
@@ -264,18 +302,36 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		A961B39D2A17A7D20081A824 /* CoreData */ = {
+		A9493CE32ACEA8D60017FC94 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A961B39E2A17A7E10081A824 /* CoreDataManager.swift */,
+				A9493CE52ACEA8F70017FC94 /* Core */,
+				A9493CE42ACEA8EB0017FC94 /* NetworkManager */,
 			);
-			name = CoreData;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A9493CE42ACEA8EB0017FC94 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				A9BEEBE82ACC92500074A3C5 /* NetworkManager.swift */,
+				A9BEEBEB2ACC982B0074A3C5 /* NetworkManagerProtocols.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		A9493CE52ACEA8F70017FC94 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */,
+				A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		A9B4574C29FEA8070069432E = {
 			isa = PBXGroup;
 			children = (
-				A9BEEBE52ACC90D30074A3C5 /* .swiftlint.yml */,
 				A9B4575729FEA8070069432E /* Unhindered Steps */,
 				A9B4575629FEA8070069432E /* Products */,
 				F1DA289BA19F3718986AF076 /* Pods */,
@@ -301,8 +357,8 @@
 				A9493CD82ACEA7860017FC94 /* Enums */,
 				A9B4578529FEA9F20069432E /* Extensions+Helpers */,
 				A9B4576D29FEA89F0069432E /* Feature */,
-				A9B4578829FEBB8B0069432E /* Managers */,
-				A9B4576F29FEA8C40069432E /* Model */,
+				A9493CE12ACEA8BB0017FC94 /* Managers */,
+				A9493CDF2ACEA87F0017FC94 /* Model */,
 				A9493CD02ACEA6DF0017FC94 /* View */,
 			);
 			path = "Unhindered Steps";
@@ -328,34 +384,6 @@
 			name = Feature;
 			sourceTree = "<group>";
 		};
-		A9B4576E29FEA8A90069432E /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				A9BEEBEA2ACC98100074A3C5 /* NetworkManager */,
-				A9BEEBE72ACC92350074A3C5 /* Core */,
-			);
-			name = Network;
-			sourceTree = "<group>";
-		};
-		A9B4576F29FEA8C40069432E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A9B4578B2A0151BB0069432E /* ProfileDataStruct.swift */,
-				A9BC80AD2A08EA8300260237 /* LoginResponse.swift */,
-				A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */,
-				A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */,
-				A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */,
-				A961B3982A15776A0081A824 /* AddQueryResponse.swift */,
-				A961B39A2A1577FF0081A824 /* RegisterResponse.swift */,
-				A961B3A02A17A81D0081A824 /* UserModel.swift */,
-				A961B3AA2A180EC70081A824 /* MailResponse.swift */,
-				A9C2B7052A35CF8300EEF6EE /* UpdateUserResponse.swift */,
-				A9C2B7072A35CFF600EEF6EE /* UpdateHelperResponse.swift */,
-				A9C2B7092A35D06000EEF6EE /* PopularResponse.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		A9B4577529FEA8FA0069432E /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,40 +395,12 @@
 		A9B4578529FEA9F20069432E /* Extensions+Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A961B3A82A17B27C0081A824 /* HasLoggedIn.swift */,
+				A9BEEBE52ACC90D30074A3C5 /* .swiftlint.yml */,
 				A9493CCF2ACEA6CD0017FC94 /* Extensions */,
 				A9493CC22ACDAB2A0017FC94 /* Localizable.strings */,
 				A9493CA92ACD82840017FC94 /* Logger */,
 			);
 			name = "Extensions+Helpers";
-			sourceTree = "<group>";
-		};
-		A9B4578829FEBB8B0069432E /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				A961B39D2A17A7D20081A824 /* CoreData */,
-				A961B39C2A17A7BE0081A824 /* Location */,
-				A9B4576E29FEA8A90069432E /* Network */,
-			);
-			name = Managers;
-			sourceTree = "<group>";
-		};
-		A9BEEBE72ACC92350074A3C5 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */,
-				A92AB27B2A024F6E000CFF29 /* CoreNettworkManager.swift */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		A9BEEBEA2ACC98100074A3C5 /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
-				A9BEEBE82ACC92500074A3C5 /* NetworkManager.swift */,
-				A9BEEBEB2ACC982B0074A3C5 /* NetworkManagerProtocols.swift */,
-			);
-			name = NetworkManager;
 			sourceTree = "<group>";
 		};
 		A9C81A27563B204C0E204D8D /* Frameworks */ = {
