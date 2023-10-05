@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabbar: UITabBarController {
+final class MainTabbar: UITabBarController {
     let mapVc = MapViewController()
 
     let profileVc = ProfileViewController()

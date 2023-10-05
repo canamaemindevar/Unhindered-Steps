@@ -7,7 +7,7 @@
 
 import CoreLocation
 
-class LocationManager: NSObject {
+final class LocationManager: NSObject {
     static let shared = LocationManager()
 
     var manager = CLLocationManager()

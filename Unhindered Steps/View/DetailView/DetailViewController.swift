@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     var array: [FetchQueryResponseElement]
     var user: UserModel
 

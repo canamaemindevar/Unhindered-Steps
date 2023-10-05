@@ -12,7 +12,7 @@ protocol RegisterViewModelInterface {
     func viewDidLoad()
 }
 
-class RegisterViewModel: RegisterViewModelInterface {
+final class RegisterViewModel: RegisterViewModelInterface {
     weak var view: RegisterViewController?
 
     func viewDidLoad() {

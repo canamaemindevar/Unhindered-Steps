@@ -13,7 +13,7 @@ protocol ProfileViewModelInterface {
     func viewDidLoad()
 }
 
-class ProfileViewModel: ProfileViewModelInterface {
+final class ProfileViewModel: ProfileViewModelInterface {
     weak var view: ProfileViewController?
     var dbManger: CoreDataManagerInterface
 

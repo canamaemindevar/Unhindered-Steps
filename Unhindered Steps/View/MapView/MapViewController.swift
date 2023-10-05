@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
     // MARK: - Components
 
     private lazy var viewModel = MapViewModel()

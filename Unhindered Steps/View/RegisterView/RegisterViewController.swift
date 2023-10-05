@@ -14,7 +14,7 @@ protocol RegisterSuccesfullDelegate: AnyObject {
 
 protocol RegisterViewControllerInterface: AnyObject {}
 
-class RegisterViewController: UIViewController {
+final class RegisterViewController: UIViewController {
     private lazy var viewModel = RegisterViewModel()
 
     weak var registerSuccesDelegate: RegisterSuccesfullDelegate?

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MyCell: UICollectionViewCell {
+final class MyCell: UICollectionViewCell {
     static let identier = "MyCell"
 
     let wordLabel: UILabel = {

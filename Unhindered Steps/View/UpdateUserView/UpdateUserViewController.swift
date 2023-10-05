@@ -8,7 +8,7 @@
 import MaterialComponents
 import UIKit
 
-class UpdateUserViewController: UIViewController {
+final class UpdateUserViewController: UIViewController {
     var id: String = ""
     var helperName: String = ""
     var helperMail: String = ""

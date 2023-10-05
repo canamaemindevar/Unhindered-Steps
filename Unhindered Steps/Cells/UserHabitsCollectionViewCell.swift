@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserHabitsCollectionViewCell: UICollectionViewCell {
+final class UserHabitsCollectionViewCell: UICollectionViewCell {
     static let identifier = "UserHabitsCollectionViewCell"
 
     // MARK: - Component

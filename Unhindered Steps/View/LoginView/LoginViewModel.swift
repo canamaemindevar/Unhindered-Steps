@@ -13,7 +13,7 @@ protocol LoginViewModelInterface {
     func loginRequest(email: String, password: String)
 }
 
-class LoginViewModel: LoginViewModelInterface {
+final class LoginViewModel: LoginViewModelInterface {
     weak var view: LoginViewController?
 
     var logger: Loggable

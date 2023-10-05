@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     private lazy var viewModel = ProfileViewModel()
 
     var id: String = ""

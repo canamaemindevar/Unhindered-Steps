@@ -14,7 +14,7 @@ protocol MapViewModelInterface {
     func viewDidLoad()
 }
 
-class MapViewModel: MapViewModelInterface {
+final class MapViewModel: MapViewModelInterface {
     weak var view: MapViewController?
     var location = CLLocationCoordinate2D()
     var items = [MKAnnotation]()

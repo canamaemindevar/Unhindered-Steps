@@ -16,7 +16,7 @@ protocol LoginSuccesfullInterface: AnyObject {
     func routeToTabbar()
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     private lazy var viewModel = LoginViewModel()
 
     // MARK: - Component
