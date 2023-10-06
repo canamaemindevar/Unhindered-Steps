@@ -20,6 +20,7 @@
 		A9493CE72ACEAE7D0017FC94 /* UpdateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CE62ACEAE7D0017FC94 /* UpdateUserViewModel.swift */; };
 		A9493CE92AD01C2A0017FC94 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CE82AD01C2A0017FC94 /* DetailViewModel.swift */; };
 		A9493CEB2AD01D840017FC94 /* UpdateHelperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CEA2AD01D840017FC94 /* UpdateHelperViewModel.swift */; };
+		A9493CED2AD039C40017FC94 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CEC2AD039C40017FC94 /* CustomAlertViewController.swift */; };
 		A961B3932A1576C70081A824 /* FetchFavoritesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */; };
 		A961B3952A1576FD0081A824 /* FetchQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */; };
 		A961B3972A15772C0081A824 /* AddFavoriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */; };
@@ -76,6 +77,7 @@
 		A9493CE62ACEAE7D0017FC94 /* UpdateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserViewModel.swift; sourceTree = "<group>"; };
 		A9493CE82AD01C2A0017FC94 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		A9493CEA2AD01D840017FC94 /* UpdateHelperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHelperViewModel.swift; sourceTree = "<group>"; };
+		A9493CEC2AD039C40017FC94 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		A961B3922A1576C70081A824 /* FetchFavoritesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFavoritesResponse.swift; sourceTree = "<group>"; };
 		A961B3942A1576FD0081A824 /* FetchQueryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchQueryResponse.swift; sourceTree = "<group>"; };
 		A961B3962A15772C0081A824 /* AddFavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteResponse.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				A9B4577529FEA8FA0069432E /* Tabbar */,
 				A909BB6F2A2CF7CF002EBD62 /* Cells */,
+				A9493CEC2AD039C40017FC94 /* CustomAlertViewController.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				A909BB712A2CF82D002EBD62 /* Cell.swift in Sources */,
 				A961B3AB2A180EC70081A824 /* MailResponse.swift in Sources */,
 				A9C2B70A2A35D06000EEF6EE /* PopularResponse.swift in Sources */,
+				A9493CED2AD039C40017FC94 /* CustomAlertViewController.swift in Sources */,
 				A9B4578329FEA9D60069432E /* RegisterViewModel.swift in Sources */,
 				A9493C9F2ACD80EB0017FC94 /* ErrosTypes.swift in Sources */,
 				A9BC80AE2A08EA8300260237 /* LoginResponse.swift in Sources */,

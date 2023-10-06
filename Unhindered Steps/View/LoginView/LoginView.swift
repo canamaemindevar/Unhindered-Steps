@@ -122,7 +122,7 @@ final class LoginView: UIViewController {
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(errorMessageLabel)
-        loginButton.addTarget(self, action: #selector(viewModel.login), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         gotoRegisterButton.addTarget(self, action: #selector(viewModel.goToRegisterView), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
@@ -155,6 +155,10 @@ final class LoginView: UIViewController {
             gotoRegisterButton.topAnchor.constraint(equalToSystemSpacingBelow: loginButton.bottomAnchor, multiplier: 2),
             gotoRegisterButton.heightAnchor.constraint(equalToConstant: 40),
         ])
+    }
+
+    @objc func login() {
+        viewModel.login()
     }
 }
 

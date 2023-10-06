@@ -55,7 +55,7 @@ final class UserHabitsCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             image.centerXAnchor.constraint(equalTo: centerXAnchor),
             image.centerYAnchor.constraint(equalTo: centerYAnchor),
-            image.heightAnchor.constraint(equalToConstant: frame.height),
+            image.heightAnchor.constraint(equalToConstant: frame.height / 1.6),
             image.widthAnchor.constraint(equalToConstant: frame.width),
         ])
         NSLayoutConstraint.activate([
