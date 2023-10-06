@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  RegisterView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 30.04.2023.
@@ -12,7 +12,7 @@ protocol RegisterSuccesfullDelegate: AnyObject {
     func registerSuccesfull()
 }
 
-final class RegisterViewController: UIViewController {
+final class RegisterView: UIViewController {
     private lazy var viewModel = RegisterViewModel()
     weak var registerSuccesDelegate: RegisterSuccesfullDelegate?
 
@@ -211,7 +211,7 @@ final class RegisterViewController: UIViewController {
     }
 }
 
-extension RegisterViewController: UITextFieldDelegate {
+extension RegisterView: UITextFieldDelegate {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         helperPhoneNumber.endEditing(true)
         helperMailTextField.endEditing(true)

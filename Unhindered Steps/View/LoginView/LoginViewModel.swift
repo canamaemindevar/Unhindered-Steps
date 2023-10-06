@@ -8,13 +8,13 @@
 import Foundation
 
 protocol LoginViewModelInterface {
-    var view: LoginViewController? { get set }
+    var view: LoginView? { get set }
     func viewDidLoad()
     func loginRequest(email: String, password: String)
 }
 
 final class LoginViewModel: LoginViewModelInterface {
-    weak var view: LoginViewController?
+    weak var view: LoginView?
 
     var logger: Loggable
     var dbManager: CoreDataManagerInterface

@@ -8,12 +8,12 @@
 import UIKit
 
 protocol RegisterViewModelInterface {
-    var view: RegisterViewController? { get set }
+    var view: RegisterView? { get set }
     func viewDidLoad()
 }
 
 final class RegisterViewModel: RegisterViewModelInterface {
-    weak var view: RegisterViewController?
+    weak var view: RegisterView?
     var networkManager: RegisterInterface
     func viewDidLoad() {
         view?.prepare()
@@ -57,7 +57,7 @@ final class RegisterViewModel: RegisterViewModelInterface {
                         view.present(view.alert, animated: true, completion: nil)
                         view.registerSuccesDelegate?.registerSuccesfull()
                     } else {
-                        view.errorMessageLabel.text = "Hata ile karşılaşıldı."
+                        view.errorMessageLabel.text = "errorShown".localized
                     }
                 }
 

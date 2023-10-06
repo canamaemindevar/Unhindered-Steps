@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  DetailView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 3.05.2023.
@@ -7,11 +7,10 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {
+final class DetailView: UIViewController {
+    private lazy var viewModel = DetailViewModel()
     var array: [FetchQueryResponseElement]
     var user: UserModel
-
-    var networkManger: MailSendable
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -33,10 +32,9 @@ final class DetailViewController: UIViewController {
         return mailButton
     }()
 
-    init(array: [FetchQueryResponseElement], user: UserModel, networkManger: MailSendable = NetworkManager()) {
+    init(array: [FetchQueryResponseElement], user: UserModel) {
         self.array = array
         self.user = user
-        self.networkManger = networkManger
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -47,12 +45,16 @@ final class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
+        viewModel.viewDidLoad()
+    }
+
+    func setup() {
         view.addSubview(tableView)
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.frame = view.bounds
         view.addSubview(mailButton)
-        mailButton.addTarget(self, action: #selector(sendMail), for: .touchUpInside)
+        mailButton.addTarget(self, action: #selector(viewModel.sendMail), for: .touchUpInside)
         NSLayoutConstraint.activate([
             view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 8),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 2),
@@ -62,20 +64,7 @@ final class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController {
-    @objc func sendMail() {
-        networkManger.sendMail(id: user.id ?? "", mail: user.helperMail ?? "", topic: title ?? "") { response in
-            switch response {
-            case let .success(success):
-                print(success)
-            case let .failure(failure):
-                print(failure)
-            }
-        }
-    }
-}
-
-extension DetailViewController: UITableViewDataSource {
+extension DetailView: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         array.count
     }
@@ -86,5 +75,3 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
 }
-
-extension DetailViewController: UITableViewDelegate {}

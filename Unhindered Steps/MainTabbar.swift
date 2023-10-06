@@ -8,9 +8,9 @@
 import UIKit
 
 final class MainTabbar: UITabBarController {
-    let mapVc = MapViewController()
+    let mapVc = MapView()
 
-    let profileVc = ProfileViewController()
+    let profileVc = ProfileView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,8 @@ final class MainTabbar: UITabBarController {
         mapVc.tabBarItem.image = UIImage(systemName: "map")
         profileNC.tabBarItem.image = UIImage(systemName: "person.2")
 
-        mapVc.title = "Harita"
-        profileNC.title = "Profil"
+        mapVc.title = "map".localized
+        profileNC.title = "profile".localized
 
         tabBar.tintColor = .label
 

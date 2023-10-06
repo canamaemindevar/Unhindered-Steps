@@ -10,20 +10,20 @@ import Foundation
 import MapKit
 
 protocol MapViewModelInterface {
-    var view: MapViewController? { get set }
+    var view: MapView? { get set }
     func viewDidLoad()
 }
 
 final class MapViewModel: MapViewModelInterface {
-    weak var view: MapViewController?
+    weak var view: MapView?
     var location = CLLocationCoordinate2D()
     var items = [MKAnnotation]()
     var id = ""
     var user: UserModel?
-    var networkManager: QueryMakeble
+    var networkManager: QueryMakeble & FavoriteMakeble
     var dbManager: CoreDataManagerInterface
 
-    init(networkManager: QueryMakeble = NetworkManager(),
+    init(networkManager: NetworkManager = NetworkManager(),
          dbManager: CoreDataManagerInterface = CoreDataManager())
     {
         self.networkManager = networkManager
@@ -72,6 +72,17 @@ final class MapViewModel: MapViewModelInterface {
                 }
             }
             completion(response)
+        }
+    }
+
+    func makeFavorite() {
+        networkManager.makeFavorite(id: id, query: view?.title ?? "") { response in
+            switch response {
+            case let .success(success):
+                print("Saved as favorite: \(success)")
+            case let .failure(failure):
+                print("Error while saving favorite: \(failure)")
+            }
         }
     }
 }

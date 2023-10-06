@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LoginView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 30.04.2023.
@@ -16,7 +16,7 @@ protocol LoginSuccesfullInterface: AnyObject {
     func routeToTabbar()
 }
 
-final class LoginViewController: UIViewController {
+final class LoginView: UIViewController {
     private lazy var viewModel = LoginViewModel()
 
     // MARK: - Component
@@ -158,7 +158,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginView: UITextFieldDelegate {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         mailTextField.endEditing(true)
         passwordTextField.endEditing(true)
@@ -166,7 +166,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
-extension LoginViewController {
+extension LoginView {
     func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message

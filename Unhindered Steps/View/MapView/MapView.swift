@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  MapView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 30.04.2023.
@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-final class MapViewController: UIViewController {
+final class MapView: UIViewController {
     // MARK: - Components
 
     private lazy var viewModel = MapViewModel()
@@ -155,16 +155,13 @@ final class MapViewController: UIViewController {
     }
 }
 
-extension MapViewController {
+extension MapView {
     func startQuery() {
         LocationManager.shared.getUserLocation { [weak self] location in
 
             DispatchQueue.main.async {
                 self?.viewModel.location = location.coordinate
                 self?.mapView.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-//                self?.viewModel.updateSearchResults(query: "", completion: { response in
-//                    self?.updateUi(response: response)
-//                })
             }
         }
     }
@@ -206,7 +203,7 @@ extension MapViewController {
     }
 }
 
-extension MapViewController: UICollectionViewDataSource {
+extension MapView: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return buttonString.count
     }
@@ -221,7 +218,7 @@ extension MapViewController: UICollectionViewDataSource {
     }
 }
 
-extension MapViewController: UICollectionViewDelegate {
+extension MapView: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let word = buttonString[indexPath.row]
         viewModel.updateSearchResults(query: word) { [weak self] response in
@@ -233,7 +230,7 @@ extension MapViewController: UICollectionViewDelegate {
     }
 }
 
-extension MapViewController: MKMapViewDelegate {
+extension MapView: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
 
@@ -255,14 +252,10 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func mapView(_: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        guard let title = view.annotation?.title else {
-            return
-        }
+        guard (view.annotation?.title) != nil else { return }
 
         if control == leftButton {
-            guard let place = view.annotation?.coordinate else {
-                return
-            }
+            guard let place = view.annotation?.coordinate else { return }
             let requestLocation = CLLocation(latitude: place.latitude, longitude: place.longitude)
             CLGeocoder().reverseGeocodeLocation(requestLocation) { placesMarks, _ in
 
@@ -278,14 +271,7 @@ extension MapViewController: MKMapViewDelegate {
             }
 
         } else {
-            networkManager.makeFavorite(id: viewModel.id, query: title ?? "") { response in
-                switch response {
-                case let .success(success):
-                    print("Saved as favorite: \(success)")
-                case let .failure(failure):
-                    print("Error while saving favorite: \(failure)")
-                }
-            }
+            viewModel.makeFavorite()
         }
     }
 }

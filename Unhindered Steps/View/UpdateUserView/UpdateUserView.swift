@@ -1,5 +1,5 @@
 //
-//  UpdateUserViewController.swift
+//  UpdateUserView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 24.05.2023.
@@ -8,7 +8,7 @@
 import MaterialComponents
 import UIKit
 
-final class UpdateUserViewController: UIViewController {
+final class UpdateUserView: UIViewController {
     var id: String = ""
     var helperName: String = ""
     var helperMail: String = ""
@@ -84,6 +84,7 @@ final class UpdateUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
         viewModel.viewDidLoad()
     }
 
@@ -111,7 +112,7 @@ final class UpdateUserViewController: UIViewController {
     }
 }
 
-extension UpdateUserViewController: UITextFieldDelegate {
+extension UpdateUserView: UITextFieldDelegate {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         mailTextField.endEditing(true)
         passwordTextField.endEditing(true)

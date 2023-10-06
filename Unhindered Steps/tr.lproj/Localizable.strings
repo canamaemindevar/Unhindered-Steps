@@ -48,3 +48,6 @@
 "succes" = "Başarılı";
 "registerSucces" = "Başarıyla Kaydedildi, Lütfen Şimdi Giriş Yapın";
 "passwordMatchError" = "Şifreniz uyuşmuyor";
+"map" = "Harita";
+"profile" = "Profil";
+"errorShown" = "Hata ile karşılaşıldı.";

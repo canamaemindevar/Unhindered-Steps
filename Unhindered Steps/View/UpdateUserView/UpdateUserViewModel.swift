@@ -8,12 +8,12 @@
 import Foundation
 
 protocol UpdateUserViewModelInterface {
-    var view: UpdateUserViewController? { get set }
+    var view: UpdateUserView? { get set }
     func viewDidLoad()
 }
 
 final class UpdateUserViewModel: UpdateUserViewModelInterface {
-    weak var view: UpdateUserViewController?
+    weak var view: UpdateUserView?
     var networkManager: UserUpdateable
     var dbManager: CoreDataManagerInterface
     init(networkManager: UserUpdateable = NetworkManager(),
@@ -21,11 +21,6 @@ final class UpdateUserViewModel: UpdateUserViewModelInterface {
     {
         self.networkManager = networkManager
         self.dbManager = dbManager
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     func viewDidLoad() {

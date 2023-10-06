@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  ProfileView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 30.04.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
+final class ProfileView: UIViewController {
     private lazy var viewModel = ProfileViewModel()
 
     var id: String = ""
@@ -238,7 +238,7 @@ final class ProfileViewController: UIViewController {
 
 // MARK: - CollectionView
 
-extension ProfileViewController: UICollectionViewDataSource {
+extension ProfileView: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         viewModel.userDataChoiceArr.count
     }
@@ -254,7 +254,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
 }
 
-extension ProfileViewController: UICollectionViewDelegate {
+extension ProfileView: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0:

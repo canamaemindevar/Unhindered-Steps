@@ -1,5 +1,5 @@
 //
-//  UpdateHelperViewController.swift
+//  UpdateHelperView.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 23.05.2023.
@@ -8,25 +8,12 @@
 import MaterialComponents
 import UIKit
 
-final class UpdateHelperViewController: ViewController {
+final class UpdateHelperView: ViewController {
     var id: String = ""
     var mail: String = ""
     var username: String = ""
 
-    var networkManager: HelperUpdateble
-    var dbManager: CoreDataManagerInterface
-    init(networkManager: HelperUpdateble = NetworkManager(),
-         dbManager: CoreDataManagerInterface = CoreDataManager())
-    {
-        self.networkManager = networkManager
-        self.dbManager = dbManager
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    lazy var viewModel = UpdateHelperViewModel()
 
     private let stackview: UIStackView = {
         let sView = UIStackView()
@@ -97,8 +84,11 @@ final class UpdateHelperViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
+        viewModel.viewDidLoad()
+    }
 
-        // Do any additional setup after loading the view.
+    func setup() {
         view.backgroundColor = .systemBackground
         helperPhoneNumber.delegate = self
         helperMailTextField.delegate = self
@@ -112,7 +102,7 @@ final class UpdateHelperViewController: ViewController {
         stackview.addArrangedSubview(registerButton)
         stackview.addArrangedSubview(errorMessageLabel)
 
-        registerButton.addTarget(self, action: #selector(updateHelper), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(viewModel.updateHelper), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
@@ -128,36 +118,11 @@ final class UpdateHelperViewController: ViewController {
     }
 }
 
-extension UpdateHelperViewController: UITextFieldDelegate {
+extension UpdateHelperView: UITextFieldDelegate {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         helperPhoneNumber.endEditing(true)
         helperMailTextField.endEditing(true)
         helperNameTextField.endEditing(true)
         return true
-    }
-
-    @objc func updateHelper() {
-        guard let helpermail = helpermail, let helpername = helpername, let helperphone = helperphone
-        else {
-            return
-        }
-
-        networkManager.updateHelper(id: id, helperName: helpername, helperMail: helpermail, helperPhone: helperphone) { response in
-            switch response {
-            case let .success(success):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.navigationController?.popViewController(animated: true)
-
-                    self.dbManager.saveCoreData(withModel: UserModel(id: self.id,
-                                                                     username: self.username,
-                                                                     mail: self.mail,
-                                                                     helperName: success.helperName,
-                                                                     helperMail: success.helperMail,
-                                                                     helperPhone: success.helperPhone))
-                }
-            case let .failure(failure):
-                print(failure)
-            }
-        }
     }
 }

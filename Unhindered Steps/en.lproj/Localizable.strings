@@ -51,3 +51,6 @@
 "succes" = "Succes";
 "registerSucces" = "Successfully Registered, Please log in now";
 "passwordMatchError" = "Your password does not match";
+"map" = "Map";
+"profile" = "Profile";
+"errorShown" = "An error was encountered.";

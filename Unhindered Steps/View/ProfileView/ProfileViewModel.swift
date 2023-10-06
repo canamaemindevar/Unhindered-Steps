@@ -8,13 +8,13 @@
 import Foundation
 
 protocol ProfileViewModelInterface {
-    var view: ProfileViewController? { get set }
+    var view: ProfileView? { get set }
     var user: UserModel? { get set }
     func viewDidLoad()
 }
 
 final class ProfileViewModel: ProfileViewModelInterface {
-    weak var view: ProfileViewController?
+    weak var view: ProfileView?
     var dbManger: CoreDataManagerInterface
 
     var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable
@@ -51,7 +51,7 @@ final class ProfileViewModel: ProfileViewModelInterface {
     }
 
     @objc func segueToHelperEdit() {
-        let targetVc = UpdateHelperViewController()
+        let targetVc = UpdateHelperView()
         guard let view = view else { return }
         targetVc.id = view.id
         targetVc.mail = view.mailLabel.text ?? ""
@@ -60,7 +60,7 @@ final class ProfileViewModel: ProfileViewModelInterface {
     }
 
     @objc func seguToUserEdit() {
-        let targetVc = UpdateUserViewController()
+        let targetVc = UpdateUserView()
         guard let view = view else { return }
         targetVc.id = view.id
         targetVc.helperMail = user?.helperMail ?? ""
@@ -77,7 +77,7 @@ extension ProfileViewModel {
             switch response {
             case let .success(success):
                 DispatchQueue.main.async {
-                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    let targetVc = DetailView(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                     targetVc.title = "searchHistory".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
@@ -92,7 +92,7 @@ extension ProfileViewModel {
             switch response {
             case let .success(success):
                 DispatchQueue.main.async {
-                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    let targetVc = DetailView(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                     targetVc.title = "favorites".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
@@ -107,7 +107,7 @@ extension ProfileViewModel {
             switch response {
             case let .success(success):
                 DispatchQueue.main.async {
-                    let targetVc = DetailViewController(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
+                    let targetVc = DetailView(array: success, user: self.user ?? .init(id: "", username: "", mail: "", helperName: "", helperMail: "", helperPhone: ""))
                     targetVc.title = "mostlyUsed".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
@@ -120,7 +120,7 @@ extension ProfileViewModel {
     func logOut() {
         dbManger.deleteCoreData(with: user?.id ?? "")
 
-        let targetVc = LoginViewController()
+        let targetVc = LoginView()
         view?.view.window?.rootViewController = targetVc
     }
 }
