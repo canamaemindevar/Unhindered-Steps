@@ -1,5 +1,5 @@
 //
-//  UpdateHelperView.swift
+//  UpdateHelperView 2.swift
 //  Unhindered Steps
 //
 //  Created by Emincan Antalyalı on 23.05.2023.
@@ -8,7 +8,7 @@
 import MaterialComponents
 import UIKit
 
-final class UpdateHelperView: UIViewController {
+final class UpdateHelperView: ViewController {
     var id: String = ""
     var mail: String = ""
     var username: String = ""
