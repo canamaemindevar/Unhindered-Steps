@@ -14,6 +14,7 @@
 		A92AB27E2A024FD5000CFF29 /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */; };
 		A92DE1202AD327B8008C6EE0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92DE11F2AD327B8008C6EE0 /* UIViewController+Extension.swift */; };
 		A92DE1222AD32F93008C6EE0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92DE1212AD32F93008C6EE0 /* UIView+Extensions.swift */; };
+		A92DE1242AD332D4008C6EE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A92DE1232AD332D4008C6EE0 /* README.md */; };
 		A9493C9F2ACD80EB0017FC94 /* ErrosTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */; };
 		A9493CA12ACD81020017FC94 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CA02ACD81020017FC94 /* HTTPMethod.swift */; };
 		A9493CAB2ACD82950017FC94 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9493CAA2ACD82950017FC94 /* Logger.swift */; };
@@ -72,6 +73,7 @@
 		A92AB27D2A024FD5000CFF29 /* NetworkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelpers.swift; sourceTree = "<group>"; };
 		A92DE11F2AD327B8008C6EE0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A92DE1212AD32F93008C6EE0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		A92DE1232AD332D4008C6EE0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9493C9E2ACD80EB0017FC94 /* ErrosTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrosTypes.swift; sourceTree = "<group>"; };
 		A9493CA02ACD81020017FC94 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		A9493CAA2ACD82950017FC94 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				A9493CE12ACEA8BB0017FC94 /* Managers */,
 				A9493CDF2ACEA87F0017FC94 /* Model */,
 				A9493CD02ACEA6DF0017FC94 /* View */,
+				A92DE1232AD332D4008C6EE0 /* README.md */,
 			);
 			path = "Unhindered Steps";
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92DE1242AD332D4008C6EE0 /* README.md in Resources */,
 				A9493CC02ACDAB2A0017FC94 /* Localizable.strings in Resources */,
 				A9BEEBE62ACC90D30074A3C5 /* .swiftlint.yml in Resources */,
 				A9B4576529FEA8080069432E /* LaunchScreen.storyboard in Resources */,
