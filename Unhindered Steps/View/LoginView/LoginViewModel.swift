@@ -44,7 +44,7 @@ final class LoginViewModel: LoginViewModelInterface {
         }
     }
 
-    @objc func login() {
+    func login() {
         guard let view = view else { return }
 
         guard let username = view.username, let password = view.password else {
@@ -82,9 +82,7 @@ final class LoginViewModel: LoginViewModelInterface {
         }
     }
 
-    @objc func goToRegisterView() {
+    func goToRegisterView() {
         view?.routeRegisterDelegate?.routeToRegister()
-        //        let vc = RegisterViewController()
-        //        navigationController?.pushViewController(vc, animated: true)
     }
 }

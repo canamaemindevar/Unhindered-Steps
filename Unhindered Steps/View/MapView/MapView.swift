@@ -12,28 +12,10 @@ final class MapView: UIViewController {
     // MARK: - Components
 
     private lazy var viewModel = MapViewModel()
-
-    var networkManager: FavoriteMakeble
-
     let mapView = MKMapView()
-
     let leftButton = UIButton(type: UIButton.ButtonType.detailDisclosure)
-
     let button = UIButton(type: UIButton.ButtonType.contactAdd)
-
-    var buttonString: [String] = []
-
-    init(networkManager: FavoriteMakeble = NetworkManager()) {
-        self.networkManager = networkManager
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Components
+    var buttonStrings: [String] = []
 
     let mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -114,12 +96,10 @@ final class MapView: UIViewController {
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
         ])
-
         view.addSubview(mainCollectionView)
         view.addSubview(phoneCallButton)
         view.addSubview(saleAndServiceButton)
         view.addSubview(healtyhButton)
-
         NSLayoutConstraint.activate([
             mainCollectionView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
             mainCollectionView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3),
@@ -128,7 +108,6 @@ final class MapView: UIViewController {
             mainCollectionView.widthAnchor.constraint(equalToConstant: view.frame.width),
 
         ])
-
         NSLayoutConstraint.activate([
             saleAndServiceButton.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             saleAndServiceButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -178,14 +157,14 @@ extension MapView {
 
     @objc func healthList() {
         DispatchQueue.main.async {
-            self.buttonString = ["hospital".localized, "pharmacy".localized, "medical".localized, "disabledToilet".localized]
+            self.buttonStrings = ["hospital".localized, "pharmacy".localized, "medical".localized, "disabledToilet".localized]
             self.mainCollectionView.reloadData()
         }
     }
 
     @objc func serviceList() {
         DispatchQueue.main.async {
-            self.buttonString = ["wheelchairOutlet".localized, "wheelchairCareCenter".localized]
+            self.buttonStrings = ["wheelchairOutlet".localized, "wheelchairCareCenter".localized]
             self.mainCollectionView.reloadData()
         }
     }
@@ -203,16 +182,18 @@ extension MapView {
     }
 }
 
+// MARK: - CollectionView Delegates
+
 extension MapView: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return buttonString.count
+        return buttonStrings.count
     }
 
     func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MyCell.identier, for: indexPath) as? MyCell else {
             return UICollectionViewCell()
         }
-        cell.wordLabel.text = buttonString[indexPath.row]
+        cell.wordLabel.text = buttonStrings[indexPath.row]
 
         return cell
     }
@@ -220,7 +201,7 @@ extension MapView: UICollectionViewDataSource {
 
 extension MapView: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let word = buttonString[indexPath.row]
+        let word = buttonStrings[indexPath.row]
         viewModel.updateSearchResults(query: word) { [weak self] response in
             guard let self = self else {
                 return
@@ -229,6 +210,8 @@ extension MapView: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: - MapView Delegates
 
 extension MapView: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

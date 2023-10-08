@@ -29,7 +29,7 @@ final class UpdateHelperViewModel: UpdateHelperViewModelInterface {
         self.dbManager = dbManager
     }
 
-    @objc func updateHelper() {
+    func updateHelper() {
         guard let helpermail = view?.helpermail, let helpername = view?.helpername, let helperphone = view?.helperphone
         else { return }
 

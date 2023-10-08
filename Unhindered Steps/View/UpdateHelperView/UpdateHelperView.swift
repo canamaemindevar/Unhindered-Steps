@@ -102,7 +102,7 @@ final class UpdateHelperView: ViewController {
         stackview.addArrangedSubview(registerButton)
         stackview.addArrangedSubview(errorMessageLabel)
 
-        registerButton.addTarget(self, action: #selector(viewModel.updateHelper), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(updateHelper), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
@@ -115,6 +115,10 @@ final class UpdateHelperView: ViewController {
     private func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
+    }
+
+    @objc private func updateHelper() {
+        viewModel.updateHelper()
     }
 }
 

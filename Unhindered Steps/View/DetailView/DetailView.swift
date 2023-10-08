@@ -54,13 +54,17 @@ final class DetailView: UIViewController {
         tableView.dataSource = self
         tableView.frame = view.bounds
         view.addSubview(mailButton)
-        mailButton.addTarget(self, action: #selector(viewModel.sendMail), for: .touchUpInside)
+        mailButton.addTarget(self, action: #selector(sendMail), for: .touchUpInside)
         NSLayoutConstraint.activate([
             view.bottomAnchor.constraint(equalToSystemSpacingBelow: mailButton.bottomAnchor, multiplier: 8),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: mailButton.trailingAnchor, multiplier: 2),
             mailButton.heightAnchor.constraint(equalToConstant: 120),
             mailButton.widthAnchor.constraint(equalToConstant: 120),
         ])
+    }
+
+    @objc private func sendMail() {
+        viewModel.sendMail()
     }
 }
 

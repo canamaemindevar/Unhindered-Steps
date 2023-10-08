@@ -95,7 +95,7 @@ final class UpdateUserView: UIViewController {
         passwordTextField.delegate = self
         passwordTextFieldAgain.delegate = self
         stackview.backgroundColor = .clear
-        registerButton.addTarget(self, action: #selector(viewModel.updateUser), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(updateUser), for: .touchUpInside)
         stackview.addArrangedSubview(mailTextField)
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(passwordTextFieldAgain)
@@ -109,6 +109,10 @@ final class UpdateUserView: UIViewController {
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+    }
+
+    @objc private func updateUser() {
+        viewModel.updateUser()
     }
 }
 

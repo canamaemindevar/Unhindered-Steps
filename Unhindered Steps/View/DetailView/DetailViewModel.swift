@@ -24,7 +24,7 @@ final class DetailViewModel: DetailViewModelInterface {
         view?.setup()
     }
 
-    @objc func sendMail() {
+    func sendMail() {
         networkManger.sendMail(id: view?.user.id ?? "", mail: view?.user.helperMail ?? "", topic: view?.title ?? "") { response in
             switch response {
             case let .success(success):

@@ -123,7 +123,7 @@ final class LoginView: UIViewController {
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(errorMessageLabel)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-        gotoRegisterButton.addTarget(self, action: #selector(viewModel.goToRegisterView), for: .touchUpInside)
+        gotoRegisterButton.addTarget(self, action: #selector(goToRegisterView), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -157,8 +157,12 @@ final class LoginView: UIViewController {
         ])
     }
 
-    @objc func login() {
+    @objc private func login() {
         viewModel.login()
+    }
+
+    @objc private func goToRegisterView() {
+        viewModel.goToRegisterView()
     }
 }
 

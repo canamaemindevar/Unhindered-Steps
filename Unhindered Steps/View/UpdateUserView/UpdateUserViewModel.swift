@@ -27,7 +27,7 @@ final class UpdateUserViewModel: UpdateUserViewModelInterface {
         view?.prepare()
     }
 
-    @objc func updateUser() {
+    func updateUser() {
         guard let view = view else { return }
         guard let password = view.password, let mail = view.mail else { return }
         if password.isEmpty || mail.isEmpty { return }

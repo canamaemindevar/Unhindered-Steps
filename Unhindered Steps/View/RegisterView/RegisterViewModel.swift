@@ -23,12 +23,7 @@ final class RegisterViewModel: RegisterViewModelInterface {
         self.networkManager = networkManager
     }
 
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc func register() {
+    func register() {
         guard let view = view else { return }
         guard let username = view.name, let password = view.password, let mail = view.mail, let helpermail = view.helpermail, let helpername = view.helpername,
               let helperphone = view.helperphone, let passwordAgain = view.passwordAgain

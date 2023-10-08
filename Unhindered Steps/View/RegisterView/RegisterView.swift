@@ -181,7 +181,7 @@ final class RegisterView: UIViewController {
         stackview.addArrangedSubview(registerButton)
         stackview.addArrangedSubview(errorMessageLabel)
 
-        registerButton.addTarget(self, action: #selector(viewModel.register), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             dummyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -197,7 +197,6 @@ final class RegisterView: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            //   stackview.bottomAnchor.constraint(equalTo: view.centerYAnchor),
             stackview.heightAnchor.constraint(equalToConstant: view.frame.height / 1.6),
             stackview.widthAnchor.constraint(equalToConstant: view.frame.width / 1.4),
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -208,6 +207,10 @@ final class RegisterView: UIViewController {
     func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
+    }
+
+    @objc private func register() {
+        viewModel.register()
     }
 }
 

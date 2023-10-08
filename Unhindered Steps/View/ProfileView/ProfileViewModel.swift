@@ -50,7 +50,7 @@ final class ProfileViewModel: ProfileViewModelInterface {
         }
     }
 
-    @objc func segueToHelperEdit() {
+    func segueToHelperEdit() {
         let targetVc = UpdateHelperView()
         guard let view = view else { return }
         targetVc.id = view.id
@@ -59,7 +59,7 @@ final class ProfileViewModel: ProfileViewModelInterface {
         view.navigationController?.pushViewController(targetVc, animated: true)
     }
 
-    @objc func seguToUserEdit() {
+    func seguToUserEdit() {
         let targetVc = UpdateUserView()
         guard let view = view else { return }
         targetVc.id = view.id

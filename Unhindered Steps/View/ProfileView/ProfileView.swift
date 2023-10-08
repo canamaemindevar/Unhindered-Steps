@@ -166,8 +166,8 @@ final class ProfileView: UIViewController {
         view.addSubview(imageView)
         profileStackview.addArrangedSubview(nameLabel)
         profileStackview.addArrangedSubview(mailLabel)
-        updateMyInfoBtn.addTarget(self, action: #selector(viewModel.seguToUserEdit), for: .touchUpInside)
-        updateHelperInfoBtn.addTarget(self, action: #selector(viewModel.segueToHelperEdit), for: .touchUpInside)
+        updateMyInfoBtn.addTarget(self, action: #selector(seguToUserEdit), for: .touchUpInside)
+        updateHelperInfoBtn.addTarget(self, action: #selector(segueToHelperEdit), for: .touchUpInside)
         imageView.layer.borderWidth = 1
         imageView.layer.masksToBounds = false
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -233,6 +233,14 @@ final class ProfileView: UIViewController {
         helperMailLabel.text = helperMail
         helperNameLabel.text = helperName
         self.id = id
+    }
+
+    @objc private func seguToUserEdit() {
+        viewModel.seguToUserEdit()
+    }
+
+    @objc private func segueToHelperEdit() {
+        viewModel.segueToHelperEdit()
     }
 }
 
