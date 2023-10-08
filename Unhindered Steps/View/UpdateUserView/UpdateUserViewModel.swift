@@ -9,6 +9,8 @@ import Foundation
 
 protocol UpdateUserViewModelInterface {
     var view: UpdateUserView? { get set }
+    var networkManager: UserUpdateable { get }
+    var dbManager: CoreDataManagerInterface { get }
     func viewDidLoad()
 }
 
@@ -44,8 +46,8 @@ final class UpdateUserViewModel: UpdateUserViewModelInterface {
                                                                      helperPhone: view.helperPhone))
                 }
 
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }

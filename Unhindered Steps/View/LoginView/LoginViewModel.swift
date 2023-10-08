@@ -46,12 +46,10 @@ final class LoginViewModel: LoginViewModelInterface {
 
     func login() {
         guard let view = view else { return }
-
         guard let username = view.username, let password = view.password else {
             view.configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return
         }
-
         if username.isEmpty || password.isEmpty {
             view.configureView(withMessage: "usernamePasswordCannotBeBlank".localized)
             return

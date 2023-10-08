@@ -48,7 +48,7 @@ final class UpdateUserView: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = MDCFilledTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "enterPassword.".localized
+        passwordTextField.placeholder = "enterPassword".localized
         passwordTextField.backgroundColor = .secondarySystemBackground
         return passwordTextField
     }()
@@ -89,7 +89,7 @@ final class UpdateUserView: UIViewController {
     }
 
     func prepare() {
-        view.backgroundColor = .systemBackground
+        view.setGradientBackground(color1: .gray, color2: .yellow)
         mailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.delegate = self

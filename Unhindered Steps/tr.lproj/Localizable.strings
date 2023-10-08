@@ -36,9 +36,9 @@
 "sendMail" = "E-posta Gönder";
 
 "updateHelper" = "Yardımcıyı Güncelle";
-"enterHelperPhone" = "Acil durumda aramak için bir yakınınızın numarasını girin.";
-"enterHelperName" = "Bir yakının adını girin.";
-"enterHelperMail" = "Bir yakınınızın e-posta adresini girin.";
+"enterHelperPhone" = "Bir yakınınızın numarasını girin.";
+"enterHelperName" = "Bir yakınınızın adını girin.";
+"enterHelperMail" = "Bir yakınınızın mail adresini girin.";
 "enterMail" = "E-posta Adresi Girin";
 
 "updateUser" = "Kullanıcıyı Güncelle";

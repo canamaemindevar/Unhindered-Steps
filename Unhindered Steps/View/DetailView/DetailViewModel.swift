@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailViewModelInterface {
     var view: DetailView? { get set }
+    var networkManger: MailSendable { get }
     func viewDidLoad()
 }
 
@@ -27,10 +28,10 @@ final class DetailViewModel: DetailViewModelInterface {
     func sendMail() {
         networkManger.sendMail(id: view?.user.id ?? "", mail: view?.user.helperMail ?? "", topic: view?.title ?? "") { response in
             switch response {
-            case let .success(success):
-                print(success)
-            case let .failure(failure):
-                print(failure)
+            case .success:
+                self.view?.presentAlert(status: .succes, message: "succes".localized)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }

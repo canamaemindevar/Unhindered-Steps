@@ -117,7 +117,6 @@ final class RegisterView: UIViewController {
         return errorMessageLabel
     }()
 
-    let alert = UIAlertController(title: "succes".localized, message: "registerSucces".localized, preferredStyle: .alert)
     var mail: String? {
         return mailTextField.text
     }

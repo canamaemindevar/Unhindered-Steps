@@ -10,13 +10,14 @@ import Foundation
 protocol ProfileViewModelInterface {
     var view: ProfileView? { get set }
     var user: UserModel? { get set }
+    var dbManger: CoreDataManagerInterface { get }
+    var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable { get }
     func viewDidLoad()
 }
 
 final class ProfileViewModel: ProfileViewModelInterface {
     weak var view: ProfileView?
     var dbManger: CoreDataManagerInterface
-
     var networkManager: FavoritesFetchable & RecentQueriesFetchable & MostlyUsedFetchable
 
     init(networkManager: NetworkManager = NetworkManager(),
@@ -37,7 +38,6 @@ final class ProfileViewModel: ProfileViewModelInterface {
         view?.prepare()
     }
 
-    // swiftlint:disable all
     func viewDidAppear() {
         dbManger.getDataForFavs { response in
             switch response {
@@ -81,8 +81,8 @@ extension ProfileViewModel {
                     targetVc.title = "searchHistory".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }
@@ -96,8 +96,8 @@ extension ProfileViewModel {
                     targetVc.title = "favorites".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }
@@ -111,8 +111,8 @@ extension ProfileViewModel {
                     targetVc.title = "mostlyUsed".localized
                     self.view?.navigationController?.pushViewController(targetVc, animated: true)
                 }
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }
@@ -124,5 +124,3 @@ extension ProfileViewModel {
         view?.view.window?.rootViewController = targetVc
     }
 }
-
-// swiftlint:enable all

@@ -89,7 +89,7 @@ final class UpdateHelperView: ViewController {
     }
 
     func setup() {
-        view.backgroundColor = .systemBackground
+        view.setGradientBackground(color1: .yellow, color2: .gray)
         helperPhoneNumber.delegate = self
         helperMailTextField.delegate = self
         helperNameTextField.delegate = self

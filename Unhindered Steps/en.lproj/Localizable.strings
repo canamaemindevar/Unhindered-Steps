@@ -39,7 +39,7 @@
 
 
 "updateHelper" = "Update Helper";
-"enterHelperPhone" = "Enter your relative's number to call in case of emergency.";
+"enterHelperPhone" = "Enter your relative's number.";
 "enterHelperName" = "Enter the name of a relative.";
 "enterHelperMail" = "Enter the e-mail address of a relative of yours.";
 "enterMail" = "Enter Mail";

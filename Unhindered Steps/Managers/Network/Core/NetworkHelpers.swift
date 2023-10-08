@@ -31,7 +31,7 @@ enum Endpoint {
 
 extension Endpoint: EndpointProtocol {
     var baseURL: String {
-        return "https://www.kouiot.com"
+        return <#BASEURL#>
     }
 
     var path: String {

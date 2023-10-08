@@ -11,6 +11,8 @@ import MapKit
 
 protocol MapViewModelInterface {
     var view: MapView? { get set }
+    var networkManager: QueryMakeble & FavoriteMakeble { get }
+    var dbManager: CoreDataManagerInterface { get }
     func viewDidLoad()
 }
 
@@ -42,8 +44,8 @@ final class MapViewModel: MapViewModelInterface {
             case let .success(success):
                 self.id = success.last?.id ?? ""
                 self.user = success.last
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }
@@ -52,8 +54,6 @@ final class MapViewModel: MapViewModelInterface {
         let request = MKLocalSearch.Request()
         let queryWord = query
         request.naturalLanguageQuery = queryWord
-
-        // var coordinate = CLLocationCoordinate2D(latitude: 40.766666, longitude: 29.916668)
         let coordinate = location
         request.region = MKCoordinateRegion(center: coordinate, span: .init(latitudeDelta: 0.5, longitudeDelta: 0.5))
 
@@ -65,10 +65,10 @@ final class MapViewModel: MapViewModelInterface {
 
             self.networkManager.makeQuery(id: self.id, query: queryWord) { response in
                 switch response {
-                case let .success(success):
-                    print(success)
-                case let .failure(failure):
-                    print(failure)
+                case .success:
+                    self.view?.presentAlert(status: .succes, message: "succes".localized)
+                case .failure:
+                    self.view?.presentAlert(status: .error, message: "errorShown".localized)
                 }
             }
             completion(response)
@@ -78,10 +78,10 @@ final class MapViewModel: MapViewModelInterface {
     func makeFavorite() {
         networkManager.makeFavorite(id: id, query: view?.title ?? "") { response in
             switch response {
-            case let .success(success):
-                print("Saved as favorite: \(success)")
-            case let .failure(failure):
-                print("Error while saving favorite: \(failure)")
+            case .success:
+                self.view?.presentAlert(status: .succes, message: "succes".localized)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }

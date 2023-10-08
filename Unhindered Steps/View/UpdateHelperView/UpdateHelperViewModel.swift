@@ -9,15 +9,13 @@ import Foundation
 
 protocol UpdateHelperViewModelInterface {
     var view: UpdateHelperView? { get set }
+    var networkManager: HelperUpdateble { get }
+    var dbManager: CoreDataManagerInterface { get }
     func viewDidLoad()
 }
 
 final class UpdateHelperViewModel: UpdateHelperViewModelInterface {
     var view: UpdateHelperView?
-
-    func viewDidLoad() {
-        view?.setup()
-    }
 
     var networkManager: HelperUpdateble
     var dbManager: CoreDataManagerInterface
@@ -27,6 +25,10 @@ final class UpdateHelperViewModel: UpdateHelperViewModelInterface {
     {
         self.networkManager = networkManager
         self.dbManager = dbManager
+    }
+
+    func viewDidLoad() {
+        view?.setup()
     }
 
     func updateHelper() {
@@ -46,8 +48,8 @@ final class UpdateHelperViewModel: UpdateHelperViewModelInterface {
                                                                      helperMail: success.helperMail,
                                                                      helperPhone: success.helperPhone))
                 }
-            case let .failure(failure):
-                print(failure)
+            case .failure:
+                self.view?.presentAlert(status: .error, message: "errorShown".localized)
             }
         }
     }

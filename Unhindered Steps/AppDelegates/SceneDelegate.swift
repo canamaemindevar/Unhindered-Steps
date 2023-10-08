@@ -13,7 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let loginVc = LoginView()
     let registerVc = RegisterView()
     let mainTabbar = MainTabbar()
-    let profileVc = ProfileView()
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-
-        window?.rootViewController = checkUser()
+        window?.rootViewController = UpdateUserView()
+        // window?.rootViewController = checkUser()
         window?.makeKeyAndVisible()
         loginVc.routeRegisterDelegate = self
         loginVc.loginSuccesDelegate = self
@@ -77,12 +76,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         })
 
         return targetVc
-//        if LocalState.hasOnboarded {
-//            return mainTabbar
-//        }else {
-//            return loginVc
-//          //  return  UINavigationController(rootViewController: loginVc)
-//        }
     }
 }
 

@@ -9,18 +9,20 @@ import UIKit
 
 protocol RegisterViewModelInterface {
     var view: RegisterView? { get set }
+    var networkManager: RegisterInterface { get }
     func viewDidLoad()
 }
 
 final class RegisterViewModel: RegisterViewModelInterface {
     weak var view: RegisterView?
     var networkManager: RegisterInterface
-    func viewDidLoad() {
-        view?.prepare()
-    }
 
     init(networkManager: RegisterInterface = NetworkManager()) {
         self.networkManager = networkManager
+    }
+
+    func viewDidLoad() {
+        view?.prepare()
     }
 
     func register() {
@@ -46,10 +48,6 @@ final class RegisterViewModel: RegisterViewModelInterface {
 
                 DispatchQueue.main.async {
                     if success.message == "succes" {
-                        view.alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                            NSLog("The \"OK\" alert occured.")
-                        }))
-                        view.present(view.alert, animated: true, completion: nil)
                         view.registerSuccesDelegate?.registerSuccesfull()
                     } else {
                         view.errorMessageLabel.text = "errorShown".localized
